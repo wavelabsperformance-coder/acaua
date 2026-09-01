@@ -1,4 +1,5 @@
 import { HeroSection } from "@/components/home/hero-section"
+import { FeaturedCarousel } from "@/components/featured-carousel"
 import { DifferentialsSection } from "@/components/home/differentials-section"
 import { AboutPreviewSection } from "@/components/home/about-preview-section"
 import { FeaturedPropertiesSection } from "@/components/home/featured-properties-section"
@@ -12,6 +13,7 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
+      <FeaturedCarousel />
       <DifferentialsSection />
       <AboutPreviewSection />
       <FeaturedPropertiesSection />

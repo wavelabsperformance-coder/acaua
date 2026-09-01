@@ -2,26 +2,124 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react"
-import type { featuredProperties } from "@/lib/data"
+import { Bed, Bath, Car, Maximize, MapPin, ChevronLeft, ChevronRight } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import type { Property } from "@/lib/data"
 
-type Property = (typeof featuredProperties)[number]
+interface PropertyGalleryCardProps {
+  property: Property
+}
 
-export function PropertyGalleryCard({ property }: { property: Property }) {
-  const [index, setIndex] = useState(0)
-  const next = (event: React.MouseEvent) => { event.preventDefault(); event.stopPropagation(); setIndex((value) => (value + 1) % property.images.length) }
-  const previous = (event: React.MouseEvent) => { event.preventDefault(); event.stopPropagation(); setIndex((value) => (value - 1 + property.images.length) % property.images.length) }
+export function PropertyGalleryCard({ property }: PropertyGalleryCardProps) {
+  const [currentImgIndex, setCurrentImgIndex] = useState(0)
+  const totalImages = property.images?.length || 0
+
+  const handlePrev = (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    setCurrentImgIndex((prev) => (prev === 0 ? totalImages - 1 : prev - 1))
+  }
+
+  const handleNext = (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    setCurrentImgIndex((prev) => (prev === totalImages - 1 ? 0 : prev + 1))
+  }
+
+  const isRental = property.category.includes("alugar")
+  // Direciona para a página da categoria já passando o ID do imóvel e a âncora de detalhes:
+  const targetUrl = `/empreendimentos/${property.category}?id=${property.id}#detalhes`
+
   return (
-    <article className="group bg-card border border-border overflow-hidden">
-      <Link href={`/empreendimentos/${property.category}/${property.id}`}>
-        <div className="relative aspect-[4/3] overflow-hidden">
-          <img src={property.images[index]} alt={`${property.title} — imagem ${index + 1}`} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
-          <button type="button" aria-label="Imagem anterior" onClick={previous} className="absolute left-3 top-1/2 -translate-y-1/2 grid h-9 w-9 place-items-center bg-background/90 text-foreground opacity-0 transition-opacity group-hover:opacity-100 focus:opacity-100"><ChevronLeft className="h-4 w-4" /></button>
-          <button type="button" aria-label="Próxima imagem" onClick={next} className="absolute right-3 top-1/2 -translate-y-1/2 grid h-9 w-9 place-items-center bg-background/90 text-foreground opacity-0 transition-opacity group-hover:opacity-100 focus:opacity-100"><ChevronRight className="h-4 w-4" /></button>
-          <span className="absolute bottom-3 left-3 bg-primary px-2 py-1 text-[10px] uppercase tracking-widest text-primary-foreground">{index + 1} / {property.images.length}</span>
+    <article className="group bg-white rounded-2xl overflow-hidden border border-border/80 hover:border-[#b85d19]/40 hover:shadow-xl transition-all duration-300 flex flex-col justify-between h-full">
+      <div>
+        {/* Carrossel de Imagens */}
+        <div className="aspect-[4/3] overflow-hidden relative bg-muted">
+          <Link href={targetUrl} className="block w-full h-full">
+            <img
+              src={property.images?.[currentImgIndex] || "/placeholder.jpg"}
+              alt={`${property.title} - foto ${currentImgIndex + 1}`}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          </Link>
+
+          {/* Badge Locação / Venda */}
+          <div className="absolute top-3 left-3 bg-[#b85d19] text-white px-3 py-1 text-xs rounded-full font-medium shadow-sm pointer-events-none">
+            {isRental ? "Locação" : "Venda"}
+          </div>
+
+          {/* Badge Contador */}
+          {totalImages > 1 && (
+            <div className="absolute bottom-3 left-3 bg-black/60 backdrop-blur-sm text-white text-[11px] font-medium px-2 py-0.5 rounded-md pointer-events-none">
+              {currentImgIndex + 1} / {totalImages}
+            </div>
+          )}
+
+          {/* Setas de Navegação */}
+          {totalImages > 1 && (
+            <>
+              <button
+                type="button"
+                onClick={handlePrev}
+                aria-label="Imagem anterior"
+                className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 hover:bg-white text-foreground flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 shadow-md hover:scale-105 z-10"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+
+              <button
+                type="button"
+                onClick={handleNext}
+                aria-label="Próxima imagem"
+                className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 hover:bg-white text-foreground flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 shadow-md hover:scale-105 z-10"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
+            </>
+          )}
         </div>
-        <div className="p-5"><p className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground">{property.location}</p><div className="mt-2 flex items-start justify-between gap-3"><h3 className="font-serif text-xl text-foreground">{property.title}</h3><ArrowUpRight className="mt-1 h-4 w-4 shrink-0 text-accent" /></div><p className="mt-4 text-sm text-muted-foreground">{property.area} · {property.bedrooms} quartos · {property.parking} vagas</p><p className="mt-4 text-lg text-foreground">{property.price}</p></div>
-      </Link>
+
+        {/* Informações */}
+        <div className="p-5">
+          <span className="text-[11px] uppercase tracking-wider text-muted-foreground flex items-center gap-1 font-medium">
+            <MapPin className="h-3.5 w-3.5 text-[#b85d19]" /> {property.location}
+          </span>
+          <Link href={targetUrl} className="block">
+            <h3 className="text-base font-semibold text-foreground group-hover:text-[#b85d19] transition-colors mt-2 line-clamp-1 font-serif">
+              {property.title}
+            </h3>
+          </Link>
+
+          <div className="flex items-center gap-3 mt-4 text-xs text-muted-foreground">
+            <span className="flex items-center gap-1">
+              <Bed className="h-3.5 w-3.5 text-[#0d3b2e]" /> {property.bedrooms}
+            </span>
+            <span className="flex items-center gap-1">
+              <Bath className="h-3.5 w-3.5 text-[#0d3b2e]" /> {property.bathrooms}
+            </span>
+            <span className="flex items-center gap-1">
+              <Car className="h-3.5 w-3.5 text-[#0d3b2e]" /> {property.parking}
+            </span>
+            {property.area && (
+              <span className="flex items-center gap-1">
+                <Maximize className="h-3.5 w-3.5 text-[#0d3b2e]" /> {property.area}
+              </span>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Rodapé do Card */}
+      <div className="p-5 pt-0">
+        <div className="pt-4 border-t border-border flex items-center justify-between">
+          <span className="text-sm font-semibold text-[#0d3b2e] line-clamp-1 mr-2">
+            {property.price || "Sob Consulta"}
+          </span>
+          <Button asChild size="sm" className="bg-[#0d3b2e] hover:bg-[#092920] text-white transition-colors shrink-0">
+            <Link href={targetUrl}>Ver Detalhes</Link>
+          </Button>
+        </div>
+      </div>
     </article>
   )
 }

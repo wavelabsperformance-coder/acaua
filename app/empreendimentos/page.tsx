@@ -1,207 +1,165 @@
 "use client"
 
-import { useRef, useEffect } from "react"
 import Link from "next/link"
-import { propertyCategories, featuredProperties, siteConfig } from "@/lib/data"
-import { ArrowRight, Bed, Bath, Car, Maximize } from "lucide-react"
+import { ArrowRight, Building2, Home, Key, Tag } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { siteConfig } from "@/lib/data"
+import { FeaturedCarousel } from "@/components/featured-carousel"
 
-const categoryImages: Record<string, string> = {
-  "comprar": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80",
-  "alugar": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80",
-  "alto-padrao": "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80",
-  "comercial": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80",
-  "lancamentos": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80",
-  "casas": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
-  "apartamentos": "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80",
-  "coberturas": "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=800&q=80",
-  "terrenos": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=80",
-  "frente-mar": "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=800&q=80",
-}
-
-// Banner editável - altere a URL da imagem aqui
-const heroBannerImage = "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&q=80"
+const categories = [
+  {
+    id: "apartamentos-para-alugar",
+    title: "Apartamentos para Alugar",
+    subtitle: "Locação Residencial & Flats",
+    description: "Opções mobiliadas e exclusivas nos melhores bairros.",
+    slug: "apartamentos-para-alugar",
+    count: "5 imóveis disponíveis",
+    image: "/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/1.jpeg",
+    icon: Key,
+    tag: "Locação",
+  },
+  {
+    id: "casas-para-venda",
+    title: "Casas para Venda",
+    subtitle: "Condomínios Fechados & Mansões",
+    description: "Propriedades de alto padrão, privacidade e lazer completo.",
+    slug: "casas-para-venda",
+    count: "3 imóveis disponíveis",
+    image: "/imoveis/casas-para-venda/casa-monte-castelo-gravata/5.jpeg",
+    icon: Home,
+    tag: "Venda",
+  },
+  {
+    id: "apartamentos-para-venda",
+    title: "Apartamentos para Venda",
+    subtitle: "Alto Padrão & Vista Mar",
+    description: "Apartamentos prontos para morar e coberturas exclusivas.",
+    slug: "apartamentos-para-venda",
+    count: "2 imóveis disponíveis",
+    image: "/imoveis/apartamentos-para-venda/edificio-santa-maria/1.jpeg",
+    icon: Building2,
+    tag: "Venda",
+  },
+  {
+    id: "casas-para-alugar",
+    title: "Casas para Alugar",
+    subtitle: "Residências para Locação",
+    description: "Casas em bairros nobres e condomínios com segurança.",
+    slug: "casas-para-alugar",
+    count: "Em breve novos imóveis",
+    image: "/imoveis/casas-para-venda/casa-the-house-club/1.jpeg",
+    icon: Tag,
+    tag: "Locação",
+  },
+]
 
 export default function EmpreendimentosPage() {
-  // Limite de 6 empreendimentos em destaque
-  const displayedProperties = featuredProperties.slice(0, 6)
-  const duplicatedProperties = [...displayedProperties, ...displayedProperties]
-
   return (
     <>
-      {/* Hero Banner - Editável */}
-      <section className="relative py-32 lg:py-40">
-        <div className="absolute inset-0">
-          {/* Imagem do banner - edite a variável heroBannerImage acima */}
-          <img
-            src={heroBannerImage}
-            alt="Empreendimentos Acauã Imóveis"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-primary/75" />
-        </div>
-        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <span className="text-[11px] uppercase tracking-[0.3em] text-white/50 font-medium">
-              Portfólio
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-white mt-4">
-              Empreendimentos
-            </h1>
-            <p className="text-lg text-white/70 mt-6 leading-relaxed max-w-xl">
-              Explore nossa seleção exclusiva de imóveis de alto padrão. Cada propriedade é cuidadosamente selecionada para atender aos mais elevados padrões de qualidade.
-            </p>
-          </div>
+      {/* Hero Header */}
+      <section className="pt-32 pb-14 bg-[#0d3b2e] text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(#b85d19_1px,transparent_1px)] [background-size:20px_20px] opacity-10 pointer-events-none" />
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
+          <span className="text-xs uppercase tracking-[0.3em] text-[#b85d19] font-bold block">
+            Portfólio Exclusivo
+          </span>
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-light mt-2 text-white">
+            Nossos Empreendimentos
+          </h1>
+          <p className="text-white/80 mt-4 max-w-2xl text-base md:text-lg font-light leading-relaxed">
+            Explore nossa seleção exclusiva de casas e apartamentos para compra e locação em Pernambuco.
+          </p>
         </div>
       </section>
 
-      {/* Featured Properties - Infinite Carousel */}
-      <section className="py-20 lg:py-28 bg-secondary overflow-hidden">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 mb-12">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-            <div>
-              <span className="text-[11px] uppercase tracking-[0.3em] text-muted-foreground font-medium">
-                Destaque
-              </span>
-              <h2 className="text-3xl md:text-4xl font-light text-foreground mt-2">
-                Imóveis em Destaque
-              </h2>
-            </div>
-          </div>
-        </div>
-
-        {/* Infinite Scroll Container */}
-        <div className="relative">
-          {/* Gradient Overlays */}
-          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-secondary to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-secondary to-transparent z-10 pointer-events-none" />
-          
-          {/* Scrolling Container */}
-          <div className="flex animate-scroll-infinite">
-            {duplicatedProperties.map((property, index) => (
-              <div
-                key={`${property.id}-${index}`}
-                className="flex-shrink-0 w-[360px] px-3"
-              >
-                <article className="group bg-card rounded-xl overflow-hidden border border-border hover:border-accent/30 hover:shadow-xl transition-all duration-300">
-                  <Link href={`/empreendimentos/${property.category}/${property.id}`}>
-                    <div className="aspect-[4/3] overflow-hidden relative">
-                      <img
-                        src={property.images[0]}
-                        alt={property.title}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      />
-                      <div className="absolute top-3 left-3">
-                        <span className="px-3 py-1.5 text-[10px] uppercase tracking-wider bg-accent text-accent-foreground rounded-md font-medium">
-                          Destaque
-                        </span>
-                      </div>
-                    </div>
-                    <div className="p-5">
-                      <span className="text-[10px] uppercase tracking-wider text-muted-foreground">
-                        {property.location}
-                      </span>
-                      <h3 className="text-base font-medium text-foreground group-hover:text-accent transition-colors mt-1.5 line-clamp-1">
-                        {property.title}
-                      </h3>
-                      
-                      <div className="flex items-center gap-3 mt-3 text-xs text-muted-foreground">
-                        <span className="flex items-center gap-1">
-                          <Bed className="h-3.5 w-3.5" />
-                          {property.bedrooms}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <Bath className="h-3.5 w-3.5" />
-                          {property.bathrooms}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <Car className="h-3.5 w-3.5" />
-                          {property.parking}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <Maximize className="h-3.5 w-3.5" />
-                          {property.area}
-                        </span>
-                      </div>
-                      
-                      <div className="mt-4 pt-4 border-t border-border">
-                        <span className="text-lg font-light text-foreground">
-                          {property.price}
-                        </span>
-                      </div>
-                    </div>
-                  </Link>
-                </article>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Categories Grid */}
-      <section className="py-20 lg:py-28">
+      {/* Grid com as 4 Categorias Estilizadas */}
+      <section className="py-20 bg-[#faf7f2]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mb-12">
-            <span className="text-[11px] uppercase tracking-[0.3em] text-muted-foreground font-medium">
-              Explorar
-            </span>
-            <h2 className="text-3xl md:text-4xl font-light text-foreground mt-2">
-              Categorias
+          <div className="flex items-center gap-3 mb-10 border-l-4 border-[#b85d19] pl-3">
+            <h2 className="font-serif text-2xl md:text-3xl text-[#0d3b2e] font-semibold">
+              Categorias Principais
             </h2>
-            <p className="text-muted-foreground mt-3">
-              Selecione uma categoria para explorar nossos imóveis
-            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {propertyCategories.map((category) => (
-              <Link
-                key={category.id}
-                href={`/empreendimentos/${category.slug}`}
-                className="group relative aspect-[4/3] overflow-hidden rounded-xl"
-              >
-                <img
-                  src={categoryImages[category.slug] || categoryImages["comprar"]}
-                  alt={category.name}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/40 to-transparent" />
-                <div className="absolute inset-0 flex flex-col justify-end p-6">
-                  <h3 className="text-xl font-medium text-white">
-                    {category.name}
-                  </h3>
-                  <p className="text-sm text-white/70 mt-1">
-                    {category.description}
-                  </p>
-                  <div className="mt-4 flex items-center text-sm text-white/80 group-hover:text-accent transition-colors">
-                    Ver Imóveis
-                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {categories.map((cat) => {
+              const Icon = cat.icon
+              return (
+                <Link
+                  key={cat.id}
+                  href={`/empreendimentos/${cat.slug}`}
+                  className="group relative h-[360px] sm:h-[400px] rounded-3xl overflow-hidden border border-border/60 shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col justify-between p-7 sm:p-9"
+                >
+                  <img
+                    src={cat.image}
+                    alt={cat.title}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#061e17] via-[#0d3b2e]/60 to-black/30 transition-opacity duration-500 group-hover:opacity-90" />
+
+                  <div className="relative z-10 flex items-center justify-between">
+                    <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-semibold bg-[#b85d19] text-white shadow-md">
+                      {cat.tag}
+                    </span>
+                    <div className="w-11 h-11 rounded-2xl bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center text-white group-hover:bg-[#b85d19] group-hover:border-[#b85d19] transition-all duration-300">
+                      <Icon className="h-5 w-5" />
+                    </div>
                   </div>
-                </div>
-              </Link>
-            ))}
+
+                  <div className="relative z-10">
+                    <span className="text-xs uppercase tracking-widest text-[#f0a36b] font-medium block mb-1">
+                      {cat.subtitle}
+                    </span>
+                    <h3 className="font-serif text-2xl sm:text-3xl font-semibold text-white group-hover:text-[#f8c9a5] transition-colors mb-2">
+                      {cat.title}
+                    </h3>
+                    <p className="text-white/80 text-sm font-light line-clamp-2 mb-4">
+                      {cat.description}
+                    </p>
+
+                    <div className="pt-4 border-t border-white/20 flex items-center justify-between">
+                      <span className="text-xs text-white/70 font-medium">
+                        {cat.count}
+                      </span>
+                      <span className="inline-flex items-center gap-2 text-sm font-semibold text-white group-hover:text-[#b85d19] bg-white/10 group-hover:bg-white px-4 py-2 rounded-xl backdrop-blur-sm transition-all duration-300">
+                        Acessar Categoria
+                        <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              )
+            })}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 lg:py-28 bg-secondary">
+      {/* Carrossel de Destaques Oficial Padronizado */}
+      <FeaturedCarousel />
+
+      {/* CTA Final */}
+      <section className="py-20 bg-white border-t border-border">
         <div className="mx-auto max-w-3xl px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-light text-foreground">
+          <h2 className="font-serif text-3xl md:text-4xl font-semibold text-[#0d3b2e]">
             Não encontrou o que procura?
           </h2>
           <p className="text-muted-foreground mt-4 leading-relaxed">
-            Nossa equipe de especialistas pode ajudá-lo a encontrar o imóvel ideal para você. Entre em contato e conte-nos suas necessidades.
+            Nossa equipe de especialistas está pronta para apresentar oportunidades exclusivas fora do catálogo público.
           </p>
           <div className="mt-8">
-            <Button asChild size="lg" className="rounded-lg">
+            <Button
+              asChild
+              size="lg"
+              className="bg-[#0d3b2e] hover:bg-[#092920] text-white rounded-xl px-8"
+            >
               <a
                 href={siteConfig.whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Falar com Especialista
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <ArrowRight className="ml-2 h-4 w-4 text-[#b85d19]" />
               </a>
             </Button>
           </div>

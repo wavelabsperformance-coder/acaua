@@ -180,69 +180,33 @@ export const testimonials = [
 ]
 
 // ============================================
-// CATEGORIAS DE IMÓVEIS
+// CATEGORIAS DE IMÓVEIS (4 PRINCIPAIS)
 // ============================================
 
 export const propertyCategories = [
   {
-    id: "comprar",
-    name: "Comprar",
-    slug: "comprar",
-    description: "Imóveis à venda",
+    id: "apartamentos-para-alugar",
+    name: "Apartamentos para Alugar",
+    slug: "apartamentos-para-alugar",
+    description: "Apartamentos e flats disponíveis para locação",
   },
   {
-    id: "alugar",
-    name: "Alugar",
-    slug: "alugar",
-    description: "Imóveis para locação",
+    id: "casas-para-alugar",
+    name: "Casas para Alugar",
+    slug: "casas-para-alugar",
+    description: "Casas e sobrados para locação residencial",
   },
   {
-    id: "alto-padrao",
-    name: "Alto Padrão",
-    slug: "alto-padrao",
-    description: "Imóveis de luxo",
+    id: "apartamentos-para-venda",
+    name: "Apartamentos para Venda",
+    slug: "apartamentos-para-venda",
+    description: "Apartamentos e coberturas exclusivos à venda",
   },
   {
-    id: "comercial",
-    name: "Comercial",
-    slug: "comercial",
-    description: "Imóveis comerciais",
-  },
-  {
-    id: "lancamentos",
-    name: "Lançamentos",
-    slug: "lancamentos",
-    description: "Novos empreendimentos",
-  },
-  {
-    id: "casas",
-    name: "Casas",
-    slug: "casas",
-    description: "Casas e sobrados",
-  },
-  {
-    id: "apartamentos",
-    name: "Apartamentos",
-    slug: "apartamentos",
-    description: "Apartamentos",
-  },
-  {
-    id: "coberturas",
-    name: "Coberturas",
-    slug: "coberturas",
-    description: "Coberturas duplex e triplex",
-  },
-  {
-    id: "terrenos",
-    name: "Terrenos",
-    slug: "terrenos",
-    description: "Terrenos e lotes",
-  },
-  {
-    id: "frente-mar",
-    name: "Frente Mar",
-    slug: "frente-mar",
-    description: "Imóveis na orla",
+    id: "casas-para-venda",
+    name: "Casas para Venda",
+    slug: "casas-para-venda",
+    description: "Casas em condomínio e mansões à venda",
   },
 ]
 
@@ -260,273 +224,199 @@ export type Property = {
   bathrooms: number
   parking: number
   description: string
-  category: string
+  category: "casas-para-venda" | "apartamentos-para-venda" | "apartamentos-para-alugar" | "casas-para-alugar" | string
   featured: boolean
   images: string[]
   video: string | null
 }
 
 // ============================================
-// IMÓVEIS DE DESTAQUE PARA A HOME
+// 10 IMÓVEIS DE DESTAQUE (HOME E CARROSSEL)
 // ============================================
 
 export const featuredProperties: Property[] = [
+  // 1. GRAVATÁ (Venda) -> ID bate com app/empreendimentos/casas-para-venda/page.tsx
   {
-    id: "1",
-    title: "Cobertura Duplex Boa Viagem",
-    location: "Boa Viagem, Recife",
-    price: "R$ 4.500.000",
-    area: "380m²",
-    bedrooms: 4,
-    bathrooms: 5,
-    parking: 4,
-    description:
-      "Cobertura duplex de frente para o mar com vista panorâmica deslumbrante.",
-    category: "alto-padrao",
-    featured: true,
-    images: [
-      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=80",
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80",
-      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&q=80",
-    ],
-    video: null,
-  },
-  {
-    id: "2",
-    title: "Mansão Casa Forte",
-    location: "Casa Forte, Recife",
-    price: "R$ 8.200.000",
-    area: "720m²",
+    id: "casa-monte-castelo-gravata",
+    title: "Mansão no Condomínio Monte Castelo",
+    location: "Monte Castelo, Gravatá - PE",
+    price: "R$ 2.400.000",
+    area: "1.000m²",
     bedrooms: 6,
-    bathrooms: 8,
+    bathrooms: 7,
     parking: 6,
-    description:
-      "Mansão com arquitetura contemporânea, piscina aquecida e espaço gourmet completo.",
-    category: "alto-padrao",
+    description: "Mansão de alto padrão em condomínio fechado com lote anexo de 20x50m.",
+    category: "casas-para-venda",
     featured: true,
-    images: [
-      "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&q=80",
-      "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=1200&q=80",
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80",
-    ],
+    images: ["/imoveis/casas-para-venda/casa-monte-castelo-gravata/5.jpeg"],
+    video: "/imoveis/casas-para-venda/casa-monte-castelo-gravata/1.mp4",
+  },
+
+  // 2. EDIFÍCIO SANTA MARIA (Venda) -> ID bate com app/empreendimentos/apartamentos-para-venda/page.tsx
+  {
+    id: "ap-edificio-santa-maria-boa-viagem",
+    title: "Apartamento no Edifício Santa Maria",
+    location: "Boa Viagem, Recife - PE",
+    price: "R$ 2.200.000",
+    area: "180m²",
+    bedrooms: 4,
+    bathrooms: 6,
+    parking: 3,
+    description: "Apartamento amplo com vista definitiva para o mar, 4 suítes e 3 vagas.",
+    category: "apartamentos-para-venda",
+    featured: true,
+    images: ["/imoveis/apartamentos-para-venda/edificio-santa-maria/1.jpeg"],
     video: null,
   },
+
+  // 3. THE HOUSE CLUB (Venda) -> ID bate com app/empreendimentos/casas-para-venda/page.tsx
   {
-    id: "3",
-    title: "Penthouse Pina",
-    location: "Pina, Recife",
-    price: "R$ 6.800.000",
-    area: "520m²",
-    bedrooms: 5,
-    bathrooms: 6,
-    parking: 5,
-    description:
-      "Penthouse exclusivo com terraço privativo, jacuzzi e vista 360° da cidade.",
-    category: "coberturas",
+    id: "casa-the-house-club-caruaru",
+    title: "Casa Fechada no The House Club",
+    location: "Luiz Gonzaga, Caruaru - PE",
+    price: "R$ 870.000",
+    area: "123m²",
+    bedrooms: 3,
+    bathrooms: 4,
+    parking: 2,
+    description: "Casa em condomínio fechado com 3 suítes, espaço gourmet e lazer completo.",
+    category: "casas-para-venda",
     featured: true,
-    images: [
-      "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=1200&q=80",
-      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&q=80",
-      "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=1200&q=80",
-    ],
+    images: ["/imoveis/casas-para-venda/casa-the-house-club/1.jpeg"],
+    video: null,
+  },
+
+  // 4. EDIFÍCIO TEREZA RODRIGUES (Locação) -> ID bate com app/empreendimentos/apartamentos-para-alugar/page.tsx
+  {
+    id: "ap-edificio-tereza-rodrigues",
+    title: "Apartamento Edifício Tereza Rodrigues",
+    location: "Boa Viagem, Recife - PE",
+    price: "R$ 4.000 / mês",
+    area: "64m²",
+    bedrooms: 2,
+    bathrooms: 3,
+    parking: 1,
+    description: "Excelente apartamento em andar alto na Rua Ana Camelo com varanda e 1 suíte.",
+    category: "apartamentos-para-alugar",
+    featured: true,
+    images: ["/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/1.jpeg"],
+    video: null,
+  },
+
+  // 5. VOG VILLE NORTE (Venda) -> ID bate com app/empreendimentos/apartamentos-para-venda/page.tsx
+  {
+    id: "ap-vog-ville-norte",
+    title: "Apartamento no Vog Ville Norte",
+    location: "Caruaru - PE",
+    price: "R$ 290.000",
+    area: "52m²",
+    bedrooms: 2,
+    bathrooms: 2,
+    parking: 1,
+    description: "Apartamento pronto para morar com móveis planejados e lazer completo.",
+    category: "apartamentos-para-venda",
+    featured: true,
+    images: ["/imoveis/apartamentos-para-venda/edificio-vog-ville-norte/3.jpeg"],
+    video: null,
+  },
+
+  // 6. CASA MODERNA COM QUINTAL (Venda) -> ID bate com app/empreendimentos/casas-para-venda/page.tsx
+  {
+    id: "casa-moderna-com-quintal",
+    title: "Casa Moderna com Amplo Quintal",
+    location: "Caruaru - PE",
+    price: "Consulte o valor",
+    area: "56m²",
+    bedrooms: 2,
+    bathrooms: 2,
+    parking: 1,
+    description: "Imóvel funcional com quintal de 5x7m com potencial de expansão.",
+    category: "casas-para-venda",
+    featured: true,
+    images: ["/imoveis/casas-para-venda/casa-moderna-com-quintal/1.jpeg"],
+    video: null,
+  },
+
+  // 7. EDIFÍCIO JARDIM DOS ALECRINS (Locação) -> ID bate com app/empreendimentos/apartamentos-para-alugar/page.tsx
+  {
+    id: "ap-edificio-jardim-dos-alecrins",
+    title: "Mobiliado no Jardim dos Alecrins",
+    location: "Universitário, Caruaru - PE",
+    price: "R$ 2.800 / mês",
+    area: "54m²",
+    bedrooms: 2,
+    bathrooms: 1,
+    parking: 1,
+    description: "Apartamento nascente e totalmente mobiliado próximo à ASCES.",
+    category: "apartamentos-para-alugar",
+    featured: true,
+    images: ["/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/1.jpeg"],
+    video: null,
+  },
+
+  // 8. FLAT STUDIO ALTO PADRÃO (Locação) -> ID bate com app/empreendimentos/apartamentos-para-alugar/page.tsx
+  {
+    id: "ap-studio-alto-padrao-shopping",
+    title: "Studio de Alto Padrão Decorado",
+    location: "Maurício de Nassau, Caruaru - PE",
+    price: "R$ 4.000 / mês",
+    area: "38m²",
+    bedrooms: 1,
+    bathrooms: 1,
+    parking: 1,
+    description: "Studio pronto para morar integrado a complexo com shopping e coworking.",
+    category: "apartamentos-para-alugar",
+    featured: true,
+    images: ["/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/1.jpeg"],
+    video: "/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/19.mp4",
+  },
+
+  // 9. EDIFÍCIO JOÃO SOARES (Locação) -> ID bate com app/empreendimentos/apartamentos-para-alugar/page.tsx
+  {
+    id: "ap-edificio-joao-soares",
+    title: "Apartamento no Edifício João Soares",
+    location: "Maurício de Nassau, Caruaru - PE",
+    price: "R$ 4.200 / mês",
+    area: "80m²",
+    bedrooms: 2,
+    bathrooms: 3,
+    parking: 2,
+    description: "Apartamento de alto padrão com móveis Finger, 2 suítes e 2 vagas.",
+    category: "apartamentos-para-alugar",
+    featured: true,
+    images: ["/imoveis/apartamentos-para-alugar/edificio-joao-soares/1.jpeg"],
+    video: null,
+  },
+
+  // 10. CAMINHO DAS AROEIRAS (Locação) -> ID bate com app/empreendimentos/apartamentos-para-alugar/page.tsx
+  {
+    id: "ap-caminho-das-aroeiras",
+    title: "Condomínio Caminho das Aroeiras",
+    location: "Indianópolis, Caruaru - PE",
+    price: "Consulte o valor",
+    area: "52m²",
+    bedrooms: 2,
+    bathrooms: 1,
+    parking: 1,
+    description: "Apartamento prático e bem ventilado ao lado do Caruaru Shopping.",
+    category: "apartamentos-para-alugar",
+    featured: true,
+    images: ["/imoveis/apartamentos-para-alugar/caminho-das-aroeiras/1.jpeg"],
     video: null,
   },
 ]
 
 // ============================================
-// GERADOR DE IMÓVEIS POR CATEGORIA
+// EXPORTAÇÕES PARA HOME (FILTROS ÚNICOS)
 // ============================================
 
-export function generatePropertiesForCategory(
-  categorySlug: string
-): Property[] {
-  const locations = [
-    "Boa Viagem",
-    "Pina",
-    "Casa Forte",
-    "Graças",
-    "Espinheiro",
-    "Aflitos",
-    "Jaqueira",
-    "Parnamirim",
-    "Poço da Panela",
-    "Derby",
-  ]
+export const rentalProperties: Property[] = featuredProperties.filter((p) =>
+  p.category.includes("alugar")
+)
 
-  const prices = [
-    "R$ 1.200.000",
-    "R$ 1.800.000",
-    "R$ 2.500.000",
-    "R$ 3.200.000",
-    "R$ 4.000.000",
-    "R$ 5.500.000",
-    "R$ 7.000.000",
-    "R$ 9.000.000",
-  ]
-
-  const areas = [
-    "120m²",
-    "180m²",
-    "250m²",
-    "320m²",
-    "400m²",
-    "500m²",
-    "650m²",
-    "800m²",
-  ]
-
-  const images = [
-    "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80",
-    "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80",
-    "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80",
-    "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80",
-    "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800&q=80",
-    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
-    "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=800&q=80",
-    "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80",
-    "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&q=80",
-    "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80",
-    "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80",
-    "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=80",
-    "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=800&q=80",
-    "https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800&q=80",
-    "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80",
-  ]
-
-  const propertyTypes: Record<string, string[]> = {
-    comprar: ["Apartamento", "Casa", "Cobertura", "Flat", "Loft"],
-
-    alugar: [
-      "Apartamento para Locação",
-      "Casa para Locação",
-      "Flat",
-      "Studio",
-    ],
-
-    "alto-padrao": [
-      "Cobertura Duplex",
-      "Mansão",
-      "Penthouse",
-      "Residência de Luxo",
-      "Villa",
-    ],
-
-    comercial: [
-      "Sala Comercial",
-      "Loja",
-      "Andar Corporativo",
-      "Galpão",
-      "Ponto Comercial",
-    ],
-
-    lancamentos: [
-      "Apartamento - Lançamento",
-      "Cobertura - Lançamento",
-      "Casa - Lançamento",
-      "Residencial Novo",
-    ],
-
-    casas: [
-      "Casa Térrea",
-      "Sobrado",
-      "Casa em Condomínio",
-      "Mansão",
-      "Casa Colonial",
-    ],
-
-    apartamentos: [
-      "Apartamento Standard",
-      "Apartamento Garden",
-      "Apartamento Alto Padrão",
-      "Flat",
-      "Studio",
-    ],
-
-    coberturas: [
-      "Cobertura Duplex",
-      "Cobertura Triplex",
-      "Penthouse",
-      "Cobertura Linear",
-      "Cobertura com Terraço",
-    ],
-
-    terrenos: [
-      "Terreno Urbano",
-      "Lote em Condomínio",
-      "Terreno Comercial",
-      "Área Industrial",
-      "Terreno Frente Mar",
-    ],
-
-    "frente-mar": [
-      "Apartamento Frente Mar",
-      "Cobertura Frente Mar",
-      "Casa de Praia",
-      "Flat Beira-Mar",
-      "Penthouse Oceânico",
-    ],
-  }
-
-  const types = propertyTypes[categorySlug] || ["Imóvel Premium"]
-
-  const properties: Property[] = []
-
-  for (let i = 0; i < 30; i++) {
-    const typeIndex = i % types.length
-    const locationIndex = i % locations.length
-    const priceIndex = i % prices.length
-    const areaIndex = i % areas.length
-    const imageIndex = i % images.length
-
-    properties.push({
-      id: `${categorySlug}-${i + 1}`,
-
-      title: `${types[typeIndex]} ${locations[locationIndex]}`,
-
-      location: `${locations[locationIndex]}, Recife`,
-
-      price: prices[priceIndex],
-
-      area: areas[areaIndex],
-
-      bedrooms: (i % 4) + 2,
-
-      bathrooms: (i % 4) + 2,
-
-      parking: (i % 3) + 2,
-
-      description:
-        `${types[typeIndex]} excepcional em localização privilegiada. ` +
-        `Acabamento de primeira linha, projeto arquitetônico diferenciado ` +
-        `e todas as comodidades que você merece.`,
-
-      category: categorySlug,
-
-      featured: i < 3,
-
-      images: [
-        images[imageIndex],
-        images[(imageIndex + 1) % images.length],
-        images[(imageIndex + 2) % images.length],
-        images[(imageIndex + 3) % images.length],
-        images[(imageIndex + 4) % images.length],
-      ],
-
-      video:
-        i % 5 === 0
-          ? "https://www.youtube.com/embed/dQw4w9WgXQ"
-          : null,
-    })
-  }
-
-  return properties
-}
-
-// ============================================
-// IMÓVEIS PARA LOCAÇÃO
-// ============================================
-
-export const rentalProperties = generatePropertiesForCategory("alugar")
+export const saleProperties: Property[] = featuredProperties.filter((p) =>
+  p.category.includes("venda")
+)
 
 // ============================================
 // TIPO DE DADOS DOS CORRETORES
@@ -558,99 +448,8 @@ export const teamContent = {
 // ============================================
 // EQUIPE ACAUÃ IMÓVEIS
 // ============================================
-//
-// Todas as imagens devem ser colocadas em:
-//
-// public/corretores/
-//
-// Exemplo:
-//
-// public/corretores/weslley-leite.jpeg
-//
-// E no código:
-//
-// /corretores/weslley-leite.jpeg
-//
-// ============================================
 
 export const brokers: Broker[] = [
-  {
-    id: "weslley-leite",
-    name: "Weslley Leite",
-    creci: "CRECI F 22939",
-    role: "Corretor de Imóveis",
-    bio: "Atua no atendimento aos clientes da Acauã Imóveis, buscando compreender cada necessidade e apresentar oportunidades alinhadas ao perfil de cada cliente, com atenção e transparência.",
-    image: "/corretores/weslley-leite.jpeg",
-    whatsapp: "5581997780319",
-    instagram: "https://instagram.com/acauaimoveis",
-  },
-
-  {
-    id: "larissa-goncalves",
-    name: "Larissa Gonçalves",
-    creci: "CRECI F 19521",
-    role: "Corretora de Imóveis",
-    bio: "Profissional dedicada ao atendimento imobiliário, acompanhando seus clientes com atenção em cada etapa e buscando tornar a escolha do imóvel mais simples, segura e tranquila.",
-    image: "/corretores/larissa-goncalves.jpeg",
-    whatsapp: "5581985783476",
-    instagram: "https://instagram.com/acauaimoveis",
-  },
-
-  {
-    id: "maria-nunes",
-    name: "Maria Nunes",
-    creci: "CRECI F 20198",
-    role: "Corretora de Imóveis",
-    bio: "Atua no atendimento imobiliário com uma abordagem próxima e cuidadosa, ajudando clientes a encontrar oportunidades que estejam de acordo com seus objetivos e expectativas.",
-    image: "/corretores/maria-nunes.jpeg",
-    whatsapp: "5581998495367",
-    instagram: "https://instagram.com/acauaimoveis",
-  },
-
-  {
-    id: "welston-cristoff",
-    name: "Welston Cristoff",
-    creci: "CRECI F 14974",
-    role: "Corretor de Imóveis",
-    bio: "Profissional da Acauã Imóveis que valoriza o relacionamento com seus clientes, oferecendo acompanhamento próximo e transparente durante o processo de compra, venda ou locação.",
-    image: "/corretores/welston-cristoff.jpeg",
-    whatsapp: "5581992535886",
-    instagram: "https://instagram.com/acauaimoveis",
-  },
-
-  {
-    id: "thays-andrade",
-    name: "Thays Andrade",
-    creci: "CRECI F 20008",
-    role: "Corretora de Imóveis",
-    bio: "Atua no atendimento aos clientes da Acauã Imóveis, buscando entender suas preferências e apresentar opções de imóveis de forma clara, cuidadosa e personalizada.",
-    image: "/corretores/thays-andrade.jpeg",
-    whatsapp: "5581992361754",
-    instagram: "https://instagram.com/acauaimoveis",
-  },
-
-  {
-    id: "george-batista",
-    name: "George Batista",
-    creci: "CRECI F 21365",
-    role: "Corretor de Imóveis",
-    bio: "Profissional dedicado ao mercado imobiliário, com foco em compreender o que cada cliente procura e oferecer um atendimento próximo durante toda a jornada.",
-    image: "/corretores/george-batista.jpeg",
-    whatsapp: "5581992240295",
-    instagram: "https://instagram.com/acauaimoveis",
-  },
-
-  {
-    id: "janaina-cabral",
-    name: "Janaína Cabral",
-    creci: "CRECI F 19502",
-    role: "Corretora de Imóveis",
-    bio: "Atua junto aos clientes da Acauã Imóveis oferecendo um atendimento atencioso e personalizado, buscando facilitar cada etapa na escolha do imóvel ideal.",
-    image: "/corretores/janaina-cabral.jpeg",
-    whatsapp: "5581981889803",
-    instagram: "https://instagram.com/acauaimoveis",
-  },
-
   {
     id: "gleydson-tabosa",
     name: "Gleydson Tabosa",
@@ -661,7 +460,6 @@ export const brokers: Broker[] = [
     whatsapp: "5581991950550",
     instagram: "https://instagram.com/acauaimoveis",
   },
-
   {
     id: "rafael-nunes",
     name: "Rafael Nunes",
@@ -670,6 +468,96 @@ export const brokers: Broker[] = [
     bio: "Gestor e Proprietário da Acauã Imóveis, atua na gestão da empresa e no relacionamento com clientes, contribuindo para uma experiência imobiliária baseada em confiança, atenção e transparência.",
     image: "/corretores/rafael-nunes.jpeg",
     whatsapp: "5581991950550",
+    instagram: "https://instagram.com/acauaimoveis",
+  },
+  {
+    id: "joyce-monique",
+    name: "Joyce Monique",
+    creci: "CRECI E 2009013813",
+    role: "Corretora de Imóveis",
+    bio: "Profissional dedicada ao atendimento imobiliário da Acauã Imóveis, oferecendo assessoria completa e personalizada para conectar você ao imóvel ideal com segurança e transparência.",
+    image: "/corretores/joyce-monique.jpeg",
+    whatsapp: "5581991950550",
+    instagram: "https://instagram.com/acauaimoveis",
+  },
+  {
+    id: "guilherme-melo",
+    name: "Guilherme de Melo Silva",
+    creci: "CRECI Est : 2009013863",
+    role: "Corretor de Imóveis",
+    bio: "Profissional dedicado da Acauã Imóveis, prestando consultoria especializada e atendimento focado em identificar as melhores oportunidades de investimento e moradia.",
+    image: "/corretores/guilherme-melo.jpeg",
+    whatsapp: "5581991950550",
+    instagram: "https://instagram.com/acauaimoveis",
+  },
+  {
+    id: "weslley-leite",
+    name: "Weslley Leite",
+    creci: "CRECI F 22939",
+    role: "Corretor de Imóveis",
+    bio: "Atua no atendimento aos clientes da Acauã Imóveis, buscando compreender cada necessidade e apresentar oportunidades alinhadas ao perfil de cada cliente, com atenção e transparência.",
+    image: "/corretores/weslley-leite.jpeg",
+    whatsapp: "5581997780319",
+    instagram: "https://instagram.com/acauaimoveis",
+  },
+  {
+    id: "larissa-goncalves",
+    name: "Larissa Gonçalves",
+    creci: "CRECI F 19521",
+    role: "Corretora de Imóveis",
+    bio: "Profissional dedicada ao atendimento imobiliário, acompanhando seus clientes com atenção em cada etapa e buscando tornar a escolha do imóvel mais simples, segura e tranquila.",
+    image: "/corretores/larissa-goncalves.jpeg",
+    whatsapp: "5581985783476",
+    instagram: "https://instagram.com/acauaimoveis",
+  },
+  {
+    id: "maria-nunes",
+    name: "Maria Nunes",
+    creci: "CRECI F 20198",
+    role: "Corretora de Imóveis",
+    bio: "Atua no atendimento imobiliário com uma abordagem próxima e cuidadosa, ajudando clientes a encontrar oportunidades que estejam de acordo com seus objetivos e expectativas.",
+    image: "/corretores/maria-nunes.jpeg",
+    whatsapp: "5581998495367",
+    instagram: "https://instagram.com/acauaimoveis",
+  },
+  {
+    id: "welston-cristoff",
+    name: "Welston Cristoff",
+    creci: "CRECI F 14974",
+    role: "Corretor de Imóveis",
+    bio: "Profissional da Acauã Imóveis que valoriza o relacionamento com seus clientes, oferecendo acompanhamento próximo e transparente durante o processo de compra, venda ou locação.",
+    image: "/corretores/welston-cristoff.jpeg",
+    whatsapp: "5581992535886",
+    instagram: "https://instagram.com/acauaimoveis",
+  },
+  {
+    id: "thays-andrade",
+    name: "Thays Andrade",
+    creci: "CRECI F 20008",
+    role: "Corretora de Imóveis",
+    bio: "Atua no atendimento aos clientes da Acauã Imóveis, buscando entender suas preferências e apresentar opções de imóveis de forma clara, cuidadosa e personalizada.",
+    image: "/corretores/thays-andrade.jpeg",
+    whatsapp: "5581992361754",
+    instagram: "https://instagram.com/acauaimoveis",
+  },
+  {
+    id: "george-batista",
+    name: "George Batista",
+    creci: "CRECI F 21365",
+    role: "Corretor de Imóveis",
+    bio: "Profissional dedicado ao mercado imobiliário, com foco em compreender o que cada cliente procura e oferecer um atendimento próximo durante toda a jornada.",
+    image: "/corretores/george-batista.jpeg",
+    whatsapp: "5581992240295",
+    instagram: "https://instagram.com/acauaimoveis",
+  },
+  {
+    id: "janaina-cabral",
+    name: "Janaína Cabral",
+    creci: "CRECI F 19502",
+    role: "Corretora de Imóveis",
+    bio: "Atua junto aos clientes da Acauã Imóveis oferecendo um atendimento atencioso e personalizado, buscando facilitar cada etapa na escolha do imóvel ideal.",
+    image: "/corretores/janaina-cabral.jpeg",
+    whatsapp: "5581981889803",
     instagram: "https://instagram.com/acauaimoveis",
   },
 ]
@@ -685,7 +573,6 @@ export const blogPosts = [
     title: "Tendências de Arquitetura para Imóveis de Alto Padrão em 2024",
     excerpt:
       "Descubra as principais tendências que estão moldando os projetos de imóveis de luxo neste ano.",
-
     content: `A arquitetura de alto padrão está em constante evolução, refletindo as mudanças nos estilos de vida e as inovações tecnológicas. Em 2024, algumas tendências se destacam nos projetos mais exclusivos.
 
 A integração com a natureza continua sendo uma prioridade. Jardins internos, paredes verdes e grandes aberturas que conectam os ambientes internos ao exterior são elementos essenciais nos projetos contemporâneos.
@@ -695,22 +582,18 @@ A sustentabilidade também ganha cada vez mais espaço. Sistemas de energia sola
 O conceito de casa inteligente evoluiu significativamente. Automação residencial integrada, sistemas de segurança avançados e controle por voz se tornaram padrão em imóveis de luxo.
 
 Espaços multiuso e home offices bem projetados refletem a nova realidade do trabalho híbrido. Ambientes versáteis que se adaptam às diferentes necessidades do dia a dia são altamente valorizados.`,
-
     image:
       "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=80",
-
     date: "2024-01-15",
     author: "Equipe Acauã",
     category: "Arquitetura",
   },
-
   {
     id: "2",
     slug: "investir-imoveis-recife",
     title: "Por Que Investir em Imóveis de Alto Padrão em Recife",
     excerpt:
       "Análise completa do mercado imobiliário de luxo na capital pernambucana e as melhores oportunidades.",
-
     content: `Recife se consolida como um dos mercados mais promissores para investimentos imobiliários de alto padrão no Nordeste brasileiro.
 
 A valorização constante dos bairros nobres, como Boa Viagem, Casa Forte e Pina, demonstra a solidez do mercado local. A infraestrutura urbana em constante melhoria e os novos empreendimentos elevam o padrão da região.
@@ -720,22 +603,18 @@ O potencial turístico da cidade atrai investidores interessados em imóveis par
 A qualidade de vida oferecida pela cidade, com praias urbanas, gastronomia reconhecida e opções culturais diversificadas, atrai profissionais de alto poder aquisitivo de outras regiões.
 
 O mercado de locação de alto padrão também apresenta demanda consistente, oferecendo retornos atrativos para investidores que buscam renda passiva.`,
-
     image:
       "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&q=80",
-
     date: "2024-01-10",
     author: "Equipe Acauã",
     category: "Investimentos",
   },
-
   {
     id: "3",
     slug: "guia-compra-primeiro-imovel-luxo",
     title: "Guia Completo: Como Comprar Seu Primeiro Imóvel de Luxo",
     excerpt:
       "Tudo o que você precisa saber antes de investir em um imóvel de alto padrão pela primeira vez.",
-
     content: `Adquirir um imóvel de alto padrão é uma decisão importante que requer planejamento e conhecimento. Este guia oferece orientações essenciais para uma compra segura e satisfatória.
 
 Defina claramente suas prioridades: localização, tamanho, características específicas e orçamento disponível. Ter clareza sobre suas necessidades facilita a busca e a tomada de decisão.
@@ -747,10 +626,8 @@ Verifique toda a documentação do imóvel e do vendedor. Due diligence completa
 Avalie a infraestrutura do condomínio e os custos de manutenção. Em imóveis de alto padrão, esses valores podem ser significativos e devem ser considerados no planejamento financeiro.
 
 Não tenha pressa. Visitar diferentes opções e comparar características permite uma escolha mais consciente e alinhada com suas expectativas.`,
-
     image:
       "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80",
-
     date: "2024-01-05",
     author: "Equipe Acauã",
     category: "Dicas",
