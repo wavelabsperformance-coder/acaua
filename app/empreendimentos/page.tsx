@@ -1,55 +1,44 @@
 "use client"
 
 import Link from "next/link"
-import { ArrowRight, Building2, Home, Key, Tag } from "lucide-react"
+import { ArrowRight, Building2, Home, Key } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { siteConfig } from "@/lib/data"
 import { FeaturedCarousel } from "@/components/featured-carousel"
 
 const categories = [
   {
-    id: "apartamentos-para-alugar",
-    title: "Apartamentos para Alugar",
+    id: "imoveis-para-alugar",
+    title: "Imóveis para Alugar",
     subtitle: "Locação Residencial & Flats",
-    description: "Opções mobiliadas e exclusivas nos melhores bairros.",
-    slug: "apartamentos-para-alugar",
-    count: "5 imóveis disponíveis",
+    description: "Apartamentos, flats e casas selecionadas com curadoria nos melhores bairros.",
+    slug: "imoveis-para-alugar",
+    count: "7 imóveis disponíveis",
     image: "/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/1.jpeg",
     icon: Key,
     tag: "Locação",
   },
   {
-    id: "casas-para-venda",
-    title: "Casas para Venda",
-    subtitle: "Condomínios Fechados & Mansões",
-    description: "Propriedades de alto padrão, privacidade e lazer completo.",
-    slug: "casas-para-venda",
-    count: "3 imóveis disponíveis",
+    id: "imoveis-para-venda",
+    title: "Imóveis para Venda",
+    subtitle: "Alto Padrão, Condomínios & Mansões",
+    description: "Casas em condomínio fechado, mansões e apartamentos de luxo prontos para morar.",
+    slug: "imoveis-para-venda",
+    count: "5 imóveis disponíveis",
     image: "/imoveis/casas-para-venda/casa-monte-castelo-gravata/5.jpeg",
     icon: Home,
     tag: "Venda",
   },
   {
-    id: "apartamentos-para-venda",
-    title: "Apartamentos para Venda",
-    subtitle: "Alto Padrão & Vista Mar",
-    description: "Apartamentos prontos para morar e coberturas exclusivas.",
-    slug: "apartamentos-para-venda",
-    count: "2 imóveis disponíveis",
-    image: "/imoveis/apartamentos-para-venda/edificio-santa-maria/1.jpeg",
+    id: "pontos-comerciais",
+    title: "Pontos Comerciais",
+    subtitle: "Salas, Lojas & Espaços Corporativos",
+    description: "Estruturas comerciais estratégicas para o crescimento do seu negócio.",
+    slug: "pontos-comerciais",
+    count: "1 imóvel disponível",
+    image: "/imoveis/pontos-comerciais/ponto-comercial-agamenon-magalhaes/1.jpeg",
     icon: Building2,
-    tag: "Venda",
-  },
-  {
-    id: "casas-para-alugar",
-    title: "Casas para Alugar",
-    subtitle: "Residências para Locação",
-    description: "Casas em bairros nobres e condomínios com segurança.",
-    slug: "casas-para-alugar",
-    count: "Em breve novos imóveis",
-    image: "/imoveis/casas-para-venda/casa-the-house-club/1.jpeg",
-    icon: Tag,
-    tag: "Locação",
+    tag: "Comercial",
   },
 ]
 
@@ -67,12 +56,12 @@ export default function EmpreendimentosPage() {
             Nossos Empreendimentos
           </h1>
           <p className="text-white/80 mt-4 max-w-2xl text-base md:text-lg font-light leading-relaxed">
-            Explore nossa seleção exclusiva de casas e apartamentos para compra e locação em Pernambuco.
+            Explore nossa curadoria de imóveis para locação, venda e oportunidades comerciais em Pernambuco.
           </p>
         </div>
       </section>
 
-      {/* Grid com as 4 Categorias Estilizadas */}
+      {/* Grid com as 3 Categorias */}
       <section className="py-20 bg-[#faf7f2]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="flex items-center gap-3 mb-10 border-l-4 border-[#b85d19] pl-3">
@@ -81,14 +70,14 @@ export default function EmpreendimentosPage() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {categories.map((cat) => {
               const Icon = cat.icon
               return (
                 <Link
                   key={cat.id}
                   href={`/empreendimentos/${cat.slug}`}
-                  className="group relative h-[360px] sm:h-[400px] rounded-3xl overflow-hidden border border-border/60 shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col justify-between p-7 sm:p-9"
+                  className="group relative h-[380px] sm:h-[420px] rounded-3xl overflow-hidden border border-border/60 shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col justify-between p-7 sm:p-8"
                 >
                   <img
                     src={cat.image}
@@ -111,7 +100,7 @@ export default function EmpreendimentosPage() {
                     <span className="text-xs uppercase tracking-widest text-[#f0a36b] font-medium block mb-1">
                       {cat.subtitle}
                     </span>
-                    <h3 className="font-serif text-2xl sm:text-3xl font-semibold text-white group-hover:text-[#f8c9a5] transition-colors mb-2">
+                    <h3 className="font-serif text-2xl font-semibold text-white group-hover:text-[#f8c9a5] transition-colors mb-2">
                       {cat.title}
                     </h3>
                     <p className="text-white/80 text-sm font-light line-clamp-2 mb-4">
@@ -122,8 +111,8 @@ export default function EmpreendimentosPage() {
                       <span className="text-xs text-white/70 font-medium">
                         {cat.count}
                       </span>
-                      <span className="inline-flex items-center gap-2 text-sm font-semibold text-white group-hover:text-[#b85d19] bg-white/10 group-hover:bg-white px-4 py-2 rounded-xl backdrop-blur-sm transition-all duration-300">
-                        Acessar Categoria
+                      <span className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-white group-hover:text-[#b85d19] bg-white/10 group-hover:bg-white px-3.5 py-2 rounded-xl backdrop-blur-sm transition-all duration-300">
+                        Acessar
                         <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                       </span>
                     </div>
@@ -135,7 +124,7 @@ export default function EmpreendimentosPage() {
         </div>
       </section>
 
-      {/* Carrossel de Destaques Oficial Padronizado */}
+      {/* Carrossel de Destaques Padronizado */}
       <FeaturedCarousel />
 
       {/* CTA Final */}

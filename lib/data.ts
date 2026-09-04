@@ -180,33 +180,27 @@ export const testimonials = [
 ]
 
 // ============================================
-// CATEGORIAS DE IMÓVEIS (4 PRINCIPAIS)
+// CATEGORIAS DE IMÓVEIS (3 PRINCIPAIS ATUALIZADAS)
 // ============================================
 
 export const propertyCategories = [
   {
-    id: "apartamentos-para-alugar",
-    name: "Apartamentos para Alugar",
-    slug: "apartamentos-para-alugar",
-    description: "Apartamentos e flats disponíveis para locação",
+    id: "imoveis-para-alugar",
+    name: "Imóveis para Alugar",
+    slug: "imoveis-para-alugar",
+    description: "Apartamentos, flats e casas selecionadas para locação residencial",
   },
   {
-    id: "casas-para-alugar",
-    name: "Casas para Alugar",
-    slug: "casas-para-alugar",
-    description: "Casas e sobrados para locação residencial",
+    id: "imoveis-para-venda",
+    name: "Imóveis para Venda",
+    slug: "imoveis-para-venda",
+    description: "Casas em condomínio, mansões e apartamentos de alto padrão à venda",
   },
   {
-    id: "apartamentos-para-venda",
-    name: "Apartamentos para Venda",
-    slug: "apartamentos-para-venda",
-    description: "Apartamentos e coberturas exclusivos à venda",
-  },
-  {
-    id: "casas-para-venda",
-    name: "Casas para Venda",
-    slug: "casas-para-venda",
-    description: "Casas em condomínio e mansões à venda",
+    id: "pontos-comerciais",
+    name: "Pontos Comerciais",
+    slug: "pontos-comerciais",
+    description: "Salas, lojas e estruturas corporativas para o seu negócio",
   },
 ]
 
@@ -224,7 +218,7 @@ export type Property = {
   bathrooms: number
   parking: number
   description: string
-  category: "casas-para-venda" | "apartamentos-para-venda" | "apartamentos-para-alugar" | "casas-para-alugar" | string
+  category: "imoveis-para-venda" | "imoveis-para-alugar" | "pontos-comerciais" | string
   featured: boolean
   images: string[]
   video: string | null
@@ -235,7 +229,7 @@ export type Property = {
 // ============================================
 
 export const featuredProperties: Property[] = [
-  // 1. GRAVATÁ (Venda) -> ID bate com app/empreendimentos/casas-para-venda/page.tsx
+  // 1. GRAVATÁ (Venda) -> Direciona para /empreendimentos/imoveis-para-venda?id=...
   {
     id: "casa-monte-castelo-gravata",
     title: "Mansão no Condomínio Monte Castelo",
@@ -246,13 +240,13 @@ export const featuredProperties: Property[] = [
     bathrooms: 7,
     parking: 6,
     description: "Mansão de alto padrão em condomínio fechado com lote anexo de 20x50m.",
-    category: "casas-para-venda",
+    category: "imoveis-para-venda",
     featured: true,
     images: ["/imoveis/casas-para-venda/casa-monte-castelo-gravata/5.jpeg"],
     video: "/imoveis/casas-para-venda/casa-monte-castelo-gravata/1.mp4",
   },
 
-  // 2. EDIFÍCIO SANTA MARIA (Venda) -> ID bate com app/empreendimentos/apartamentos-para-venda/page.tsx
+  // 2. EDIFÍCIO SANTA MARIA (Venda) -> Direciona para /empreendimentos/imoveis-para-venda?id=...
   {
     id: "ap-edificio-santa-maria-boa-viagem",
     title: "Apartamento no Edifício Santa Maria",
@@ -263,13 +257,13 @@ export const featuredProperties: Property[] = [
     bathrooms: 6,
     parking: 3,
     description: "Apartamento amplo com vista definitiva para o mar, 4 suítes e 3 vagas.",
-    category: "apartamentos-para-venda",
+    category: "imoveis-para-venda",
     featured: true,
     images: ["/imoveis/apartamentos-para-venda/edificio-santa-maria/1.jpeg"],
     video: null,
   },
 
-  // 3. THE HOUSE CLUB (Venda) -> ID bate com app/empreendimentos/casas-para-venda/page.tsx
+  // 3. THE HOUSE CLUB (Venda) -> Direciona para /empreendimentos/imoveis-para-venda?id=...
   {
     id: "casa-the-house-club-caruaru",
     title: "Casa Fechada no The House Club",
@@ -280,13 +274,13 @@ export const featuredProperties: Property[] = [
     bathrooms: 4,
     parking: 2,
     description: "Casa em condomínio fechado com 3 suítes, espaço gourmet e lazer completo.",
-    category: "casas-para-venda",
+    category: "imoveis-para-venda",
     featured: true,
     images: ["/imoveis/casas-para-venda/casa-the-house-club/1.jpeg"],
     video: null,
   },
 
-  // 4. EDIFÍCIO TEREZA RODRIGUES (Locação) -> ID bate com app/empreendimentos/apartamentos-para-alugar/page.tsx
+  // 4. EDIFÍCIO TEREZA RODRIGUES (Locação) -> Direciona para /empreendimentos/imoveis-para-alugar?id=...
   {
     id: "ap-edificio-tereza-rodrigues",
     title: "Apartamento Edifício Tereza Rodrigues",
@@ -297,13 +291,13 @@ export const featuredProperties: Property[] = [
     bathrooms: 3,
     parking: 1,
     description: "Excelente apartamento em andar alto na Rua Ana Camelo com varanda e 1 suíte.",
-    category: "apartamentos-para-alugar",
+    category: "imoveis-para-alugar",
     featured: true,
     images: ["/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/1.jpeg"],
     video: null,
   },
 
-  // 5. VOG VILLE NORTE (Venda) -> ID bate com app/empreendimentos/apartamentos-para-venda/page.tsx
+  // 5. VOG VILLE NORTE (Venda) -> Direciona para /empreendimentos/imoveis-para-venda?id=...
   {
     id: "ap-vog-ville-norte",
     title: "Apartamento no Vog Ville Norte",
@@ -314,13 +308,13 @@ export const featuredProperties: Property[] = [
     bathrooms: 2,
     parking: 1,
     description: "Apartamento pronto para morar com móveis planejados e lazer completo.",
-    category: "apartamentos-para-venda",
+    category: "imoveis-para-venda",
     featured: true,
     images: ["/imoveis/apartamentos-para-venda/edificio-vog-ville-norte/3.jpeg"],
     video: null,
   },
 
-  // 6. CASA MODERNA COM QUINTAL (Venda) -> ID bate com app/empreendimentos/casas-para-venda/page.tsx
+  // 6. CASA MODERNA COM QUINTAL (Venda) -> Direciona para /empreendimentos/imoveis-para-venda?id=...
   {
     id: "casa-moderna-com-quintal",
     title: "Casa Moderna com Amplo Quintal",
@@ -331,13 +325,13 @@ export const featuredProperties: Property[] = [
     bathrooms: 2,
     parking: 1,
     description: "Imóvel funcional com quintal de 5x7m com potencial de expansão.",
-    category: "casas-para-venda",
+    category: "imoveis-para-venda",
     featured: true,
     images: ["/imoveis/casas-para-venda/casa-moderna-com-quintal/1.jpeg"],
     video: null,
   },
 
-  // 7. EDIFÍCIO JARDIM DOS ALECRINS (Locação) -> ID bate com app/empreendimentos/apartamentos-para-alugar/page.tsx
+  // 7. EDIFÍCIO JARDIM DOS ALECRINS (Locação) -> Direciona para /empreendimentos/imoveis-para-alugar?id=...
   {
     id: "ap-edificio-jardim-dos-alecrins",
     title: "Mobiliado no Jardim dos Alecrins",
@@ -348,13 +342,13 @@ export const featuredProperties: Property[] = [
     bathrooms: 1,
     parking: 1,
     description: "Apartamento nascente e totalmente mobiliado próximo à ASCES.",
-    category: "apartamentos-para-alugar",
+    category: "imoveis-para-alugar",
     featured: true,
     images: ["/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/1.jpeg"],
     video: null,
   },
 
-  // 8. FLAT STUDIO ALTO PADRÃO (Locação) -> ID bate com app/empreendimentos/apartamentos-para-alugar/page.tsx
+  // 8. FLAT STUDIO ALTO PADRÃO (Locação) -> Direciona para /empreendimentos/imoveis-para-alugar?id=...
   {
     id: "ap-studio-alto-padrao-shopping",
     title: "Studio de Alto Padrão Decorado",
@@ -365,13 +359,13 @@ export const featuredProperties: Property[] = [
     bathrooms: 1,
     parking: 1,
     description: "Studio pronto para morar integrado a complexo com shopping e coworking.",
-    category: "apartamentos-para-alugar",
+    category: "imoveis-para-alugar",
     featured: true,
     images: ["/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/1.jpeg"],
     video: "/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/19.mp4",
   },
 
-  // 9. EDIFÍCIO JOÃO SOARES (Locação) -> ID bate com app/empreendimentos/apartamentos-para-alugar/page.tsx
+  // 9. EDIFÍCIO JOÃO SOARES (Locação) -> Direciona para /empreendimentos/imoveis-para-alugar?id=...
   {
     id: "ap-edificio-joao-soares",
     title: "Apartamento no Edifício João Soares",
@@ -382,13 +376,13 @@ export const featuredProperties: Property[] = [
     bathrooms: 3,
     parking: 2,
     description: "Apartamento de alto padrão com móveis Finger, 2 suítes e 2 vagas.",
-    category: "apartamentos-para-alugar",
+    category: "imoveis-para-alugar",
     featured: true,
     images: ["/imoveis/apartamentos-para-alugar/edificio-joao-soares/1.jpeg"],
     video: null,
   },
 
-  // 10. CAMINHO DAS AROEIRAS (Locação) -> ID bate com app/empreendimentos/apartamentos-para-alugar/page.tsx
+  // 10. CAMINHO DAS AROEIRAS (Locação) -> Direciona para /empreendimentos/imoveis-para-alugar?id=...
   {
     id: "ap-caminho-das-aroeiras",
     title: "Condomínio Caminho das Aroeiras",
@@ -399,7 +393,7 @@ export const featuredProperties: Property[] = [
     bathrooms: 1,
     parking: 1,
     description: "Apartamento prático e bem ventilado ao lado do Caruaru Shopping.",
-    category: "apartamentos-para-alugar",
+    category: "imoveis-para-alugar",
     featured: true,
     images: ["/imoveis/apartamentos-para-alugar/caminho-das-aroeiras/1.jpeg"],
     video: null,

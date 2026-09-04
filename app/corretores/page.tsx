@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { Instagram, MessageCircle, X } from "lucide-react"
-import { brokers, teamContent } from "@/lib/data"
+import { brokers } from "@/lib/data"
 
 export default function CorretoresPage() {
   const [selected, setSelected] = useState<(typeof brokers)[number] | null>(null)
@@ -25,32 +25,7 @@ export default function CorretoresPage() {
         </div>
       </section>
 
-      {/* 2. NOSSA EQUIPE (FOTO HORIZONTAL) */}
-      <section className="pt-20 lg:pt-28">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mb-10 max-w-3xl border-l-4 border-[#b85d19] pl-4">
-            <p className="text-xs uppercase tracking-[0.25em] text-[#b85d19] font-bold">
-              {teamContent.eyebrow}
-            </p>
-            <h2 className="mt-2 font-serif text-3xl md:text-4xl text-[#0d3b2e] font-semibold">
-              {teamContent.title}
-            </h2>
-            <p className="mt-3 leading-relaxed text-muted-foreground">
-              {teamContent.description}
-            </p>
-          </div>
-
-          <div className="w-full overflow-hidden bg-white shadow-lg border border-border/80 rounded-2xl flex items-center justify-center p-2">
-            <img
-              src={teamContent.image}
-              alt="Equipe Acauã Imóveis"
-              className="w-full h-auto max-h-[600px] object-contain md:object-cover object-center rounded-xl"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* 3. GRID DOS CORRETORES */}
+      {/* 2. GRID DOS CORRETORES */}
       <section className="py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mb-12 max-w-2xl border-l-4 border-[#b85d19] pl-4">
