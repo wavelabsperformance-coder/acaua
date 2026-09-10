@@ -21,7 +21,7 @@ export function AboutPreviewSection() {
           >
             <div className="aspect-[4/3] md:aspect-[16/11] w-full rounded-2xl overflow-hidden shadow-xl border border-border/80 bg-muted">
               <img
-                src="/sobre/institucional.jpeg"
+                src="/sobre/institucional.png"
                 alt="Sobre a Acauã Imóveis"
                 className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
               />
