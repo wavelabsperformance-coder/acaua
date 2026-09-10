@@ -225,11 +225,28 @@ export type Property = {
 }
 
 // ============================================
-// 10 IMÓVEIS DE DESTAQUE (HOME E CARROSSEL)
+// IMÓVEIS DE DESTAQUE (HOME E CARROSSEL)
 // ============================================
 
 export const featuredProperties: Property[] = [
-  // 1. GRAVATÁ (Venda) -> Direciona para /empreendimentos/imoveis-para-venda?id=...
+  // 1. VIVER BEM INDIANÓPOLIS (Venda) -> Direciona para /empreendimentos/imoveis-para-venda?id=ap-viver-bem-indianopolis-908#detalhes
+  {
+    id: "ap-viver-bem-indianopolis-908",
+    title: "Apartamento no Viver Bem Indianópolis",
+    location: "Indianópolis, Caruaru - PE",
+    price: "Consulte o valor",
+    area: "63,25m²",
+    bedrooms: 3,
+    bathrooms: 2,
+    parking: 1,
+    description: "Apartamento moderno de 63,25m² com 3 quartos (1 suíte), varanda e lazer completo com piscina semiolímpica.",
+    category: "imoveis-para-venda",
+    featured: true,
+    images: ["/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/1.jpeg"],
+    video: "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/1.mp4",
+  },
+
+  // 2. GRAVATÁ (Venda) -> Direciona para /empreendimentos/imoveis-para-venda?id=casa-monte-castelo-gravata#detalhes
   {
     id: "casa-monte-castelo-gravata",
     title: "Mansão no Condomínio Monte Castelo",
@@ -246,7 +263,7 @@ export const featuredProperties: Property[] = [
     video: "/imoveis/casas-para-venda/casa-monte-castelo-gravata/1.mp4",
   },
 
-  // 2. EDIFÍCIO SANTA MARIA (Venda) -> Direciona para /empreendimentos/imoveis-para-venda?id=...
+  // 3. EDIFÍCIO SANTA MARIA (Venda) -> Direciona para /empreendimentos/imoveis-para-venda?id=ap-edificio-santa-maria-boa-viagem#detalhes
   {
     id: "ap-edificio-santa-maria-boa-viagem",
     title: "Apartamento no Edifício Santa Maria",
@@ -263,7 +280,7 @@ export const featuredProperties: Property[] = [
     video: null,
   },
 
-  // 3. THE HOUSE CLUB (Venda) -> Direciona para /empreendimentos/imoveis-para-venda?id=...
+  // 4. THE HOUSE CLUB (Venda) -> Direciona para /empreendimentos/imoveis-para-venda?id=casa-the-house-club-caruaru#detalhes
   {
     id: "casa-the-house-club-caruaru",
     title: "Casa Fechada no The House Club",
@@ -280,7 +297,7 @@ export const featuredProperties: Property[] = [
     video: null,
   },
 
-  // 4. EDIFÍCIO TEREZA RODRIGUES (Locação) -> Direciona para /empreendimentos/imoveis-para-alugar?id=...
+  // 5. EDIFÍCIO TEREZA RODRIGUES (Locação) -> Direciona para /empreendimentos/imoveis-para-alugar?id=ap-edificio-tereza-rodrigues#detalhes
   {
     id: "ap-edificio-tereza-rodrigues",
     title: "Apartamento Edifício Tereza Rodrigues",
@@ -297,7 +314,7 @@ export const featuredProperties: Property[] = [
     video: null,
   },
 
-  // 5. VOG VILLE NORTE (Venda) -> Direciona para /empreendimentos/imoveis-para-venda?id=...
+  // 6. VOG VILLE NORTE (Venda) -> Direciona para /empreendimentos/imoveis-para-venda?id=ap-vog-ville-norte#detalhes
   {
     id: "ap-vog-ville-norte",
     title: "Apartamento no Vog Ville Norte",
@@ -314,7 +331,7 @@ export const featuredProperties: Property[] = [
     video: null,
   },
 
-  // 6. CASA MODERNA COM QUINTAL (Venda) -> Direciona para /empreendimentos/imoveis-para-venda?id=...
+  // 7. CASA MODERNA COM QUINTAL (Venda) -> Direciona para /empreendimentos/imoveis-para-venda?id=casa-moderna-com-quintal#detalhes
   {
     id: "casa-moderna-com-quintal",
     title: "Casa Moderna com Amplo Quintal",
@@ -331,7 +348,7 @@ export const featuredProperties: Property[] = [
     video: null,
   },
 
-  // 7. EDIFÍCIO JARDIM DOS ALECRINS (Locação) -> Direciona para /empreendimentos/imoveis-para-alugar?id=...
+  // 8. EDIFÍCIO JARDIM DOS ALECRINS (Locação) -> Direciona para /empreendimentos/imoveis-para-alugar?id=ap-edificio-jardim-dos-alecrins#detalhes
   {
     id: "ap-edificio-jardim-dos-alecrins",
     title: "Mobiliado no Jardim dos Alecrins",
@@ -348,7 +365,7 @@ export const featuredProperties: Property[] = [
     video: null,
   },
 
-  // 8. FLAT STUDIO ALTO PADRÃO (Locação) -> Direciona para /empreendimentos/imoveis-para-alugar?id=...
+  // 9. FLAT STUDIO ALTO PADRÃO (Locação) -> Direciona para /empreendimentos/imoveis-para-alugar?id=ap-studio-alto-padrao-shopping#detalhes
   {
     id: "ap-studio-alto-padrao-shopping",
     title: "Studio de Alto Padrão Decorado",
@@ -365,7 +382,7 @@ export const featuredProperties: Property[] = [
     video: "/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/19.mp4",
   },
 
-  // 9. EDIFÍCIO JOÃO SOARES (Locação) -> Direciona para /empreendimentos/imoveis-para-alugar?id=...
+  // 10. EDIFÍCIO JOÃO SOARES (Locação) -> Direciona para /empreendimentos/imoveis-para-alugar?id=ap-edificio-joao-soares#detalhes
   {
     id: "ap-edificio-joao-soares",
     title: "Apartamento no Edifício João Soares",
@@ -382,7 +399,7 @@ export const featuredProperties: Property[] = [
     video: null,
   },
 
-  // 10. CAMINHO DAS AROEIRAS (Locação) -> Direciona para /empreendimentos/imoveis-para-alugar?id=...
+  // 11. CAMINHO DAS AROEIRAS (Locação) -> Direciona para /empreendimentos/imoveis-para-alugar?id=ap-caminho-das-aroeiras#detalhes
   {
     id: "ap-caminho-das-aroeiras",
     title: "Condomínio Caminho das Aroeiras",

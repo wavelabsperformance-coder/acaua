@@ -23,15 +23,92 @@ import { siteConfig } from "@/lib/data"
 
 // =========================================================================
 // IMÓVEIS PARA VENDA (CASAS E APARTAMENTOS UNIFICADOS)
-// EDITE OU ADICIONE SEUS IMÓVEIS DIRETAMENTE NAS SEÇÕES ABAIXO
-// OS CAMINHOS DE IMAGENS E VÍDEOS PERMANECEM 100% INTACTOS
 // =========================================================================
 const imoveisVenda = [
-  // =======================================================================
-  // --- CASAS PARA VENDA ---
-  // =======================================================================
+  // 1. VIVER BEM INDIANÓPOLIS - TORRE 1 APTO 908 (38 FOTOS + 1 VÍDEO) - PRIMEIRO DA LISTA
+  {
+    id: "ap-viver-bem-indianopolis-908",
+    title: "Apartamento no Viver Bem Indianópolis",
+    price: "Consulte o valor",
+    location: "Indianópolis, Caruaru - PE",
+    coverImage: "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/1.jpeg",
+    bedrooms: 3,
+    bathrooms: 2, // 1 suíte + 1 social
+    parking: 1,
+    area: "63,25m²",
+    description: `Excelente oportunidade de compra no condomínio Viver Bem Indianópolis. Apartamento de 63,25 m², localizado na Torre 1 – apartamento 908, com uma planta moderna, funcional e bem distribuída.
 
-  // 1. MANSÃO NO CONDOMÍNIO MONTE CASTELO - GRAVATÁ (18 FOTOS + 1 VÍDEO)
+O imóvel conta com 3 quartos, sendo 1 suíte, sala para 2 ambientes, varanda, banheiro social e cozinha integrada à área de serviço, proporcionando praticidade e conforto para o dia a dia.
+
+Estrutura completa de lazer, bem-estar e conveniência:
+• Piscina com raia semiolímpica e piscina infantil
+• Espaço churrasco e Espaço Gourmet
+• Salão de festas
+• Academia completa e equipada
+• Sala multifuncional
+• Coworking estruturado
+• Espaço Box e bicicletário
+• Ponto de carregamento para veículo elétrico
+
+Um empreendimento pensado para oferecer qualidade de vida, praticidade e lazer completo, ideal para quem busca morar bem em um apartamento moderno e funcional.`,
+    videos: [
+      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/1.mp4",
+    ],
+    images: [
+      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/1.jpeg",
+      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/2.jpeg",
+      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/3.jpeg",
+      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/4.jpeg",
+      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/5.jpeg",
+      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/6.jpeg",
+      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/7.jpeg",
+      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/8.jpeg",
+      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/9.jpeg",
+      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/10.jpeg",
+      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/11.jpeg",
+      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/12.jpeg",
+      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/13.jpeg",
+      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/14.jpeg",
+      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/15.jpeg",
+      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/16.jpeg",
+      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/17.jpeg",
+      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/18.jpeg",
+      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/19.jpeg",
+      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/20.jpeg",
+      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/21.jpeg",
+      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/22.jpeg",
+      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/23.jpeg",
+      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/24.jpeg",
+      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/25.jpeg",
+      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/26.jpeg",
+      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/27.jpeg",
+      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/28.jpeg",
+      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/29.jpeg",
+      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/30.jpeg",
+      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/31.jpeg",
+      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/32.jpeg",
+      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/33.jpeg",
+      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/34.jpeg",
+      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/35.jpeg",
+      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/36.jpeg",
+      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/37.jpeg",
+      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/38.jpeg",
+    ],
+    amenities: [
+      "1 Suíte",
+      "Varanda",
+      "Planta de 63,25m² (Torre 1 - Apto 908)",
+      "Piscina com Raia Semiolímpica e Infantil",
+      "Espaço Churrasco e Gourmet",
+      "Academia Equipada",
+      "Coworking",
+      "Espaço Box e Bicicletário",
+      "Ponto para Veículo Elétrico",
+      "Salão de Festas",
+    ],
+  },
+
+  // 2. MANSÃO NO CONDOMÍNIO MONTE CASTELO - GRAVATÁ (18 FOTOS + 1 VÍDEO)
   {
     id: "casa-monte-castelo-gravata",
     title: "Mansão de Alto Padrão no Condomínio Monte Castelo",
@@ -39,7 +116,7 @@ const imoveisVenda = [
     location: "Condomínio Monte Castelo, Gravatá - PE",
     coverImage: "/imoveis/casas-para-venda/casa-monte-castelo-gravata/5.jpeg",
     bedrooms: 6,
-    bathrooms: 7, // 6 suítes + 1 lavabo/área gourmet
+    bathrooms: 7,
     parking: 6,
     area: "1.000m² terreno (com lote anexo)",
     description: `Exclusiva mansão de alto padrão no prestigiado Condomínio Monte Castelo em Gravatá - PE. Imóvel e lote totalmente escriturados.
@@ -96,7 +173,7 @@ Gleydson Tabosa - (81) 99547-7776`,
     ],
   },
 
-  // 2. CASA MODERNA COM QUINTAL (10 FOTOS - SEM VÍDEO)
+  // 3. CASA MODERNA COM QUINTAL (10 FOTOS - SEM VÍDEO)
   {
     id: "casa-moderna-com-quintal",
     title: "Casa Moderna com Quintal e Excelente Padrão",
@@ -145,7 +222,7 @@ Imóvel ideal para quem busca modernidade, excelente distribuição de cômodos 
     ],
   },
 
-  // 3. CASA EM CONDOMÍNIO - THE HOUSE CLUB (18 FOTOS - SEM VÍDEO)
+  // 4. CASA EM CONDOMÍNIO - THE HOUSE CLUB (18 FOTOS - SEM VÍDEO)
   {
     id: "casa-the-house-club-caruaru",
     title: "Casa em Condomínio Fechado no The House Club",
@@ -216,11 +293,7 @@ Lazer e infraestrutura do condomínio:
     ],
   },
 
-  // =======================================================================
-  // --- APARTAMENTOS PARA VENDA ---
-  // =======================================================================
-
-  // 4. VOG VILLE NORTE (20 FOTOS + 2 VÍDEOS)
+  // 5. VOG VILLE NORTE (20 FOTOS + 2 VÍDEOS)
   {
     id: "ap-vog-ville-norte",
     title: "Apartamento Pronto para Morar no Condomínio Vog Ville Norte",
@@ -228,7 +301,7 @@ Lazer e infraestrutura do condomínio:
     location: "Caruaru - PE",
     coverImage: "/imoveis/apartamentos-para-venda/edificio-vog-ville-norte/3.jpeg",
     bedrooms: 2,
-    bathrooms: 2, // 1 suíte + 1 social
+    bathrooms: 2,
     parking: 1,
     area: "52m²",
     description: `Excelente oportunidade de compra no condomínio Vog Ville Norte. Apartamento completo, pronto para morar, com móveis planejados, conforto e praticidade.
@@ -289,7 +362,7 @@ Estrutura e lazer do condomínio:
     ],
   },
 
-  // 5. EDIFÍCIO SANTA MARIA - BOA VIAGEM (29 FOTOS - SEM VÍDEO)
+  // 6. EDIFÍCIO SANTA MARIA - BOA VIAGEM (29 FOTOS - SEM VÍDEO)
   {
     id: "ap-edificio-santa-maria-boa-viagem",
     title: "Apartamento de Alto Padrão no Edifício Santa Maria",
@@ -297,7 +370,7 @@ Estrutura e lazer do condomínio:
     location: "Boa Viagem, Recife - PE",
     coverImage: "/imoveis/apartamentos-para-venda/edificio-santa-maria/1.jpeg",
     bedrooms: 4,
-    bathrooms: 6, // 4 suítes + 1 lavabo + 1 dependência/serviço
+    bathrooms: 6,
     parking: 3,
     area: "180m²",
     description: `Exclusivo apartamento de alto padrão no Edifício Santa Maria, situado em localização privilegiada no bairro de Boa Viagem, entre o Colégio Santa Maria e o Colégio Boa Viagem, a apenas 500 metros da praia.
@@ -511,6 +584,7 @@ function ImoveisParaVendaContent() {
 
   const activeProperty = imoveisVenda.find((p) => p.id === selectedId)
 
+  // As imagens e vídeos reunidos no Lightbox
   const mediaItems = activeProperty
     ? [
         ...activeProperty.images.map((src) => ({ type: "image" as const, src, alt: activeProperty.title })),
@@ -574,7 +648,7 @@ function ImoveisParaVendaContent() {
                   variant="outline"
                   className="border-[#b85d19] text-[#b85d19] hover:bg-[#b85d19] hover:text-white transition-colors gap-2 w-fit"
                 >
-                  <Play className="h-4 w-4 fill-current" /> Assistir Vídeos em Tela Cheia
+                  <Play className="h-4 w-4 fill-current" /> Assistir Vídeo em Tela Cheia
                 </Button>
               )}
             </div>
@@ -600,7 +674,7 @@ function ImoveisParaVendaContent() {
                     }}
                     className="absolute bottom-4 left-4 bg-black/70 hover:bg-black/85 backdrop-blur-md text-white text-xs px-3.5 py-2 rounded-full flex items-center gap-2 transition-all shadow-lg hover:scale-105"
                   >
-                    <Play className="h-3.5 w-3.5 fill-white text-white" /> Ver vídeos completos
+                    <Play className="h-3.5 w-3.5 fill-white text-white" /> Ver vídeo completo
                   </button>
                 )}
               </div>
