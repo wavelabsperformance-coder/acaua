@@ -15,7 +15,7 @@ export const siteConfig = {
   whatsapp: "5581991950550",
   whatsappLink: "https://wa.me/5581991950550",
   email: "contato@acauaimoveis.com.br",
-  address: "Acauã Imóveis, Recife - PE",
+  address: "Acauã Imóveis, Caruaru - PE",
   instagram: "https://instagram.com/acauaimoveis",
   googleMapsLink: "https://maps.app.goo.gl/jmg2ap427F8Ch3fD9",
   googleMapsEmbed:
@@ -32,10 +32,7 @@ export const siteConfig = {
 // ============================================
 
 export const heroContent = {
-  headline: "Imóveis de Alto Padrão",
-  subheadline: "Exclusividade e sofisticação em cada detalhe",
-  description:
-    "Encontre o imóvel dos seus sonhos com a expertise de quem entende de luxo e qualidade de vida.",
+  
   ctaText: "Falar com Especialista",
   ctaSecondary: "Ver Empreendimentos",
 }

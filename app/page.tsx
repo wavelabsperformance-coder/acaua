@@ -8,12 +8,20 @@ import { TestimonialsSection } from "@/components/home/testimonials-section"
 import { CTASection } from "@/components/home/cta-section"
 import { MapSection } from "@/components/home/map-section"
 import { BrokersCarousel } from "@/components/brokers-carousel"
+import { saleProperties } from "@/lib/data"
 
 export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <FeaturedCarousel />
+
+      <FeaturedCarousel
+        properties={saleProperties}
+        title="Imóveis à Venda"
+        subtitle="Destaques"
+        type="venda"
+      />
+
       <DifferentialsSection />
       <AboutPreviewSection />
       <FeaturedPropertiesSection />

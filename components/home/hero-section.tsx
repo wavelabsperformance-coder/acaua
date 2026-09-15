@@ -9,61 +9,28 @@ import Link from "next/link"
 export function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
+      {/* Background Image */}
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&q=80"
-          alt="Imóvel de alto padrão"
+          src="/images/hero/capa-acaua.png"
+          alt="Acauã Imóveis"
           className="w-full h-full object-cover"
         />
+
+        {/* Overlay para melhorar a leitura dos botões */}
+        <div className="absolute inset-0 bg-black/25" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 py-32">
-        <div className="max-w-3xl">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 lg:px-8 py-32">
+  <div className="flex justify-center pt-32">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
+            className="flex flex-col sm:flex-row items-center gap-4"
           >
-            <span className="mb-6 inline-block text-[11px] font-semibold uppercase tracking-[0.35em] text-white drop-shadow-[0_2px_5px_rgba(0,0,0,0.9)]">
-              {siteConfig.name}
-            </span>
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
-            className="text-5xl font-light leading-[1.1] tracking-tight text-white drop-shadow-[0_3px_8px_rgba(0,0,0,0.9)] md:text-6xl lg:text-7xl"
-          >
-            {heroContent.headline}
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-            className="mt-5 text-xl font-medium text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)] md:text-2xl"
-          >
-            {heroContent.subheadline}
-          </motion.p>
-
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
-            className="mt-8 max-w-xl text-base leading-relaxed text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.95)]"
-          >
-            {heroContent.description}
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
-            className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mt-10"
-          >
+            {/* BOTÃO WHATSAPP */}
             <Button
               asChild
               size="lg"
@@ -78,6 +45,8 @@ export function HeroSection() {
                 <ArrowRight className="ml-2 h-5 w-5" />
               </a>
             </Button>
+
+            {/* BOTÃO EMPREENDIMENTOS */}
             <Button
               asChild
               variant="outline"
@@ -99,9 +68,12 @@ export function HeroSection() {
         transition={{ delay: 1.2, duration: 0.8 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2"
       >
-        <div className="flex flex-col items-center gap-3 text-white/40">
-          <span className="text-[10px] uppercase tracking-[0.3em] font-medium">Explorar</span>
-          <div className="w-px h-14 bg-gradient-to-b from-white/40 to-transparent" />
+        <div className="flex flex-col items-center gap-3 text-white/60">
+          <span className="text-[10px] uppercase tracking-[0.3em] font-medium">
+            Explorar
+          </span>
+
+          <div className="w-px h-14 bg-gradient-to-b from-white/60 to-transparent" />
         </div>
       </motion.div>
     </section>

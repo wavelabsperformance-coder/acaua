@@ -27,7 +27,8 @@ export function FeaturedPropertiesSection() {
               variant="outline"
               className="border-[#0d3b2e] text-[#0d3b2e] hover:bg-[#0d3b2e] hover:text-white transition-colors"
             >
-              <Link href="/empreendimentos/apartamentos-para-alugar">
+              {/* Rota corrigida para imoveis-para-alugar */}
+              <Link href="/empreendimentos/imoveis-para-alugar">
                 Ver todos de aluguel <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
@@ -61,7 +62,8 @@ export function FeaturedPropertiesSection() {
               variant="outline"
               className="border-[#0d3b2e] text-[#0d3b2e] hover:bg-[#0d3b2e] hover:text-white transition-colors"
             >
-              <Link href="/empreendimentos/apartamentos-para-venda">
+              {/* Rota corrigida para imoveis-para-venda */}
+              <Link href="/empreendimentos/imoveis-para-venda">
                 Ver todos de venda <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>

@@ -12,20 +12,49 @@ import {
   ChevronLeft,
   ChevronRight,
   Play,
+  Home,
+  Building,
+  LayoutGrid,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { rentalProperties } from "@/lib/data"
+import { FeaturedCarousel } from "@/components/featured-carousel"
+
+// =========================================================================
+// INTERFACE E ESTRUTURA DE DADOS DOS IMÓVEIS PARA ALUGAR
+// =========================================================================
+
+export interface ImovelAluguel {
+  id: string
+  tipo: "casa" | "apartamento"
+  title: string
+  price: string
+  location: string
+  coverImage: string
+  bedrooms: number
+  bathrooms: number
+  parking: number
+  area: string
+  description: string
+  videos: string[]
+  images: string[]
+  amenities: string[]
+}
 
 // =========================================================================
 // IMÓVEIS PARA ALUGAR
 // =========================================================================
-const imoveisAluguel = [
-  // 1. CONDOMÍNIO MR. ROTTERDAM (15 FOTOS - SEM VÍDEO)
+
+const imoveisAluguel: ImovelAluguel[] = [
+  // 1. CONDOMÍNIO MR. ROTTERDAM
   {
     id: "ap-condominio-mr-rotterdam",
+    tipo: "apartamento",
     title: "Apartamento Mobiliado no Condomínio Mr. Rotterdam",
     price: "R$ 2.400 / mês (Incluso Condomínio e IPTU)",
     location: "Universitário, Caruaru - PE",
-    coverImage: "/imoveis/apartamentos-para-alugar/edificio-mr-rotterdam/2.jpeg",
+    coverImage:
+      "/imoveis/apartamentos-para-alugar/edificio-mr-rotterdam/2.jpeg",
     bedrooms: 1,
     bathrooms: 1,
     parking: 1,
@@ -74,18 +103,21 @@ Lazer e comodidades do condomínio:
     ],
   },
 
-  // 2. APARTAMENTO MOBILIADO NO MAURÍCIO DE NASSAU (9 FOTOS - SEM VÍDEO)
+  // 2. APARTAMENTO MOBILIADO NO MAURÍCIO DE NASSAU
   {
     id: "ap-mobiliado-mauricio-de-nassau",
+    tipo: "apartamento",
     title: "Apartamento Mobiliado no Maurício de Nassau",
     price: "R$ 1.700 / mês (Incluso Taxas)",
     location: "Maurício de Nassau, Caruaru - PE",
-    coverImage: "/imoveis/apartamentos-para-alugar/apartamento-mobiliado-mauricio-de-nassau/1.jpeg",
+    coverImage:
+      "/imoveis/apartamentos-para-alugar/apartamento-mobiliado-mauricio-de-nassau/1.jpeg",
     bedrooms: 1,
     bathrooms: 1,
     parking: 1,
     area: "35m²",
-    description: `Apartamento mobiliado e prático para locação no bairro Maurício de Nassau. Excelente localização, próximo a clínicas, farmácias, restaurantes e polo médico. Todas as taxas inclusas no pacote.`,
+    description:
+      "Apartamento mobiliado e prático para locação no bairro Maurício de Nassau. Excelente localização, próximo a clínicas, farmácias, restaurantes e polo médico. Todas as taxas inclusas no pacote.",
     videos: [],
     images: [
       "/imoveis/apartamentos-para-alugar/apartamento-mobiliado-mauricio-de-nassau/1.jpeg",
@@ -107,13 +139,15 @@ Lazer e comodidades do condomínio:
     ],
   },
 
-  // 3. EDIFÍCIO TEREZA RODRIGUES - RECIFE (34 FOTOS - SEM VÍDEO)
+  // 3. EDIFÍCIO TEREZA RODRIGUES
   {
     id: "ap-edificio-tereza-rodrigues",
+    tipo: "apartamento",
     title: "Apartamento no Edifício Tereza Rodrigues",
     price: "R$ 4.000 / mês (Incluso Condomínio)",
     location: "Boa Viagem, Recife - PE",
-    coverImage: "/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/1.jpeg",
+    coverImage:
+      "/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/1.jpeg",
     bedrooms: 2,
     bathrooms: 3,
     parking: 1,
@@ -176,29 +210,20 @@ Configuração do imóvel:
     ],
   },
 
-  // 4. EDIFÍCIO JARDIM DOS ALECRINS (33 FOTOS - SEM VÍDEO)
+  // 4. JARDIM DOS ALECRINS
   {
     id: "ap-edificio-jardim-dos-alecrins",
+    tipo: "apartamento",
     title: "Apartamento Mobiliado no Edifício Jardim dos Alecrins",
     price: "R$ 2.800 / mês (Incluso Taxas)",
     location: "Universitário, Caruaru - PE",
-    coverImage: "/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/1.jpeg",
+    coverImage:
+      "/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/1.jpeg",
     bedrooms: 2,
     bathrooms: 1,
     parking: 1,
     area: "54m²",
-    description: `Excelente apartamento totalmente mobiliado e nascente no Edifício Jardim dos Alecrins. Localizado no coração do Bairro Universitário, em frente à ASCES.
-
-Configuração do imóvel:
-• 2 quartos completos com camas e armários planejados
-• Sala com sofá, TV e bancada de jantar
-• Cozinha completa com armários, eletrodomésticos e utensílios
-• 1 vaga de garagem coberta
-
-Lazer e estrutura:
-• Piscina adulto e infantil
-• Salão de festas climatizado
-• Portaria com segurança 24h`,
+    description: `Excelente apartamento totalmente mobiliado e nascente no Edifício Jardim dos Alecrins. Localizado no coração do Bairro Universitário, em frente à ASCES.`,
     videos: [],
     images: [
       "/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/1.jpeg",
@@ -245,20 +270,21 @@ Lazer e estrutura:
     ],
   },
 
-  // 5. APARTAMENTO DE ALTO PADRÃO NO MAURÍCIO DE NASSAU (29 FOTOS + 1 VÍDEO)
+  // 5. STUDIO ALTO PADRÃO
   {
     id: "ap-studio-alto-padrao-shopping",
+    tipo: "apartamento",
     title: "Apartamento de Alto Padrão - Pronto para Morar",
     price: "R$ 4.000 / mês",
     location: "Maurício de Nassau, Caruaru - PE",
-    coverImage: "/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/1.jpeg",
+    coverImage:
+      "/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/1.jpeg",
     bedrooms: 1,
     bathrooms: 1,
     parking: 1,
     area: "38m²",
-    description: `Imóvel diferenciado com padrão de acabamento e decoração premium no bairro Maurício de Nassau.
-
-Totalmente planejado com marcenaria sob medida, iluminação arquitetônica e integração direta com complexo de serviços com shopping, restaurantes e coworking.`,
+    description:
+      "Imóvel diferenciado com padrão de acabamento e decoração premium no bairro Maurício de Nassau.",
     videos: [
       "/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/19.mp4",
     ],
@@ -302,25 +328,21 @@ Totalmente planejado com marcenaria sob medida, iluminação arquitetônica e in
     ],
   },
 
-  // 6. EDIFÍCIO JOÃO SOARES (13 FOTOS - SEM VÍDEO)
+  // 6. EDIFÍCIO JOÃO SOARES
   {
     id: "ap-edificio-joao-soares",
+    tipo: "apartamento",
     title: "Apartamento de Alto Padrão no Edifício João Soares",
     price: "R$ 4.200 / mês (Incluso Taxas)",
     location: "Maurício de Nassau, Caruaru - PE",
-    coverImage: "/imoveis/apartamentos-para-alugar/edificio-joao-soares/1.jpeg",
+    coverImage:
+      "/imoveis/apartamentos-para-alugar/edificio-joao-soares/1.jpeg",
     bedrooms: 2,
     bathrooms: 3,
     parking: 2,
     area: "80m²",
-    description: `Apartamento impecável no Edifício João Soares, localizado em uma das áreas mais valorizadas do Bairro Maurício de Nassau.
-
-Configuração do imóvel:
-• 2 quartos, todos configurados como suítes privativas
-• Móveis planejados Finger em todos os ambientes
-• Andar alto com vista livre e excelente ventilação
-• Lavabo social
-• 2 vagas de garagem cobertas`,
+    description:
+      "Apartamento impecável no Edifício João Soares, localizado em uma das áreas mais valorizadas do Bairro Maurício de Nassau.",
     videos: [],
     images: [
       "/imoveis/apartamentos-para-alugar/edificio-joao-soares/1.jpeg",
@@ -347,20 +369,21 @@ Configuração do imóvel:
     ],
   },
 
-  // 7. CONDOMÍNIO CAMINHO DAS AROEIRAS (10 FOTOS - SEM VÍDEO)
+  // 7. CAMINHO DAS AROEIRAS
   {
     id: "ap-caminho-das-aroeiras",
+    tipo: "apartamento",
     title: "Apartamento Condomínio Caminho das Aroeiras",
     price: "Consulte o valor",
     location: "Indianópolis, Caruaru - PE",
-    coverImage: "/imoveis/apartamentos-para-alugar/caminho-das-aroeiras/7.jpeg",
+    coverImage:
+      "/imoveis/apartamentos-para-alugar/caminho-das-aroeiras/7.jpeg",
     bedrooms: 2,
     bathrooms: 1,
     parking: 1,
     area: "52m²",
-    description: `Excelente oportunidade de locação ao lado do Caruaru Shopping. 
-
-Apartamento de 2 quartos em condomínio fechado arborizado, com lazer completo, piscina e segurança 24 horas.`,
+    description:
+      "Excelente oportunidade de locação ao lado do Caruaru Shopping.",
     videos: [],
     images: [
       "/imoveis/apartamentos-para-alugar/caminho-das-aroeiras/7.jpeg",
@@ -385,35 +408,47 @@ Apartamento de 2 quartos em condomínio fechado arborizado, com lazer completo, 
 ]
 
 // =========================================================================
-// CARD DO IMÓVEL COM LINK DIRETO PARA /imoveis/[id]
+// CARD DE IMÓVEL
 // =========================================================================
-function PropertyCard({
-  property,
-}: {
-  property: (typeof imoveisAluguel)[0]
-}) {
+
+function PropertyCard({ property }: { property: ImovelAluguel }) {
   const [currentImgIndex, setCurrentImgIndex] = useState(0)
-  const totalImages = property.images.length
+
+  const images =
+    property.images && property.images.length > 0
+      ? property.images
+      : [property.coverImage]
+
+  const totalImages = images.length
   const hasVideos = property.videos && property.videos.length > 0
 
   const handlePrev = (e: React.MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
-    setCurrentImgIndex((prev) => (prev === 0 ? totalImages - 1 : prev - 1))
+
+    setCurrentImgIndex((prev) =>
+      prev === 0 ? totalImages - 1 : prev - 1
+    )
   }
 
   const handleNext = (e: React.MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
-    setCurrentImgIndex((prev) => (prev === totalImages - 1 ? 0 : prev + 1))
+
+    setCurrentImgIndex((prev) =>
+      prev === totalImages - 1 ? 0 : prev + 1
+    )
   }
 
   return (
     <article className="group bg-white rounded-2xl overflow-hidden border border-border/80 hover:border-[#b85d19]/40 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
       <div>
-        <Link href={`/imoveis/${property.id}`} className="block aspect-[4/3] overflow-hidden relative bg-muted cursor-pointer">
+        <Link
+          href={`/imoveis/${property.id}`}
+          className="block aspect-[4/3] overflow-hidden relative bg-muted cursor-pointer"
+        >
           <img
-            src={property.images[currentImgIndex] || property.coverImage || "/placeholder.jpg"}
+            src={images[currentImgIndex] || "/placeholder.jpg"}
             alt={`${property.title} - foto ${currentImgIndex + 1}`}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
@@ -424,7 +459,10 @@ function PropertyCard({
 
           {hasVideos && (
             <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-sm text-white px-2.5 py-1 text-[11px] rounded-full font-medium flex items-center gap-1">
-              <Play className="h-3 w-3 fill-white" /> {property.videos.length > 1 ? `${property.videos.length} Vídeos` : "Vídeo"}
+              <Play className="h-3 w-3 fill-white" />
+              {property.videos.length > 1
+                ? `${property.videos.length} Vídeos`
+                : "Vídeo"}
             </div>
           )}
 
@@ -459,8 +497,10 @@ function PropertyCard({
 
         <div className="p-5">
           <span className="text-[11px] uppercase tracking-wider text-muted-foreground flex items-center gap-1 font-medium">
-            <MapPin className="h-3.5 w-3.5 text-[#b85d19]" /> {property.location}
+            <MapPin className="h-3.5 w-3.5 text-[#b85d19]" />
+            {property.location}
           </span>
+
           <Link href={`/imoveis/${property.id}`} className="block">
             <h3 className="text-base font-semibold text-foreground group-hover:text-[#b85d19] transition-colors mt-2 line-clamp-1 font-serif">
               {property.title}
@@ -469,17 +509,27 @@ function PropertyCard({
 
           <div className="flex items-center gap-3 mt-4 text-xs text-muted-foreground">
             <span className="flex items-center gap-1">
-              <Bed className="h-3.5 w-3.5 text-[#0d3b2e]" /> {property.bedrooms} {property.bedrooms === 1 ? "Quarto" : "Quartos"}
+              <Bed className="h-3.5 w-3.5 text-[#0d3b2e]" />
+              {property.bedrooms}{" "}
+              {property.bedrooms === 1 ? "Quarto" : "Quartos"}
             </span>
+
             <span className="flex items-center gap-1">
-              <Bath className="h-3.5 w-3.5 text-[#0d3b2e]" /> {property.bathrooms} {property.bathrooms === 1 ? "Banheiro" : "Banheiros"}
+              <Bath className="h-3.5 w-3.5 text-[#0d3b2e]" />
+              {property.bathrooms}{" "}
+              {property.bathrooms === 1 ? "Banheiro" : "Banheiros"}
             </span>
+
             <span className="flex items-center gap-1">
-              <Car className="h-3.5 w-3.5 text-[#0d3b2e]" /> {property.parking} {property.parking === 1 ? "Vaga" : "Vagas"}
+              <Car className="h-3.5 w-3.5 text-[#0d3b2e]" />
+              {property.parking}{" "}
+              {property.parking === 1 ? "Vaga" : "Vagas"}
             </span>
+
             {property.area && (
               <span className="flex items-center gap-1">
-                <Maximize className="h-3.5 w-3.5 text-[#0d3b2e]" /> {property.area}
+                <Maximize className="h-3.5 w-3.5 text-[#0d3b2e]" />
+                {property.area}
               </span>
             )}
           </div>
@@ -488,13 +538,18 @@ function PropertyCard({
 
       <div className="p-5 pt-0">
         <div className="pt-4 border-t border-border flex items-center justify-between">
-          <span className="text-sm font-semibold text-[#0d3b2e] line-clamp-1 mr-2">{property.price || "Sob Consulta"}</span>
+          <span className="text-sm font-semibold text-[#0d3b2e] line-clamp-1 mr-2">
+            {property.price || "Sob Consulta"}
+          </span>
+
           <Button
             asChild
             size="sm"
             className="bg-[#0d3b2e] hover:bg-[#092920] text-white transition-colors shrink-0"
           >
-            <Link href={`/imoveis/${property.id}`}>Ver Detalhes</Link>
+            <Link href={`/imoveis/${property.id}`}>
+              Ver Detalhes
+            </Link>
           </Button>
         </div>
       </div>
@@ -502,9 +557,33 @@ function PropertyCard({
   )
 }
 
+// =========================================================================
+// PÁGINA PRINCIPAL
+// =========================================================================
+
 function ImoveisParaAlugarContent() {
+  const [tipoFiltro, setTipoFiltro] = useState<
+    "todos" | "apartamento" | "casa"
+  >("todos")
+
+  const imoveisFiltrados = imoveisAluguel.filter((imovel) => {
+    if (tipoFiltro === "todos") return true
+    return imovel.tipo === tipoFiltro
+  })
+
+  const casasCount = imoveisAluguel.filter(
+    (imovel) => imovel.tipo === "casa"
+  ).length
+
+  const apartamentosCount = imoveisAluguel.filter(
+    (imovel) => imovel.tipo === "apartamento"
+  ).length
+
   return (
     <>
+      {/* ================================================================
+          HERO
+      ================================================================ */}
       <section className="pt-28 pb-10 bg-[#0d3b2e] text-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <Link
@@ -514,40 +593,138 @@ function ImoveisParaAlugarContent() {
             <ArrowLeft className="mr-2 h-4 w-4" />
             Voltar para Categorias
           </Link>
-          <span className="text-xs uppercase tracking-[0.3em] text-[#b85d19] font-semibold block">Categoria</span>
-          <h1 className="font-serif text-4xl md:text-5xl font-light mt-2 text-white">Imóveis para Alugar</h1>
+
+          <span className="text-xs uppercase tracking-[0.3em] text-[#b85d19] font-semibold block">
+            Categoria
+          </span>
+
+          <h1 className="font-serif text-4xl md:text-5xl font-light mt-2 text-white">
+            Imóveis para Alugar
+          </h1>
+
           <p className="text-white/75 mt-3 max-w-2xl text-sm md:text-base">
-            Apartamentos, flats e studios mobiliados selecionados para locação residencial em localizações privilegiadas.
+            Casas, apartamentos, flats e studios selecionados para locação
+            residencial em localizações privilegiadas.
           </p>
         </div>
       </section>
 
-      {/* Grid de Cards em 4 Colunas no Desktop */}
-      <section className="py-16 bg-[#faf7f2]">
+      {/* ================================================================
+          CARROSSEL — SOMENTE IMÓVEIS PARA ALUGAR
+      ================================================================ */}
+      <FeaturedCarousel
+        properties={rentalProperties}
+        title="Imóveis em Destaque para Alugar"
+        subtitle="Destaques de Locação"
+        type="aluguel"
+      />
+
+      {/* ================================================================
+          FILTROS + GRID
+      ================================================================ */}
+      <section className="py-12 bg-[#faf7f2]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="flex items-center gap-2 mb-8 border-l-4 border-[#b85d19] pl-3">
-            <p className="text-sm font-medium text-foreground">
-              Mostrando <span className="font-bold text-[#0d3b2e]">{imoveisAluguel.length}</span> imóveis
-            </p>
+          <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
+            <div className="flex items-center gap-2 border-l-4 border-[#b85d19] pl-3">
+              <p className="text-sm font-medium text-foreground">
+                Mostrando{" "}
+                <span className="font-bold text-[#0d3b2e]">
+                  {imoveisFiltrados.length}
+                </span>{" "}
+                imóveis
+              </p>
+            </div>
+
+            <div className="inline-flex p-1 bg-white rounded-xl border border-border shadow-sm">
+              <button
+                type="button"
+                onClick={() => setTipoFiltro("todos")}
+                className={`flex items-center gap-2 px-4 py-2 text-xs md:text-sm font-medium rounded-lg transition-all ${
+                  tipoFiltro === "todos"
+                    ? "bg-[#0d3b2e] text-white shadow-sm"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                <LayoutGrid className="h-4 w-4" />
+                Todos ({imoveisAluguel.length})
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setTipoFiltro("casa")}
+                className={`flex items-center gap-2 px-4 py-2 text-xs md:text-sm font-medium rounded-lg transition-all ${
+                  tipoFiltro === "casa"
+                    ? "bg-[#0d3b2e] text-white shadow-sm"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                <Home className="h-4 w-4" />
+                Casas ({casasCount})
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setTipoFiltro("apartamento")}
+                className={`flex items-center gap-2 px-4 py-2 text-xs md:text-sm font-medium rounded-lg transition-all ${
+                  tipoFiltro === "apartamento"
+                    ? "bg-[#0d3b2e] text-white shadow-sm"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                <Building className="h-4 w-4" />
+                Apartamentos ({apartamentosCount})
+              </button>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {imoveisAluguel.map((property) => (
-              <PropertyCard
-                key={property.id}
-                property={property}
-              />
-            ))}
-          </div>
+          {imoveisFiltrados.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {imoveisFiltrados.map((property) => (
+                <PropertyCard
+                  key={property.id}
+                  property={property}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-16 bg-white rounded-2xl border border-dashed border-border p-8">
+              <Home className="h-12 w-12 text-muted-foreground/40 mx-auto mb-3" />
+
+              <h3 className="text-lg font-semibold text-foreground">
+                Nenhum imóvel encontrado
+              </h3>
+
+              <p className="text-sm text-muted-foreground mt-1 max-w-md mx-auto">
+                Não encontramos imóveis na categoria selecionada no momento.
+                Tente filtrar por outra opção.
+              </p>
+
+              <Button
+                onClick={() => setTipoFiltro("todos")}
+                variant="outline"
+                className="mt-4 text-[#0d3b2e] border-[#0d3b2e] hover:bg-[#0d3b2e] hover:text-white"
+              >
+                Ver todos os imóveis
+              </Button>
+            </div>
+          )}
         </div>
       </section>
     </>
   )
 }
 
+// =========================================================================
+// EXPORT
+// =========================================================================
+
 export default function ImoveisParaAlugarPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-background" />}>
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-background" />
+      }
+    >
       <ImoveisParaAlugarContent />
     </Suspense>
   )

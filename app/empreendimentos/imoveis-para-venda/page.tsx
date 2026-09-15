@@ -12,22 +12,47 @@ import {
   ChevronLeft,
   ChevronRight,
   Play,
+  Home,
+  Building2,
+  Building,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { saleProperties } from "@/lib/data"
+import { FeaturedCarousel } from "@/components/featured-carousel"
 
 // =========================================================================
-// IMÓVEIS PARA VENDA (CASAS E APARTAMENTOS UNIFICADOS)
+// IMÓVEIS PARA VENDA (CASAS E APARTAMENTOS COM ATRIBUTO 'type')
 // =========================================================================
-const imoveisVenda = [
-  // 1. VIVER BEM INDIANÓPOLIS - TORRE 1 APTO 908 (38 FOTOS + 1 VÍDEO) - PRIMEIRO DA LISTA
+
+export interface ImovelVenda {
+  id: string
+  title: string
+  type: "casa" | "apartamento"
+  price: string
+  location: string
+  coverImage: string
+  bedrooms: number
+  bathrooms: number
+  parking: number
+  area: string
+  description: string
+  videos: string[]
+  images: string[]
+  amenities: string[]
+}
+
+const imoveisVenda: ImovelVenda[] = [
+  // 1. VIVER BEM INDIANÓPOLIS - TORRE 1 APTO 908
   {
     id: "ap-viver-bem-indianopolis-908",
     title: "Apartamento no Viver Bem Indianópolis",
+    type: "apartamento",
     price: "Consulte o valor",
     location: "Indianópolis, Caruaru - PE",
-    coverImage: "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/1.jpeg",
+    coverImage:
+      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/1.jpeg",
     bedrooms: 3,
-    bathrooms: 2, // 1 suíte + 1 social
+    bathrooms: 2,
     parking: 1,
     area: "63,25m²",
     description: `Excelente oportunidade de compra no condomínio Viver Bem Indianópolis. Apartamento de 63,25 m², localizado na Torre 1 – apartamento 908, com uma planta moderna, funcional e bem distribuída.
@@ -102,13 +127,15 @@ Um empreendimento pensado para oferecer qualidade de vida, praticidade e lazer c
     ],
   },
 
-  // 2. MANSÃO NO CONDOMÍNIO MONTE CASTELO - GRAVATÁ (18 FOTOS + 1 VÍDEO)
+  // 2. MANSÃO NO CONDOMÍNIO MONTE CASTELO
   {
     id: "casa-monte-castelo-gravata",
     title: "Mansão de Alto Padrão no Condomínio Monte Castelo",
+    type: "casa",
     price: "R$ 2.400.000",
     location: "Condomínio Monte Castelo, Gravatá - PE",
-    coverImage: "/imoveis/casas-para-venda/casa-monte-castelo-gravata/5.jpeg",
+    coverImage:
+      "/imoveis/casas-para-venda/casa-monte-castelo-gravata/5.jpeg",
     bedrooms: 6,
     bathrooms: 7,
     parking: 6,
@@ -132,7 +159,9 @@ Lote Adicional Incluso:
 
 Contato direto com o corretor responsável:
 Gleydson Tabosa - (81) 99547-7776`,
-    videos: ["/imoveis/casas-para-venda/casa-monte-castelo-gravata/1.mp4"],
+    videos: [
+      "/imoveis/casas-para-venda/casa-monte-castelo-gravata/1.mp4",
+    ],
     images: [
       "/imoveis/casas-para-venda/casa-monte-castelo-gravata/5.jpeg",
       "/imoveis/casas-para-venda/casa-monte-castelo-gravata/2.jpeg",
@@ -167,13 +196,15 @@ Gleydson Tabosa - (81) 99547-7776`,
     ],
   },
 
-  // 3. CASA MODERNA COM QUINTAL (10 FOTOS - SEM VÍDEO)
+  // 3. CASA MODERNA COM QUINTAL
   {
     id: "casa-moderna-com-quintal",
     title: "Casa Moderna com Quintal e Excelente Padrão",
+    type: "casa",
     price: "Consulte o valor",
     location: "Caruaru - PE",
-    coverImage: "/imoveis/casas-para-venda/casa-moderna-com-quintal/1.jpeg",
+    coverImage:
+      "/imoveis/casas-para-venda/casa-moderna-com-quintal/1.jpeg",
     bedrooms: 2,
     bathrooms: 2,
     parking: 1,
@@ -216,13 +247,15 @@ Imóvel ideal para quem busca modernidade, excelente distribuição de cômodos 
     ],
   },
 
-  // 4. CASA EM CONDOMÍNIO - THE HOUSE CLUB (18 FOTOS - SEM VÍDEO)
+  // 4. THE HOUSE CLUB
   {
     id: "casa-the-house-club-caruaru",
     title: "Casa em Condomínio Fechado no The House Club",
+    type: "casa",
     price: "R$ 870.000",
     location: "Luiz Gonzaga, Caruaru - PE",
-    coverImage: "/imoveis/casas-para-venda/casa-the-house-club/1.jpeg",
+    coverImage:
+      "/imoveis/casas-para-venda/casa-the-house-club/1.jpeg",
     bedrooms: 3,
     bathrooms: 4,
     parking: 2,
@@ -287,13 +320,15 @@ Lazer e infraestrutura do condomínio:
     ],
   },
 
-  // 5. VOG VILLE NORTE (20 FOTOS + 2 VÍDEOS)
+  // 5. VOG VILLE NORTE
   {
     id: "ap-vog-ville-norte",
     title: "Apartamento Pronto para Morar no Condomínio Vog Ville Norte",
+    type: "apartamento",
     price: "R$ 290.000",
     location: "Caruaru - PE",
-    coverImage: "/imoveis/apartamentos-para-venda/edificio-vog-ville-norte/3.jpeg",
+    coverImage:
+      "/imoveis/apartamentos-para-venda/edificio-vog-ville-norte/3.jpeg",
     bedrooms: 2,
     bathrooms: 2,
     parking: 1,
@@ -356,13 +391,15 @@ Estrutura e lazer do condomínio:
     ],
   },
 
-  // 6. EDIFÍCIO SANTA MARIA - BOA VIAGEM (29 FOTOS - SEM VÍDEO)
+  // 6. EDIFÍCIO SANTA MARIA
   {
     id: "ap-edificio-santa-maria-boa-viagem",
     title: "Apartamento de Alto Padrão no Edifício Santa Maria",
+    type: "apartamento",
     price: "R$ 2.200.000",
     location: "Boa Viagem, Recife - PE",
-    coverImage: "/imoveis/apartamentos-para-venda/edificio-santa-maria/1.jpeg",
+    coverImage:
+      "/imoveis/apartamentos-para-venda/edificio-santa-maria/1.jpeg",
     bedrooms: 4,
     bathrooms: 6,
     parking: 3,
@@ -439,56 +476,84 @@ Informações financeiras:
 ]
 
 // =========================================================================
-// COMPONENTES AUXILIARES
+// COMPONENTE DO CARD
 // =========================================================================
 
-function PropertyCard({
-  property,
-}: {
-  property: (typeof imoveisVenda)[0]
-}) {
+function PropertyCard({ property }: { property: ImovelVenda }) {
   const [currentImgIndex, setCurrentImgIndex] = useState(0)
+
   const totalImages = property.images.length
   const hasVideos = property.videos && property.videos.length > 0
 
   const handlePrev = (e: React.MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
-    setCurrentImgIndex((prev) => (prev === 0 ? totalImages - 1 : prev - 1))
+
+    setCurrentImgIndex((prev) =>
+      prev === 0 ? totalImages - 1 : prev - 1
+    )
   }
 
   const handleNext = (e: React.MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
-    setCurrentImgIndex((prev) => (prev === totalImages - 1 ? 0 : prev + 1))
+
+    setCurrentImgIndex((prev) =>
+      prev === totalImages - 1 ? 0 : prev + 1
+    )
   }
 
   return (
     <article className="group bg-white rounded-2xl overflow-hidden border border-border/80 hover:border-[#b85d19]/40 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
       <div>
-        <Link href={`/imoveis/${property.id}`} className="block aspect-[4/3] overflow-hidden relative bg-muted cursor-pointer">
+        <Link
+          href={`/imoveis/${property.id}`}
+          className="block aspect-[4/3] overflow-hidden relative bg-muted cursor-pointer"
+        >
           <img
-            src={property.images[currentImgIndex] || property.coverImage || "/placeholder.jpg"}
+            src={
+              property.images[currentImgIndex] ||
+              property.coverImage ||
+              "/placeholder.jpg"
+            }
             alt={`${property.title} - foto ${currentImgIndex + 1}`}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
 
-          <div className="absolute top-3 left-3 bg-[#0d3b2e] text-white px-3 py-1 text-xs rounded-full font-medium shadow-sm">
-            Venda
+          {/* TAG DO TIPO */}
+          <div className="absolute top-3 left-3 bg-[#0d3b2e] text-white px-3 py-1 text-xs rounded-full font-medium shadow-sm flex items-center gap-1.5">
+            {property.type === "casa" ? (
+              <>
+                <Home className="h-3 w-3" />
+                Casa
+              </>
+            ) : (
+              <>
+                <Building2 className="h-3 w-3" />
+                Apartamento
+              </>
+            )}
           </div>
 
+          {/* VÍDEO */}
           {hasVideos && (
             <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-sm text-white px-2.5 py-1 text-[11px] rounded-full font-medium flex items-center gap-1">
-              <Play className="h-3 w-3 fill-white" /> {property.videos.length > 1 ? `${property.videos.length} Vídeos` : "Vídeo"}
+              <Play className="h-3 w-3 fill-white" />
+
+              {property.videos.length > 1
+                ? `${property.videos.length} Vídeos`
+                : "Vídeo"}
             </div>
           )}
 
+          {/* CONTADOR DE FOTOS */}
           {totalImages > 1 && (
             <div className="absolute bottom-3 left-3 bg-black/60 backdrop-blur-sm text-white text-[11px] font-medium px-2 py-0.5 rounded-md">
               {currentImgIndex + 1} / {totalImages}
             </div>
           )}
 
+          {/* SETAS */}
           {totalImages > 1 && (
             <>
               <button
@@ -514,9 +579,14 @@ function PropertyCard({
 
         <div className="p-5">
           <span className="text-[11px] uppercase tracking-wider text-muted-foreground flex items-center gap-1 font-medium">
-            <MapPin className="h-3.5 w-3.5 text-[#b85d19]" /> {property.location}
+            <MapPin className="h-3.5 w-3.5 text-[#b85d19]" />
+            {property.location}
           </span>
-          <Link href={`/imoveis/${property.id}`} className="block">
+
+          <Link
+            href={`/imoveis/${property.id}`}
+            className="block"
+          >
             <h3 className="text-base font-semibold text-foreground group-hover:text-[#b85d19] transition-colors mt-2 line-clamp-1 font-serif">
               {property.title}
             </h3>
@@ -524,32 +594,48 @@ function PropertyCard({
 
           <div className="flex items-center gap-3 mt-4 text-xs text-muted-foreground">
             <span className="flex items-center gap-1">
-              <Bed className="h-3.5 w-3.5 text-[#0d3b2e]" /> {property.bedrooms} {property.bedrooms === 1 ? "Quarto" : "Quartos"}
+              <Bed className="h-3.5 w-3.5 text-[#0d3b2e]" />
+              {property.bedrooms}{" "}
+              {property.bedrooms === 1 ? "Quarto" : "Quartos"}
             </span>
+
             <span className="flex items-center gap-1">
-              <Bath className="h-3.5 w-3.5 text-[#0d3b2e]" /> {property.bathrooms} {property.bathrooms === 1 ? "Banheiro" : "Banheiros"}
+              <Bath className="h-3.5 w-3.5 text-[#0d3b2e]" />
+              {property.bathrooms}{" "}
+              {property.bathrooms === 1 ? "Banheiro" : "Banheiros"}
             </span>
+
             <span className="flex items-center gap-1">
-              <Car className="h-3.5 w-3.5 text-[#0d3b2e]" /> {property.parking} {property.parking === 1 ? "Vaga" : "Vagas"}
+              <Car className="h-3.5 w-3.5 text-[#0d3b2e]" />
+              {property.parking}{" "}
+              {property.parking === 1 ? "Vaga" : "Vagas"}
             </span>
+
             {property.area && (
               <span className="flex items-center gap-1">
-                <Maximize className="h-3.5 w-3.5 text-[#0d3b2e]" /> {property.area}
+                <Maximize className="h-3.5 w-3.5 text-[#0d3b2e]" />
+                {property.area}
               </span>
             )}
           </div>
         </div>
       </div>
 
+      {/* PREÇO + BOTÃO */}
       <div className="p-5 pt-0">
         <div className="pt-4 border-t border-border flex items-center justify-between">
-          <span className="text-sm font-semibold text-[#0d3b2e] line-clamp-1 mr-2">{property.price || "Sob Consulta"}</span>
+          <span className="text-sm font-semibold text-[#0d3b2e] line-clamp-1 mr-2">
+            {property.price || "Sob Consulta"}
+          </span>
+
           <Button
             asChild
             size="sm"
             className="bg-[#0d3b2e] hover:bg-[#092920] text-white transition-colors shrink-0"
           >
-            <Link href={`/imoveis/${property.id}`}>Ver Detalhes</Link>
+            <Link href={`/imoveis/${property.id}`}>
+              Ver Detalhes
+            </Link>
           </Button>
         </div>
       </div>
@@ -557,9 +643,34 @@ function PropertyCard({
   )
 }
 
+// =========================================================================
+// CONTEÚDO DA PÁGINA
+// =========================================================================
+
 function ImoveisParaVendaContent() {
+  const [filterType, setFilterType] = useState<
+    "todos" | "casa" | "apartamento"
+  >("todos")
+
+  const filteredProperties = imoveisVenda.filter((property) => {
+    if (filterType === "todos") return true
+
+    return property.type === filterType
+  })
+
+  const casasCount = imoveisVenda.filter(
+    (p) => p.type === "casa"
+  ).length
+
+  const aptosCount = imoveisVenda.filter(
+    (p) => p.type === "apartamento"
+  ).length
+
   return (
     <>
+      {/* ================================================================
+          HERO
+      ================================================================ */}
       <section className="pt-28 pb-10 bg-[#0d3b2e] text-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <Link
@@ -569,40 +680,131 @@ function ImoveisParaVendaContent() {
             <ArrowLeft className="mr-2 h-4 w-4" />
             Voltar para Categorias
           </Link>
-          <span className="text-xs uppercase tracking-[0.3em] text-[#b85d19] font-semibold block">Categoria</span>
-          <h1 className="font-serif text-4xl md:text-5xl font-light mt-2 text-white">Imóveis para Venda</h1>
+
+          <span className="text-xs uppercase tracking-[0.3em] text-[#b85d19] font-semibold block">
+            Categoria
+          </span>
+
+          <h1 className="font-serif text-4xl md:text-5xl font-light mt-2 text-white">
+            Imóveis para Venda
+          </h1>
+
           <p className="text-white/75 mt-3 max-w-2xl text-sm md:text-base">
-            Casas exclusivas, condomínios fechados, mansões e apartamentos de alto padrão disponíveis para aquisição.
+            Casas exclusivas, condomínios fechados, mansões e apartamentos de
+            alto padrão disponíveis para aquisição.
           </p>
         </div>
       </section>
 
-      {/* Grid de Cards em 4 Colunas no Desktop */}
-      <section className="py-16 bg-[#faf7f2]">
+      {/* ================================================================
+          CARROSSEL — SOMENTE IMÓVEIS À VENDA
+      ================================================================ */}
+      <FeaturedCarousel
+        properties={saleProperties}
+        title="Imóveis em Destaque para Venda"
+        subtitle="Destaques de Venda"
+        type="venda"
+      />
+
+      {/* ================================================================
+          GRID + FILTROS
+      ================================================================ */}
+      <section className="py-12 bg-[#faf7f2]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="flex items-center gap-2 mb-8 border-l-4 border-[#b85d19] pl-3">
-            <p className="text-sm font-medium text-foreground">
-              Mostrando <span className="font-bold text-[#0d3b2e]">{imoveisVenda.length}</span> imóveis
-            </p>
+
+          {/* FILTROS */}
+          <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
+            <div className="flex items-center gap-2 border-l-4 border-[#b85d19] pl-3">
+              <p className="text-sm font-medium text-foreground">
+                Mostrando{" "}
+                <span className="font-bold text-[#0d3b2e]">
+                  {filteredProperties.length}
+                </span>{" "}
+                imóveis
+              </p>
+            </div>
+
+            <div className="inline-flex p-1 bg-white rounded-xl border border-border shadow-sm">
+              {/* TODOS */}
+              <button
+                type="button"
+                onClick={() => setFilterType("todos")}
+                className={`flex items-center gap-2 px-4 py-2 text-xs md:text-sm font-medium rounded-lg transition-all ${
+                  filterType === "todos"
+                    ? "bg-[#0d3b2e] text-white shadow-sm"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                <Building className="h-4 w-4" />
+                Todos ({imoveisVenda.length})
+              </button>
+
+              {/* CASAS */}
+              <button
+                type="button"
+                onClick={() => setFilterType("casa")}
+                className={`flex items-center gap-2 px-4 py-2 text-xs md:text-sm font-medium rounded-lg transition-all ${
+                  filterType === "casa"
+                    ? "bg-[#0d3b2e] text-white shadow-sm"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                <Home className="h-4 w-4" />
+                Casas ({casasCount})
+              </button>
+
+              {/* APARTAMENTOS */}
+              <button
+                type="button"
+                onClick={() => setFilterType("apartamento")}
+                className={`flex items-center gap-2 px-4 py-2 text-xs md:text-sm font-medium rounded-lg transition-all ${
+                  filterType === "apartamento"
+                    ? "bg-[#0d3b2e] text-white shadow-sm"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                <Building2 className="h-4 w-4" />
+                Apartamentos ({aptosCount})
+              </button>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {imoveisVenda.map((property) => (
-              <PropertyCard
-                key={property.id}
-                property={property}
-              />
-            ))}
-          </div>
+          {/* ============================================================
+              GRID DE IMÓVEIS
+          ============================================================ */}
+          {filteredProperties.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {filteredProperties.map((property) => (
+                <PropertyCard
+                  key={property.id}
+                  property={property}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-16 bg-white rounded-2xl border border-border">
+              <p className="text-muted-foreground text-sm">
+                Nenhum imóvel encontrado nessa categoria no momento.
+              </p>
+            </div>
+          )}
         </div>
       </section>
     </>
   )
 }
 
+// =========================================================================
+// EXPORT
+// =========================================================================
+
 export default function ImoveisParaVendaPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-background" />}>
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-background" />
+      }
+    >
       <ImoveisParaVendaContent />
     </Suspense>
   )

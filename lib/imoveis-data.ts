@@ -6,6 +6,8 @@ export type ImovelCompleto = {
   price: string
   location: string
   type: "venda" | "aluguel" | "comercial"
+  category: "apartamento" | "casa" | "ponto"
+  featured?: boolean // Define se aparece no Carrossel da Home
   coverImage: string
   bedrooms?: number
   bathrooms: number
@@ -20,13 +22,17 @@ export type ImovelCompleto = {
 }
 
 export const todosImoveis: ImovelCompleto[] = [
+  // =========================================================================
   // --- VENDA ---
+  // =========================================================================
   {
     id: "ap-viver-bem-indianopolis-908",
     title: "Apartamento no Viver Bem Indianópolis",
     price: "Consulte o valor",
     location: "Indianópolis, Caruaru - PE",
     type: "venda",
+    category: "apartamento",
+    featured: true,
     coverImage: "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/1.jpeg",
     bedrooms: 3,
     bathrooms: 2,
@@ -68,6 +74,8 @@ Estrutura completa de lazer, bem-estar e conveniência:
     price: "R$ 2.400.000",
     location: "Condomínio Monte Castelo, Gravatá - PE",
     type: "venda",
+    category: "casa",
+    featured: true,
     coverImage: "/imoveis/casas-para-venda/casa-monte-castelo-gravata/5.jpeg",
     bedrooms: 6,
     bathrooms: 7,
@@ -89,6 +97,8 @@ Estrutura completa de lazer, bem-estar e conveniência:
     price: "Consulte o valor",
     location: "Caruaru - PE",
     type: "venda",
+    category: "casa",
+    featured: false,
     coverImage: "/imoveis/casas-para-venda/casa-moderna-com-quintal/1.jpeg",
     bedrooms: 2,
     bathrooms: 2,
@@ -106,6 +116,8 @@ Estrutura completa de lazer, bem-estar e conveniência:
     price: "R$ 870.000",
     location: "Luiz Gonzaga, Caruaru - PE",
     type: "venda",
+    category: "casa",
+    featured: true,
     coverImage: "/imoveis/casas-para-venda/casa-the-house-club/1.jpeg",
     bedrooms: 3,
     bathrooms: 4,
@@ -123,6 +135,8 @@ Estrutura completa de lazer, bem-estar e conveniência:
     price: "R$ 290.000",
     location: "Caruaru - PE",
     type: "venda",
+    category: "apartamento",
+    featured: false,
     coverImage: "/imoveis/apartamentos-para-venda/edificio-vog-ville-norte/3.jpeg",
     bedrooms: 2,
     bathrooms: 2,
@@ -144,6 +158,8 @@ Estrutura completa de lazer, bem-estar e conveniência:
     price: "R$ 2.200.000",
     location: "Boa Viagem, Recife - PE",
     type: "venda",
+    category: "apartamento",
+    featured: true,
     coverImage: "/imoveis/apartamentos-para-venda/edificio-santa-maria/1.jpeg",
     bedrooms: 4,
     bathrooms: 6,
@@ -156,13 +172,17 @@ Estrutura completa de lazer, bem-estar e conveniência:
     backLabel: "Voltar para Imóveis para Venda",
   },
 
+  // =========================================================================
   // --- LOCAÇÃO ---
+  // =========================================================================
   {
     id: "ap-condominio-mr-rotterdam",
     title: "Apartamento Mobiliado no Condomínio Mr. Rotterdam",
     price: "R$ 2.400 / mês (Incluso Condomínio e IPTU)",
     location: "Universitário, Caruaru - PE",
     type: "aluguel",
+    category: "apartamento",
+    featured: true,
     coverImage: "/imoveis/apartamentos-para-alugar/edificio-mr-rotterdam/2.jpeg",
     bedrooms: 1,
     bathrooms: 1,
@@ -184,6 +204,8 @@ Estrutura completa de lazer, bem-estar e conveniência:
     price: "R$ 1.700 / mês (Incluso Taxas)",
     location: "Maurício de Nassau, Caruaru - PE",
     type: "aluguel",
+    category: "apartamento",
+    featured: false,
     coverImage: "/imoveis/apartamentos-para-alugar/apartamento-mobiliado-mauricio-de-nassau/1.jpeg",
     bedrooms: 1,
     bathrooms: 1,
@@ -201,6 +223,8 @@ Estrutura completa de lazer, bem-estar e conveniência:
     price: "R$ 4.000 / mês (Incluso Condomínio)",
     location: "Boa Viagem, Recife - PE",
     type: "aluguel",
+    category: "apartamento",
+    featured: false,
     coverImage: "/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/1.jpeg",
     bedrooms: 2,
     bathrooms: 3,
@@ -218,6 +242,8 @@ Estrutura completa de lazer, bem-estar e conveniência:
     price: "R$ 2.800 / mês (Incluso Taxas)",
     location: "Universitário, Caruaru - PE",
     type: "aluguel",
+    category: "apartamento",
+    featured: false,
     coverImage: "/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/1.jpeg",
     bedrooms: 2,
     bathrooms: 1,
@@ -235,6 +261,8 @@ Estrutura completa de lazer, bem-estar e conveniência:
     price: "R$ 4.000 / mês",
     location: "Maurício de Nassau, Caruaru - PE",
     type: "aluguel",
+    category: "apartamento",
+    featured: true,
     coverImage: "/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/1.jpeg",
     bedrooms: 1,
     bathrooms: 1,
@@ -253,6 +281,8 @@ Estrutura completa de lazer, bem-estar e conveniência:
     price: "R$ 4.200 / mês (Incluso Taxas)",
     location: "Maurício de Nassau, Caruaru - PE",
     type: "aluguel",
+    category: "apartamento",
+    featured: false,
     coverImage: "/imoveis/apartamentos-para-alugar/edificio-joao-soares/1.jpeg",
     bedrooms: 2,
     bathrooms: 3,
@@ -270,6 +300,8 @@ Estrutura completa de lazer, bem-estar e conveniência:
     price: "Consulte o valor",
     location: "Indianópolis, Caruaru - PE",
     type: "aluguel",
+    category: "apartamento",
+    featured: false,
     coverImage: "/imoveis/apartamentos-para-alugar/caminho-das-aroeiras/7.jpeg",
     bedrooms: 2,
     bathrooms: 1,
@@ -281,15 +313,39 @@ Estrutura completa de lazer, bem-estar e conveniência:
     backUrl: "/empreendimentos/imoveis-para-alugar",
     backLabel: "Voltar para Imóveis para Alugar",
   },
+  {
+    id: "casa-residencial-mauricio-de-nassau",
+    title: "Casa Residencial com Quintal no Maurício de Nassau",
+    price: "R$ 3.800 / mês",
+    location: "Maurício de Nassau, Caruaru - PE",
+    type: "aluguel",
+    category: "casa",
+    featured: true,
+    coverImage: "/imoveis/casas-para-venda/casa-moderna-com-quintal/1.jpeg",
+    bedrooms: 3,
+    bathrooms: 3,
+    parking: 2,
+    area: "140m²",
+    description: `Excelente casa residencial disponível para locação no bairro Maurício de Nassau. Cômodos amplos, 1 suíte, garagem para 2 carros e quintal nos fundos.`,
+    images: Array.from({ length: 10 }, (_, i) => `/imoveis/casas-para-venda/casa-moderna-com-quintal/${i + 1}.jpeg`),
+    amenities: ["1 Suíte", "Garagem para 2 Carros", "Quintal Amplo", "Cozinha Integrada", "Ótima Localização"],
+    backUrl: "/empreendimentos/imoveis-para-alugar",
+    backLabel: "Voltar para Imóveis para Alugar",
+  },
 
+  // =========================================================================
   // --- COMERCIAL ---
+  // =========================================================================
   {
     id: "ponto-comercial-agamenon-magalhaes",
     title: "Ponto Comercial na Avenida Agamenon Magalhães",
     price: "R$ 4.500 / mês",
     location: "Av. Agamenon Magalhães, Caruaru - PE",
     type: "comercial",
+    category: "ponto",
+    featured: true,
     coverImage: "/imoveis/pontos-comerciais/ponto-comercial-agamenon-magalhaes/1.jpeg",
+    bedrooms: 0,
     bathrooms: 1,
     parking: 0,
     area: "25m² (5m x 5m)",
