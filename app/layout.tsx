@@ -8,6 +8,7 @@ import { CookieBanner } from "@/components/cookie-banner"
 import { ScrollToTop } from "@/components/scroll-to-top"
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://acaua-rho.vercel.app"),
   title: {
     default: "Acauã Imóveis | Imobiliária de Alto Padrão em Recife",
     template: "%s | Acauã Imóveis",
@@ -30,15 +31,25 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "pt_BR",
+    url: "https://acaua-rho.vercel.app",
     siteName: "Acauã Imóveis",
     title: "Acauã Imóveis | Imobiliária de Alto Padrão em Recife",
     description:
       "Imobiliária especializada em imóveis de alto padrão em Recife. Atendimento exclusivo e personalizado.",
+    images: [
+      {
+        url: "/og-image.jpeg", // Altere aqui para o nome exato da sua imagem na pasta public
+        width: 1200,
+        height: 630,
+        alt: "Acauã Imóveis",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Acauã Imóveis | Imobiliária de Alto Padrão",
     description: "Imóveis de luxo em Recife com atendimento exclusivo.",
+    images: ["/og-image.jpeg"], // Altere aqui também caso o nome da imagem seja diferente
   },
   robots: {
     index: true,
