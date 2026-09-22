@@ -9,12 +9,20 @@ import Link from "next/link"
 export function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
+      {/* Background Images */}
       <div className="absolute inset-0">
+        {/* Imagem para Celulares (Mobile) */}
+        <img
+          src="/og-image-mobile.png"
+          alt="Acauã Imóveis Mobile"
+          className="block md:hidden w-full h-full object-cover object-center"
+        />
+
+        {/* Imagem para Desktop / Notebooks */}
         <img
           src="/images/hero/capa-acaua.png"
-          alt="Acauã Imóveis"
-          className="w-full h-full object-cover"
+          alt="Acauã Imóveis Desktop"
+          className="hidden md:block w-full h-full object-cover object-center"
         />
 
         {/* Overlay para melhorar a leitura dos botões */}
@@ -23,7 +31,7 @@ export function HeroSection() {
 
       {/* Content */}
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 lg:px-8 py-32">
-  <div className="flex justify-center pt-32">
+        <div className="flex justify-center pt-32">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
