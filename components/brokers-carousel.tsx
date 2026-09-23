@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
-import { ChevronLeft, ChevronRight, Instagram, MessageCircle, X } from "lucide-react"
+import { ChevronLeft, ChevronRight, Instagram, MessageCircle, X, ArrowUpRight } from "lucide-react"
 import { brokers, siteConfig, type Broker } from "@/lib/data"
 
 export function BrokersCarousel({ compact = false }: { compact?: boolean }) {
@@ -11,7 +11,7 @@ export function BrokersCarousel({ compact = false }: { compact?: boolean }) {
   const animationRef = useRef<number | null>(null)
   const pausedRef = useRef(false)
   const offsetRef = useRef(0)
-  const speed = 0.45
+  const speed = 0.85
   const items = [...brokers, ...brokers]
 
   useEffect(() => {
@@ -38,6 +38,7 @@ export function BrokersCarousel({ compact = false }: { compact?: boolean }) {
   return (
     <section className={compact ? "py-16 bg-[#faf7f2]" : "bg-[#faf7f2] py-20 lg:py-28 border-t border-border/60"}>
       <div className="mx-auto max-w-7xl overflow-hidden px-6 lg:px-8">
+        {/* CABEÇALHO */}
         <div className="mb-10 flex items-end justify-between gap-5 border-l-4 border-[#b85d19] pl-3">
           <div>
             <span className="text-xs uppercase tracking-[0.25em] text-[#b85d19] font-bold block">
@@ -59,7 +60,7 @@ export function BrokersCarousel({ compact = false }: { compact?: boolean }) {
               type="button"
               aria-label="Corretores anteriores"
               onClick={() => nudge(-1)}
-              className="grid h-10 w-10 place-items-center rounded-xl border border-border bg-white text-[#0d3b2e] hover:bg-[#0d3b2e] hover:text-white transition-all shadow-sm"
+              className="grid h-10 w-10 place-items-center rounded-xl border border-border/80 bg-white/80 text-[#0d3b2e] hover:bg-[#0d3b2e] hover:text-white transition-all shadow-sm backdrop-blur-sm active:scale-95"
             >
               <ChevronLeft className="h-4 w-4" />
             </button>
@@ -67,7 +68,7 @@ export function BrokersCarousel({ compact = false }: { compact?: boolean }) {
               type="button"
               aria-label="Próximos corretores"
               onClick={() => nudge(1)}
-              className="grid h-10 w-10 place-items-center rounded-xl border border-border bg-white text-[#0d3b2e] hover:bg-[#0d3b2e] hover:text-white transition-all shadow-sm"
+              className="grid h-10 w-10 place-items-center rounded-xl border border-border/80 bg-white/80 text-[#0d3b2e] hover:bg-[#0d3b2e] hover:text-white transition-all shadow-sm backdrop-blur-sm active:scale-95"
             >
               <ChevronRight className="h-4 w-4" />
             </button>
@@ -82,41 +83,61 @@ export function BrokersCarousel({ compact = false }: { compact?: boolean }) {
         </Link>
 
         {/* Trilha do Carrossel */}
-        <div
-          className="overflow-hidden py-2"
-          onMouseEnter={() => { pausedRef.current = true }}
-          onMouseLeave={() => { pausedRef.current = false }}
-          onFocus={() => { pausedRef.current = true }}
-          onBlur={() => { pausedRef.current = false }}
-        >
-          <div ref={trackRef} className="flex w-max gap-5 will-change-transform">
-            {items.map((broker, index) => (
-              <button
-                type="button"
-                key={`${broker.id}-${index}`}
-                onClick={() => setSelected(broker)}
-                className="group w-[220px] shrink-0 text-left sm:w-[245px] bg-white rounded-2xl overflow-hidden border border-border/80 hover:border-[#b85d19]/40 hover:shadow-xl transition-all duration-300 p-3"
-              >
-                <div className="aspect-[4/5] overflow-hidden rounded-xl bg-muted">
+        <div className="relative">
+          {/* Suavização de Degradê nas Bordas Laterais */}
+          <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-[#faf7f2] to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[#faf7f2] to-transparent z-10 pointer-events-none" />
+
+          <div
+            className="overflow-hidden py-4"
+            onMouseEnter={() => { pausedRef.current = true }}
+            onMouseLeave={() => { pausedRef.current = false }}
+            onFocus={() => { pausedRef.current = true }}
+            onBlur={() => { pausedRef.current = false }}
+          >
+            <div ref={trackRef} className="flex w-max gap-6 will-change-transform">
+              {items.map((broker, index) => (
+                <button
+                  type="button"
+                  key={`${broker.id}-${index}`}
+                  onClick={() => setSelected(broker)}
+                  className="group relative w-[230px] sm:w-[260px] h-[340px] sm:h-[370px] shrink-0 text-left rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-1.5 focus:outline-none"
+                >
+                  {/* FOTO DE FUNDO COMPLETA */}
                   <img
                     src={broker.image}
                     alt={broker.name}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                   />
-                </div>
-                <div className="p-3 pb-1">
-                  <h3 className="font-serif text-lg text-[#0d3b2e] font-semibold group-hover:text-[#b85d19] transition-colors line-clamp-1">
-                    {broker.name}
-                  </h3>
-                  <p className="mt-1 text-[11px] uppercase tracking-wider text-muted-foreground font-medium">
+
+                  {/* OVERLAY PRETO NEUTRO (SEM FUMAÇA VERDE) */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent transition-opacity duration-300" />
+
+                  {/* BADGE CRECI (TOPO ESQUERDA) */}
+                  <div className="absolute top-3.5 left-3.5 bg-black/50 backdrop-blur-md border border-white/10 text-white/90 px-2.5 py-1 rounded-full text-[10px] uppercase font-medium tracking-wider">
                     {broker.creci}
-                  </p>
-                  <p className="text-xs text-[#0d3b2e]/70 mt-0.5">
-                    {broker.role}
-                  </p>
-                </div>
-              </button>
-            ))}
+                  </div>
+
+                  {/* ÍCONE INTERATIVO (TOPO DIREITA) */}
+                  <div className="absolute top-3.5 right-3.5 w-8 h-8 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-white flex items-center justify-center opacity-80 group-hover:opacity-100 group-hover:bg-[#b85d19] group-hover:border-[#b85d19] transition-all duration-300">
+                    <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </div>
+
+                  {/* INFORMAÇÕES DO CORRETOR (BASE) */}
+                  <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
+                    <p className="text-xs font-semibold text-[#b85d19] uppercase tracking-wider mb-0.5">
+                      {broker.role}
+                    </p>
+                    <h3 className="font-serif text-xl text-white font-semibold group-hover:text-[#b85d19] transition-colors line-clamp-1">
+                      {broker.name}
+                    </h3>
+
+                    {/* BARRA DESTAQUE DISCRETA NO HOVER */}
+                    <div className="mt-3 h-0.5 w-8 bg-[#b85d19] rounded-full transition-all duration-300 group-hover:w-full" />
+                  </div>
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -170,7 +191,7 @@ export function BrokersCarousel({ compact = false }: { compact?: boolean }) {
                   href={`https://wa.me/${selected.whatsapp}?text=Olá ${selected.name}! Gostaria de atendimento para compra ou locação.`}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl bg-[#0d3b2e] hover:bg-[#092920] px-5 py-2.5 text-sm font-medium text-white transition-colors"
+                  className="inline-flex items-center gap-2 rounded-xl bg-[#0d3b2e] hover:bg-[#092920] px-5 py-2.5 text-sm font-medium text-white transition-colors shadow-sm"
                 >
                   <MessageCircle className="h-4 w-4 text-[#b85d19]" /> WhatsApp
                 </a>

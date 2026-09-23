@@ -42,7 +42,7 @@ export const todosImoveis: ImovelCompleto[] = [
 
 EDIFÍCIO ILHA DE PONZA | AO LADO DA PRAÇA DE CASA FORTE
 
-Se você procura espaço, ventilação, localização privilegiada e praticidade, esta é uma excelente oportunidade para morar em uma das regiões mais tradicionais e valorizadas da Zona Norte do Recife.
+Se você procura espaço, ventilação, localização privilegeda e praticidade, esta é uma excelente oportunidade para morar em uma das regiões mais tradicionais e valorizadas da Zona Norte do Recife.
 
 Localização privilegiada
 Ao lado da Praça de Casa Forte, com fácil acesso a supermercados, escolas, restaurantes, farmácias, serviços e toda a conveniência que o bairro oferece.
@@ -400,7 +400,7 @@ CARACTERÍSTICAS DO IMÓVEL:
 • 1 vaga de garagem rotativa
 
 ESTRUTURA E LAZER DO CONDOMÍNIO:
-• Piscina na cobertura, com vista privilegiada e mini bar
+• Piscina na cobertura, com vista privilegeda e mini bar
 • Espaço gourmet com churrasqueira
 • Mini market no condomínio
 • Lavanderia OMO no prédio
@@ -589,6 +589,64 @@ Uma localização estratégica, próxima a escolas, hotéis, farmácias, serviç
     description: `Excelente casa residencial disponível para locação no bairro Maurício de Nassau. Cômodos amplos, 1 suíte, garagem para 2 carros e quintal nos fundos.`,
     images: Array.from({ length: 10 }, (_, i) => `/imoveis/casas-para-venda/casa-moderna-com-quintal/${i + 1}.jpeg`),
     amenities: ["1 Suíte", "Garagem para 2 Carros", "Quintal Amplo", "Cozinha Integrada", "Ótima Localização"],
+    backUrl: "/empreendimentos/imoveis-para-alugar",
+    backLabel: "Voltar para Imóveis para Alugar",
+  },
+  {
+    id: "ap-jardim-das-orquideas-indianopolis",
+    title: "Apartamento no Res. Jardim das Orquídeas",
+    price: "R$ 1.500 / mês (Incluso Condomínio, IPTU e Gás)",
+    location: "Indianópolis, Caruaru - PE",
+    type: "aluguel",
+    category: "apartamento",
+    featured: true,
+    coverImage: "/imoveis/apartamentos-para-alugar/jardim-das-orquideas/1.jpeg",
+    bedrooms: 2,
+    bathrooms: 1,
+    parking: 1,
+    area: "42m²",
+    description: `APARTAMENTO PARA LOCAÇÃO | JARDIM DAS ORQUÍDEAS — CARUARU
+
+Indianópolis | Próximo ao Caruaru Shopping
+
+Se você procura praticidade, conforto e uma localização estratégica em Caruaru, essa pode ser a oportunidade ideal!
+
+Posição Norte - 2º andar 
+• Aproximadamente 42 m² de área privativa
+• 02 quartos
+• Sala de estar
+• Cozinha
+• Área de serviço
+• Banheiro social
+• 01 vaga de garagem descoberta
+• Condomínio residencial com estrutura de lazer e segurança
+
+Localização privilegiada, em Indianópolis, com fácil acesso ao Caruaru Shopping e a diversos serviços, comércio e conveniências da região.
+
+ALUGUEL: R$ 1.500,00
+
+E o melhor: já estão inclusos no valor:
+- Condomínio
+- IPTU
+- Gás
+
+Condições para locação:
+• 1 aluguel + 1 caução
+Obs.: Necessário estar com o nome limpo!
+
+Agende sua visita e venha conhecer!`,
+    images: Array.from(
+      { length: 13 },
+      (_, i) => `/imoveis/apartamentos-para-alugar/jardim-das-orquideas/${i + 1}.jpeg`
+    ),
+    amenities: [
+      "Posição Norte",
+      "2º Andar",
+      "Próximo ao Caruaru Shopping",
+      "Condomínio, IPTU e Gás Inclusos",
+      "Estrutura de Lazer e Segurança",
+      "1 Vaga Descoberta",
+    ],
     backUrl: "/empreendimentos/imoveis-para-alugar",
     backLabel: "Voltar para Imóveis para Alugar",
   },

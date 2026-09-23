@@ -35,6 +35,34 @@ const iconMap = {
 export default function SobrePage() {
   const paragraphs = aboutContent.fullHistory.split("\n\n")
 
+  // Alternância exclusiva entre Laranja e Verde nos cards de Diferenciais
+  const differentialCardStyles = [
+    {
+      card: "bg-[#0d3b2e] text-white border-[#0d3b2e]",
+      iconBg: "bg-[#b85d19] text-white",
+      title: "text-white",
+      desc: "text-white/80",
+    },
+    {
+      card: "bg-[#b85d19] text-white border-[#b85d19]",
+      iconBg: "bg-[#0d3b2e] text-white",
+      title: "text-white",
+      desc: "text-white/90",
+    },
+    {
+      card: "bg-[#0d3b2e] text-white border-[#0d3b2e]",
+      iconBg: "bg-[#b85d19] text-white",
+      title: "text-white",
+      desc: "text-white/80",
+    },
+    {
+      card: "bg-[#b85d19] text-white border-[#b85d19]",
+      iconBg: "bg-[#0d3b2e] text-white",
+      title: "text-white",
+      desc: "text-white/90",
+    },
+  ]
+
   return (
     <>
       {/* Hero Section */}
@@ -106,51 +134,51 @@ export default function SobrePage() {
         </div>
       </section>
 
-      {/* Missão, Visão e Valores */}
-      <section className="py-20 lg:py-28 bg-[#faf7f2]">
+      {/* Nosso Compromisso (Alternado em Verde Escuro e Laranja) */}
+      <section className="py-20 lg:py-28 bg-[#0d3b2e] text-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="text-xs uppercase tracking-[0.3em] text-[#b85d19] font-bold">
               Nosso Compromisso
             </span>
-            <h2 className="text-3xl md:text-4xl font-light text-[#0d3b2e] mt-3 font-serif">
+            <h2 className="text-3xl md:text-4xl font-light text-white mt-3 font-serif">
               O que nos move todos os dias
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Missão */}
-            <div className="p-8 bg-white rounded-3xl border border-border/60 shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 rounded-2xl bg-[#0d3b2e]/5 border border-[#0d3b2e]/10 flex items-center justify-center mb-6 text-[#0d3b2e]">
+            {/* Missão - Card Laranja */}
+            <div className="p-8 bg-[#b85d19] text-white rounded-3xl border border-[#b85d19] shadow-xl hover:-translate-y-1 transition-all duration-300">
+              <div className="w-12 h-12 rounded-2xl bg-[#0d3b2e] flex items-center justify-center mb-6 text-white shadow-md">
                 <Target className="h-6 w-6" />
               </div>
-              <h3 className="text-xl font-semibold text-[#0d3b2e] mb-3 font-serif">Missão</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
+              <h3 className="text-xl font-semibold text-white mb-3 font-serif">Missão</h3>
+              <p className="text-white/90 text-sm leading-relaxed">
                 {aboutContent.mission}
               </p>
             </div>
 
-            {/* Visão */}
-            <div className="p-8 bg-white rounded-3xl border border-border/60 shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 rounded-2xl bg-[#0d3b2e]/5 border border-[#0d3b2e]/10 flex items-center justify-center mb-6 text-[#0d3b2e]">
+            {/* Visão - Card Verde Escuro */}
+            <div className="p-8 bg-[#0a2e24] text-white rounded-3xl border border-white/10 shadow-xl hover:-translate-y-1 transition-all duration-300">
+              <div className="w-12 h-12 rounded-2xl bg-[#b85d19] flex items-center justify-center mb-6 text-white shadow-md">
                 <Eye className="h-6 w-6" />
               </div>
-              <h3 className="text-xl font-semibold text-[#0d3b2e] mb-3 font-serif">Visão</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
+              <h3 className="text-xl font-semibold text-white mb-3 font-serif">Visão</h3>
+              <p className="text-white/80 text-sm leading-relaxed">
                 {aboutContent.vision}
               </p>
             </div>
 
-            {/* Valores */}
-            <div className="p-8 bg-white rounded-3xl border border-border/60 shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 rounded-2xl bg-[#0d3b2e]/5 border border-[#0d3b2e]/10 flex items-center justify-center mb-6 text-[#0d3b2e]">
+            {/* Valores - Card Laranja */}
+            <div className="p-8 bg-[#b85d19] text-white rounded-3xl border border-[#b85d19] shadow-xl hover:-translate-y-1 transition-all duration-300">
+              <div className="w-12 h-12 rounded-2xl bg-[#0d3b2e] flex items-center justify-center mb-6 text-white shadow-md">
                 <Heart className="h-6 w-6" />
               </div>
-              <h3 className="text-xl font-semibold text-[#0d3b2e] mb-4 font-serif">Valores</h3>
+              <h3 className="text-xl font-semibold text-white mb-4 font-serif">Valores</h3>
               <ul className="space-y-3">
                 {aboutContent.values.slice(0, 4).map((value, index) => (
-                  <li key={index} className="flex items-center gap-3 text-muted-foreground text-sm">
-                    <CheckCircle2 className="h-4 w-4 text-[#b85d19] flex-shrink-0" />
+                  <li key={index} className="flex items-center gap-3 text-white/90 text-sm">
+                    <CheckCircle2 className="h-4 w-4 text-white flex-shrink-0" />
                     <span>{value}</span>
                   </li>
                 ))}
@@ -161,10 +189,10 @@ export default function SobrePage() {
       </section>
 
       {/* Resultados / Números */}
-      <section className="py-20 lg:py-28 bg-[#0d3b2e] text-white">
+      <section className="py-20 lg:py-28 bg-[#b85d19] text-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="text-xs uppercase tracking-[0.3em] text-[#b85d19] font-bold">
+            <span className="text-xs uppercase tracking-[0.3em] text-[#0d3b2e] font-bold">
               Solidez & Confiança
             </span>
             <h2 className="text-3xl md:text-4xl font-light mt-3 font-serif text-white">
@@ -172,39 +200,39 @@ export default function SobrePage() {
             </h2>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="text-center p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-sm">
-              <div className="w-12 h-12 rounded-2xl bg-[#b85d19]/20 flex items-center justify-center mx-auto mb-4">
-                <Clock className="h-6 w-6 text-[#b85d19]" />
+            <div className="text-center p-8 rounded-3xl bg-[#0d3b2e]/30 border border-white/20 backdrop-blur-sm">
+              <div className="w-12 h-12 rounded-2xl bg-[#0d3b2e] flex items-center justify-center mx-auto mb-4">
+                <Clock className="h-6 w-6 text-white" />
               </div>
               <span className="block text-3xl lg:text-4xl font-serif font-bold text-white">+10 Anos</span>
-              <span className="text-xs text-white/70 mt-2 block">
+              <span className="text-xs text-white/80 mt-2 block">
                 Experiência dos Gestores
               </span>
             </div>
-            <div className="text-center p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-sm">
-              <div className="w-12 h-12 rounded-2xl bg-[#b85d19]/20 flex items-center justify-center mx-auto mb-4">
-                <Award className="h-6 w-6 text-[#b85d19]" />
+            <div className="text-center p-8 rounded-3xl bg-[#0d3b2e]/30 border border-white/20 backdrop-blur-sm">
+              <div className="w-12 h-12 rounded-2xl bg-[#0d3b2e] flex items-center justify-center mx-auto mb-4">
+                <Award className="h-6 w-6 text-white" />
               </div>
               <span className="block text-3xl lg:text-4xl font-serif font-bold text-white">100%</span>
-              <span className="text-xs text-white/70 mt-2 block">
+              <span className="text-xs text-white/80 mt-2 block">
                 Compromisso & Transparência
               </span>
             </div>
-            <div className="text-center p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-sm">
-              <div className="w-12 h-12 rounded-2xl bg-[#b85d19]/20 flex items-center justify-center mx-auto mb-4">
-                <TrendingUp className="h-6 w-6 text-[#b85d19]" />
+            <div className="text-center p-8 rounded-3xl bg-[#0d3b2e]/30 border border-white/20 backdrop-blur-sm">
+              <div className="w-12 h-12 rounded-2xl bg-[#0d3b2e] flex items-center justify-center mx-auto mb-4">
+                <TrendingUp className="h-6 w-6 text-white" />
               </div>
               <span className="block text-3xl lg:text-4xl font-serif font-bold text-white">98%</span>
-              <span className="text-xs text-white/70 mt-2 block">
+              <span className="text-xs text-white/80 mt-2 block">
                 Satisfação dos Clientes
               </span>
             </div>
-            <div className="text-center p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-sm">
-              <div className="w-12 h-12 rounded-2xl bg-[#b85d19]/20 flex items-center justify-center mx-auto mb-4">
-                <Building2 className="h-6 w-6 text-[#b85d19]" />
+            <div className="text-center p-8 rounded-3xl bg-[#0d3b2e]/30 border border-white/20 backdrop-blur-sm">
+              <div className="w-12 h-12 rounded-2xl bg-[#0d3b2e] flex items-center justify-center mx-auto mb-4">
+                <Building2 className="h-6 w-6 text-white" />
               </div>
               <span className="block text-3xl lg:text-4xl font-serif font-bold text-white">3 Pólos</span>
-              <span className="text-xs text-white/70 mt-2 block">
+              <span className="text-xs text-white/80 mt-2 block">
                 Recife, Caruaru e Litoral
               </span>
             </div>
@@ -212,7 +240,7 @@ export default function SobrePage() {
         </div>
       </section>
 
-      {/* Seção com Foto do Unsplash Mantida */}
+      {/* Nossa Equipe */}
       <section className="py-20 lg:py-28 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -243,7 +271,6 @@ export default function SobrePage() {
               </div>
             </div>
 
-            {/* Single Team Photo Anterior */}
             <div className="relative">
               <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-border">
                 <img
@@ -263,33 +290,37 @@ export default function SobrePage() {
       {/* Carrossel de Corretores */}
       <BrokersCarousel compact />
 
-      {/* Diferenciais */}
-      <section className="py-20 lg:py-28 bg-[#faf7f2]">
+      {/* Por Que nos Escolher (Diferenciais alternando Verde e Laranja) */}
+      <section className="py-20 lg:py-28 bg-[#0d3b2e] text-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="text-xs uppercase tracking-[0.3em] text-[#b85d19] font-bold">
               Por Que nos Escolher
             </span>
-            <h2 className="text-3xl md:text-4xl font-light text-[#0d3b2e] mt-3 font-serif">
+            <h2 className="text-3xl md:text-4xl font-light text-white mt-3 font-serif">
               Nossos Diferenciais
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {differentials.map((item) => {
+            {differentials.map((item, index) => {
               const Icon = iconMap[item.icon as keyof typeof iconMap]
+              const style = differentialCardStyles[index % differentialCardStyles.length]
+
               return (
                 <div
                   key={item.title}
-                  className="text-center group p-8 bg-white rounded-3xl border border-border/80 hover:border-[#b85d19]/40 hover:shadow-xl transition-all duration-300"
+                  className={`text-center group p-8 rounded-3xl border transition-all duration-300 hover:shadow-2xl hover:-translate-y-1.5 ${style.card}`}
                 >
-                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#0d3b2e]/5 border border-[#0d3b2e]/10 mb-6 group-hover:bg-[#b85d19]/10 group-hover:border-[#b85d19]/30 transition-all duration-300">
-                    <Icon className="h-6 w-6 text-[#0d3b2e] group-hover:text-[#b85d19] transition-colors duration-300" />
+                  <div
+                    className={`inline-flex items-center justify-center w-14 h-14 rounded-2xl mb-6 shadow-md transition-all duration-300 ${style.iconBg}`}
+                  >
+                    <Icon className="h-6 w-6" />
                   </div>
-                  <h3 className="text-lg font-semibold text-[#0d3b2e] mb-3 font-serif">
+                  <h3 className={`text-lg font-semibold mb-3 font-serif ${style.title}`}>
                     {item.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p className={`text-sm leading-relaxed ${style.desc}`}>
                     {item.description}
                   </p>
                 </div>
@@ -299,33 +330,28 @@ export default function SobrePage() {
         </div>
       </section>
 
-      {/* Chamada para Ação (CTA) */}
-      <section className="py-20 lg:py-28 bg-white border-t border-border">
+      {/* Pronto para Dar o Próximo Passo? (Único Botão Verde do WhatsApp) */}
+      <section className="py-20 lg:py-28 bg-[#faf7f2] border-t border-border/50">
         <div className="mx-auto max-w-3xl px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-semibold text-[#0d3b2e] font-serif">
+          <span className="text-xs uppercase tracking-[0.3em] text-[#b85d19] font-bold">
+            Atendimento Exclusivo
+          </span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-light font-serif mt-3 text-[#0d3b2e]">
             Pronto para Dar o Próximo Passo?
           </h2>
-          <p className="text-muted-foreground mt-4 leading-relaxed">
+          <p className="text-muted-foreground mt-6 leading-relaxed text-lg font-light">
             Seja em Recife, Caruaru ou Litoral, nossa equipe está pronta para entender o que você procura e conduzir todo o processo com máxima segurança.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
-            <Button asChild size="lg" className="rounded-xl bg-[#0d3b2e] hover:bg-[#092920] text-white px-8">
+          <div className="flex items-center justify-center mt-10">
+            <Button asChild size="lg" className="w-full sm:w-auto rounded-xl bg-[#0d3b2e] hover:bg-[#092920] text-white px-8 h-12 text-base font-medium shadow-lg transition-all active:scale-95">
               <a
                 href={siteConfig.whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Falar pelo WhatsApp
-                <ArrowRight className="ml-2 h-4 w-4 text-[#b85d19]" />
+                <ArrowRight className="ml-2 h-5 w-5 text-[#b85d19]" />
               </a>
-            </Button>
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="rounded-xl border-[#0d3b2e] text-[#0d3b2e] hover:bg-[#0d3b2e] hover:text-white px-8"
-            >
-              <a href="/contato">Fazer Contato</a>
             </Button>
           </div>
         </div>

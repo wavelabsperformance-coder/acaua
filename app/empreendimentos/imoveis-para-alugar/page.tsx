@@ -476,7 +476,66 @@ Configuração do imóvel:
     ],
   },
 
-  // 9. PUERTO BALATA (INDISPONÍVEL / ALUGADO)
+  // 9. JARDIM DAS ORQUÍDEAS (DISPONÍVEL)
+  {
+    id: "ap-jardim-das-orquideas-indianopolis",
+    tipo: "apartamento",
+    title: "Apartamento no Res. Jardim das Orquídeas",
+    price: "R$ 1.500 / mês (Incluso Condomínio, IPTU e Gás)",
+    location: "Indianópolis, Caruaru - PE",
+    coverImage:
+      "/imoveis/apartamentos-para-alugar/jardim-das-orquideas/1.jpeg",
+    bedrooms: 2,
+    bathrooms: 1,
+    parking: 1,
+    area: "42m²",
+    description: `APARTAMENTO PARA LOCAÇÃO | JARDIM DAS ORQUÍDEAS — CARUARU
+
+Indianópolis | Próximo ao Caruaru Shopping
+
+Se você procura praticidade, conforto e uma localização estratégica em Caruaru, essa pode ser a oportunidade ideal!
+
+Posição Norte - 2º andar
+• Aproximadamente 42 m² de área privativa
+• 02 quartos
+• Sala de estar
+• Cozinha
+• Área de serviço
+• Banheiro social
+• 01 vaga de garagem descoberta
+• Condomínio residencial com estrutura de lazer e segurança
+
+Localização privilegiada, em Indianópolis, com fácil acesso ao Caruaru Shopping e a diversos serviços, comércio e conveniências da região.
+
+ALUGUEL: R$ 1.500,00
+
+E o melhor: já estão inclusos no valor:
+- Condomínio
+- IPTU
+- Gás
+
+Condições para locação:
+1 aluguel + 1 caução
+Obs.: Necessário estar com o nome limpo!
+
+Agende sua visita e venha conhecer!`,
+    videos: [],
+    images: Array.from(
+      { length: 13 },
+      (_, i) =>
+        `/imoveis/apartamentos-para-alugar/jardim-das-orquideas/${i + 1}.jpeg`
+    ),
+    amenities: [
+      "Posição Norte",
+      "2º Andar",
+      "Próximo ao Caruaru Shopping",
+      "Condomínio, IPTU e Gás Inclusos",
+      "Estrutura de Lazer e Segurança",
+      "1 Vaga Descoberta",
+    ],
+  },
+
+  // 10. PUERTO BALATA (INDISPONÍVEL / ALUGADO)
   {
     id: "ap-puerto-balata-boa-viagem",
     tipo: "apartamento",

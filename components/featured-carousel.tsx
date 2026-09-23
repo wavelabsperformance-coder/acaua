@@ -1,7 +1,8 @@
 "use client"
 
+import { useRef } from "react"
 import Link from "next/link"
-import { Bed, Bath, Car, Maximize, MapPin, Play } from "lucide-react"
+import { Bed, Bath, Car, Maximize, MapPin, Play, ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import type { Property } from "@/lib/data"
 
@@ -22,7 +23,6 @@ function PropertyCardSlide({
   type: "venda" | "aluguel"
 }) {
   const targetUrl = `/imoveis/${property.id}`
-
   const isLocacao = type === "aluguel"
 
   return (
@@ -131,15 +131,24 @@ export function FeaturedCarousel({
   subtitle = "Destaques",
   type,
 }: FeaturedCarouselProps) {
+  const scrollRef = useRef<HTMLDivElement>(null)
+
   if (!properties || properties.length === 0) {
     return null
   }
 
-  /*
-   * Duplica a lista para criar o efeito
-   * de esteira contínua.
-   */
   const baseList = [...properties, ...properties]
+
+  // Função para mover suavemente com os botões
+  const handleScroll = (direction: "left" | "right") => {
+    if (scrollRef.current) {
+      const scrollAmount = 360
+      scrollRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      })
+    }
+  }
 
   return (
     <section className="py-14 bg-[#faf7f2] overflow-hidden border-b border-border/60">
@@ -148,7 +157,6 @@ export function FeaturedCarousel({
           0% {
             transform: translateX(0%);
           }
-
           100% {
             transform: translateX(-100%);
           }
@@ -179,37 +187,62 @@ export function FeaturedCarousel({
       </div>
 
       {/* CARROSSEL */}
-      <div className="relative w-full overflow-hidden carousel-container">
+      <div className="relative w-full max-w-[1400px] mx-auto px-4 sm:px-8 carousel-container">
+        
+        {/* SETA ESQUERDA */}
+        <button
+          onClick={() => handleScroll("left")}
+          aria-label="Anterior"
+          className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#0d3b2e]/90 hover:bg-[#0d3b2e] text-white border border-white/20 shadow-xl backdrop-blur-md flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95"
+        >
+          <ChevronLeft className="w-6 h-6 stroke-[1.75]" />
+        </button>
+
+        {/* SETA DIREITA */}
+        <button
+          onClick={() => handleScroll("right")}
+          aria-label="Próximo"
+          className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#0d3b2e]/90 hover:bg-[#0d3b2e] text-white border border-white/20 shadow-xl backdrop-blur-md flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95"
+        >
+          <ChevronRight className="w-6 h-6 stroke-[1.75]" />
+        </button>
+
         {/* DEGRADÊ ESQUERDO */}
         <div className="absolute left-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-r from-[#faf7f2] to-transparent z-10 pointer-events-none" />
 
         {/* DEGRADÊ DIREITO */}
         <div className="absolute right-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-l from-[#faf7f2] to-transparent z-10 pointer-events-none" />
 
-        {/* TRILHA */}
-        <div className="flex w-max">
-          {/* PRIMEIRA TRILHA */}
-          <div className="carousel-track">
-            {baseList.map((property, idx) => (
-              <PropertyCardSlide
-                key={`track1-${property.id}-${idx}`}
-                uniqueKey={`track1-${property.id}-${idx}`}
-                property={property}
-                type={type}
-              />
-            ))}
-          </div>
+        {/* CONTAINER DE ROLAGEM */}
+        <div
+          ref={scrollRef}
+          className="overflow-x-auto scroll-smooth py-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+        >
+          {/* TRILHA */}
+          <div className="flex w-max">
+            {/* PRIMEIRA TRILHA */}
+            <div className="carousel-track">
+              {baseList.map((property, idx) => (
+                <PropertyCardSlide
+                  key={`track1-${property.id}-${idx}`}
+                  uniqueKey={`track1-${property.id}-${idx}`}
+                  property={property}
+                  type={type}
+                />
+              ))}
+            </div>
 
-          {/* SEGUNDA TRILHA */}
-          <div className="carousel-track" aria-hidden="true">
-            {baseList.map((property, idx) => (
-              <PropertyCardSlide
-                key={`track2-${property.id}-${idx}`}
-                uniqueKey={`track2-${property.id}-${idx}`}
-                property={property}
-                type={type}
-              />
-            ))}
+            {/* SEGUNDA TRILHA */}
+            <div className="carousel-track" aria-hidden="true">
+              {baseList.map((property, idx) => (
+                <PropertyCardSlide
+                  key={`track2-${property.id}-${idx}`}
+                  uniqueKey={`track2-${property.id}-${idx}`}
+                  property={property}
+                  type={type}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
