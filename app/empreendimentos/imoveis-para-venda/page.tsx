@@ -15,6 +15,7 @@ import {
   Home,
   Building2,
   Building,
+  LayoutGrid,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { saleProperties } from "@/lib/data"
@@ -42,7 +43,80 @@ export interface ImovelVenda {
 }
 
 const imoveisVenda: ImovelVenda[] = [
-  // 1. VIVER BEM INDIANÓPOLIS - TORRE 1 APTO 908
+  // 1. EDIFÍCIO ILHA DE PONZA - CASA FORTE
+  {
+    id: "ap-edificio-ilha-de-ponza-casa-forte",
+    title: "Apartamento no Edifício Ilha de Ponza",
+    type: "apartamento",
+    price: "R$ 600.000",
+    location: "Casa Forte, Recife - PE",
+    coverImage:
+      "/imoveis/apartamentos-para-venda/edificio-ilha-de-ponza/1.jpeg",
+    bedrooms: 4,
+    bathrooms: 2,
+    parking: 1,
+    area: "103m²",
+    description: `APARTAMENTO À VENDA NO CORAÇÃO DE CASA FORTE!
+
+EDIFÍCIO ILHA DE PONZA | AO LADO DA PRAÇA DE CASA FORTE
+
+Se você procura espaço, ventilação, localização privileged e praticidade, esta é uma excelente oportunidade para morar em uma das regiões mais tradicionais e valorizadas da Zona Norte do Recife.
+
+Localização privilegiada
+Ao lado da Praça de Casa Forte, com fácil acesso a supermercados, escolas, restaurantes, farmácias, serviços e toda a conveniência que o bairro oferece.
+
+SOBRE O APARTAMENTO
+• 103 m² de área
+• 4 quartos
+• Sala ampla
+• Cozinha
+• 1 banheiro social
+• Área de serviço
+• 1 banheiro de serviço
+• Varanda super ventilada
+• Posição frente Sul
+• Vista privilegiada
+• 1 vaga de garagem coberta
+
+Um apartamento com planta generosa e ambientes amplos, ideal para quem não abre mão de espaço e conforto para toda a família.
+
+SOBRE O EDIFÍCIO
+O Edifício Ilha de Ponza está localizado na Rua Edson Álvares, em um dos pontos mais desejados de Casa Forte.
+
+Estrutura e Lazer do Condomínio:
+• Piscina
+• Salão de festas
+• Playground
+• Guarita e sistema de segurança
+• Elevadores
+• Área externa e pilotis
+• Poço artesiano
+• Bicicletário
+• Portão eletrônico
+
+Pode ser financiado!`,
+    videos: [],
+    images: Array.from(
+      { length: 27 },
+      (_, i) =>
+        `/imoveis/apartamentos-para-venda/edificio-ilha-de-ponza/${i + 1}.jpeg`
+    ),
+    amenities: [
+      "4 Quartos",
+      "Varanda Ventilada (Frente Sul)",
+      "Ao Lado da Praça de Casa Forte",
+      "Piscina",
+      "Salão de Festas",
+      "Playground",
+      "Poço Artesiano",
+      "Bicicletário",
+      "Portaria e Segurança 24h",
+      "1 Vaga Coberta",
+      "Aceita Financiamento",
+    ],
+  },
+
+  // 2. VIVER BEM INDIANÓPOLIS - TORRE 1 APTO 908
   {
     id: "ap-viver-bem-indianopolis-908",
     title: "Apartamento no Viver Bem Indianópolis",
@@ -73,46 +147,11 @@ Um empreendimento pensado para oferecer qualidade de vida, praticidade e lazer c
     videos: [
       "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/1.mp4",
     ],
-    images: [
-      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/1.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/2.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/3.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/4.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/5.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/6.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/7.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/8.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/9.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/10.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/11.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/12.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/13.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/14.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/15.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/16.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/17.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/18.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/19.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/20.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/21.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/22.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/23.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/24.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/25.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/26.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/27.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/28.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/29.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/30.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/31.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/32.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/33.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/34.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/35.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/36.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/37.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/38.jpeg",
-    ],
+    images: Array.from(
+      { length: 38 },
+      (_, i) =>
+        `/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/${i + 1}.jpeg`
+    ),
     amenities: [
       "1 Suíte",
       "Varanda",
@@ -127,7 +166,7 @@ Um empreendimento pensado para oferecer qualidade de vida, praticidade e lazer c
     ],
   },
 
-  // 2. MANSÃO NO CONDOMÍNIO MONTE CASTELO
+  // 3. MANSÃO NO CONDOMÍNIO MONTE CASTELO
   {
     id: "casa-monte-castelo-gravata",
     title: "Mansão de Alto Padrão no Condomínio Monte Castelo",
@@ -164,23 +203,11 @@ Gleydson Tabosa - (81) 99547-7776`,
     ],
     images: [
       "/imoveis/casas-para-venda/casa-monte-castelo-gravata/5.jpeg",
-      "/imoveis/casas-para-venda/casa-monte-castelo-gravata/2.jpeg",
-      "/imoveis/casas-para-venda/casa-monte-castelo-gravata/3.jpeg",
-      "/imoveis/casas-para-venda/casa-monte-castelo-gravata/4.jpeg",
-      "/imoveis/casas-para-venda/casa-monte-castelo-gravata/6.jpeg",
-      "/imoveis/casas-para-venda/casa-monte-castelo-gravata/7.jpeg",
-      "/imoveis/casas-para-venda/casa-monte-castelo-gravata/8.jpeg",
-      "/imoveis/casas-para-venda/casa-monte-castelo-gravata/9.jpeg",
-      "/imoveis/casas-para-venda/casa-monte-castelo-gravata/10.jpeg",
-      "/imoveis/casas-para-venda/casa-monte-castelo-gravata/11.jpeg",
-      "/imoveis/casas-para-venda/casa-monte-castelo-gravata/12.jpeg",
-      "/imoveis/casas-para-venda/casa-monte-castelo-gravata/13.jpeg",
-      "/imoveis/casas-para-venda/casa-monte-castelo-gravata/14.jpeg",
-      "/imoveis/casas-para-venda/casa-monte-castelo-gravata/15.jpeg",
-      "/imoveis/casas-para-venda/casa-monte-castelo-gravata/16.jpeg",
-      "/imoveis/casas-para-venda/casa-monte-castelo-gravata/17.jpeg",
-      "/imoveis/casas-para-venda/casa-monte-castelo-gravata/18.jpeg",
-      "/imoveis/casas-para-venda/casa-monte-castelo-gravata/19.jpeg",
+      ...Array.from(
+        { length: 18 },
+        (_, i) =>
+          `/imoveis/casas-para-venda/casa-monte-castelo-gravata/${i + 2}.jpeg`
+      ),
     ],
     amenities: [
       "6 Suítes Privativas",
@@ -196,7 +223,7 @@ Gleydson Tabosa - (81) 99547-7776`,
     ],
   },
 
-  // 3. CASA MODERNA COM QUINTAL
+  // 4. CASA MODERNA COM QUINTAL
   {
     id: "casa-moderna-com-quintal",
     title: "Casa Moderna com Quintal e Excelente Padrão",
@@ -223,18 +250,11 @@ Configuração do imóvel:
 
 Imóvel ideal para quem busca modernidade, excelente distribuição de cômodos e possibilidade futura de expansão.`,
     videos: [],
-    images: [
-      "/imoveis/casas-para-venda/casa-moderna-com-quintal/1.jpeg",
-      "/imoveis/casas-para-venda/casa-moderna-com-quintal/2.jpeg",
-      "/imoveis/casas-para-venda/casa-moderna-com-quintal/3.jpeg",
-      "/imoveis/casas-para-venda/casa-moderna-com-quintal/4.jpeg",
-      "/imoveis/casas-para-venda/casa-moderna-com-quintal/5.jpeg",
-      "/imoveis/casas-para-venda/casa-moderna-com-quintal/6.jpeg",
-      "/imoveis/casas-para-venda/casa-moderna-com-quintal/7.jpeg",
-      "/imoveis/casas-para-venda/casa-moderna-com-quintal/8.jpeg",
-      "/imoveis/casas-para-venda/casa-moderna-com-quintal/9.jpeg",
-      "/imoveis/casas-para-venda/casa-moderna-com-quintal/10.jpeg",
-    ],
+    images: Array.from(
+      { length: 10 },
+      (_, i) =>
+        `/imoveis/casas-para-venda/casa-moderna-com-quintal/${i + 1}.jpeg`
+    ),
     amenities: [
       "1 Suíte",
       "Cozinha Planejada com Mármore",
@@ -247,7 +267,7 @@ Imóvel ideal para quem busca modernidade, excelente distribuição de cômodos 
     ],
   },
 
-  // 4. THE HOUSE CLUB
+  // 5. THE HOUSE CLUB
   {
     id: "casa-the-house-club-caruaru",
     title: "Casa em Condomínio Fechado no The House Club",
@@ -286,26 +306,11 @@ Lazer e infraestrutura do condomínio:
 • Playground infantil e áreas de convivência arborizadas
 • Portaria com segurança e controle de acesso 24 horas`,
     videos: [],
-    images: [
-      "/imoveis/casas-para-venda/casa-the-house-club/1.jpeg",
-      "/imoveis/casas-para-venda/casa-the-house-club/2.jpeg",
-      "/imoveis/casas-para-venda/casa-the-house-club/3.jpeg",
-      "/imoveis/casas-para-venda/casa-the-house-club/4.jpeg",
-      "/imoveis/casas-para-venda/casa-the-house-club/5.jpeg",
-      "/imoveis/casas-para-venda/casa-the-house-club/6.jpeg",
-      "/imoveis/casas-para-venda/casa-the-house-club/7.jpeg",
-      "/imoveis/casas-para-venda/casa-the-house-club/8.jpeg",
-      "/imoveis/casas-para-venda/casa-the-house-club/9.jpeg",
-      "/imoveis/casas-para-venda/casa-the-house-club/10.jpeg",
-      "/imoveis/casas-para-venda/casa-the-house-club/11.jpeg",
-      "/imoveis/casas-para-venda/casa-the-house-club/12.jpeg",
-      "/imoveis/casas-para-venda/casa-the-house-club/13.jpeg",
-      "/imoveis/casas-para-venda/casa-the-house-club/14.jpeg",
-      "/imoveis/casas-para-venda/casa-the-house-club/15.jpeg",
-      "/imoveis/casas-para-venda/casa-the-house-club/16.jpeg",
-      "/imoveis/casas-para-venda/casa-the-house-club/17.jpeg",
-      "/imoveis/casas-para-venda/casa-the-house-club/18.jpeg",
-    ],
+    images: Array.from(
+      { length: 18 },
+      (_, i) =>
+        `/imoveis/casas-para-venda/casa-the-house-club/${i + 1}.jpeg`
+    ),
     amenities: [
       "3 Suítes (1 Master com Closet)",
       "Espaço Gourmet com Churrasqueira",
@@ -320,7 +325,7 @@ Lazer e infraestrutura do condomínio:
     ],
   },
 
-  // 5. VOG VILLE NORTE
+  // 6. VOG VILLE NORTE (1º ANDAR)
   {
     id: "ap-vog-ville-norte",
     title: "Apartamento Pronto para Morar no Condomínio Vog Ville Norte",
@@ -355,28 +360,11 @@ Estrutura e lazer do condomínio:
       "/imoveis/apartamentos-para-venda/edificio-vog-ville-norte/1.mp4",
       "/imoveis/apartamentos-para-venda/edificio-vog-ville-norte/2.mp4",
     ],
-    images: [
-      "/imoveis/apartamentos-para-venda/edificio-vog-ville-norte/3.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-vog-ville-norte/4.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-vog-ville-norte/5.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-vog-ville-norte/6.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-vog-ville-norte/7.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-vog-ville-norte/8.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-vog-ville-norte/9.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-vog-ville-norte/10.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-vog-ville-norte/11.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-vog-ville-norte/12.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-vog-ville-norte/13.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-vog-ville-norte/14.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-vog-ville-norte/15.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-vog-ville-norte/16.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-vog-ville-norte/17.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-vog-ville-norte/18.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-vog-ville-norte/19.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-vog-ville-norte/20.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-vog-ville-norte/21.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-vog-ville-norte/22.jpeg",
-    ],
+    images: Array.from(
+      { length: 20 },
+      (_, i) =>
+        `/imoveis/apartamentos-para-venda/edificio-vog-ville-norte/${i + 3}.jpeg`
+    ),
     amenities: [
       "1 Suíte",
       "Ar-condicionado nos Quartos",
@@ -391,12 +379,72 @@ Estrutura e lazer do condomínio:
     ],
   },
 
-  // 6. EDIFÍCIO SANTA MARIA
+  // 7. VOG VILLE NORTE (TÉRREO DE ESQUINA)
+  {
+    id: "ap-vog-ville-norte-terreo",
+    title: "Apartamento Térreo de Esquina no Condomínio Vog Ville Norte",
+    type: "apartamento",
+    price: "R$ 310.000",
+    location: "Caruaru - PE",
+    coverImage:
+      "/imoveis/apartamentos-para-venda/vog-ville-norte-terreo/1.jpeg",
+    bedrooms: 2,
+    bathrooms: 2,
+    parking: 1,
+    area: "52m²",
+    description: `Oportunidade exclusiva no Condomínio Vog Ville Norte!
+
+Apartamento térreo de esquina, com posição privilegiada e vista aberta para todo o condomínio. Oferece a máxima privacidade: o único vizinho direto é o do andar superior. Localizado em uma rua tranquila, em um bloco com arquitetura rústica e charmosa estilo bangalô.
+
+Diferenciais do Imóvel:
+• Unidade térrea de esquina
+• Vista panorâmica para todo o condomínio
+• Maior privacidade (apenas um vizinho no andar de cima)
+• Localização em rua tranquila
+• Arquitetura única estilo bangalô
+
+Estrutura de Lazer e Condomínio:
+• Complexo aquático com 3 piscinas integradas
+• 3 Áreas Gourmet com churrasqueiras
+• Academia completa e equipada
+• Salão de Festas e Salão de Jogos
+• Quadra Poliesportiva e Quadra de Areia
+• Área Pet privativa
+• 2 Parques Infantis / Playgrounds
+• Conveniência com Mini Mercado interno
+• Lavanderia OMO compartilhada
+• Bicicletário
+• Energia Solar na área comum (garantindo condomínio mais econômico)
+• 1 Vaga de garagem para automóvel
+
+O Vog Ville Norte destaca-se como o condomínio mais completo e valorizado da região, oferecendo infraestrutura superior, lazer de clube e eficiência energética.`,
+    videos: [],
+    images: Array.from(
+      { length: 24 },
+      (_, i) =>
+        `/imoveis/apartamentos-para-venda/vog-ville-norte-terreo/${i + 1}.jpeg`
+    ),
+    amenities: [
+      "Térreo de Esquina",
+      "Vista para todo o Condomínio",
+      "Estilo Bangalô",
+      "3 Piscinas Integradas",
+      "3 Áreas Gourmet",
+      "Academia e Salão de Jogos",
+      "Quadra Poliesportiva e de Areia",
+      "Área Pet Privativa",
+      "Energia Solar na Área Comum",
+      "Mini Mercado Interno",
+      "1 Vaga de Garagem",
+    ],
+  },
+
+  // 8. EDIFÍCIO SANTA MARIA
   {
     id: "ap-edificio-santa-maria-boa-viagem",
     title: "Apartamento de Alto Padrão no Edifício Santa Maria",
     type: "apartamento",
-    price: "R$ 2.200.000",
+    price: "R$ 1.980.000",
     location: "Boa Viagem, Recife - PE",
     coverImage:
       "/imoveis/apartamentos-para-venda/edificio-santa-maria/1.jpeg",
@@ -430,37 +478,11 @@ Informações financeiras:
 • Taxa condominial: R$ 1.680,00 (água e gás inclusos)
 • IPTU mensal: R$ 691,00`,
     videos: [],
-    images: [
-      "/imoveis/apartamentos-para-venda/edificio-santa-maria/1.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-santa-maria/2.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-santa-maria/3.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-santa-maria/4.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-santa-maria/5.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-santa-maria/6.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-santa-maria/7.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-santa-maria/8.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-santa-maria/9.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-santa-maria/10.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-santa-maria/11.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-santa-maria/12.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-santa-maria/13.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-santa-maria/14.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-santa-maria/15.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-santa-maria/16.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-santa-maria/17.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-santa-maria/18.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-santa-maria/19.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-santa-maria/20.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-santa-maria/21.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-santa-maria/22.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-santa-maria/23.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-santa-maria/24.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-santa-maria/25.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-santa-maria/26.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-santa-maria/27.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-santa-maria/28.jpeg",
-      "/imoveis/apartamentos-para-venda/edificio-santa-maria/29.jpeg",
-    ],
+    images: Array.from(
+      { length: 29 },
+      (_, i) =>
+        `/imoveis/apartamentos-para-venda/edificio-santa-maria/${i + 1}.jpeg`
+    ),
     amenities: [
       "4 Suítes Amplas",
       "Vista Definitiva para o Mar",
@@ -471,6 +493,82 @@ Informações financeiras:
       "3 Elevadores",
       "Apenas 500m da Praia de Boa Viagem",
       "Documentação 100% Regular",
+    ],
+  },
+
+  // 9. BEACH CLASS CONVENTION BY MAI
+  {
+    id: "ap-beach-class-convention-by-mai",
+    title: "Apartamento no Beach Class Convention by MAI",
+    type: "apartamento",
+    price: "R$ 380.000",
+    location: "Boa Viagem, Recife - PE",
+    coverImage:
+      "/imoveis/apartamentos-para-venda/beach-class-convention-by-mai/1.jpeg",
+    bedrooms: 1,
+    bathrooms: 1,
+    parking: 1,
+    area: "Studio / Flat",
+    description: `APARTAMENTO À VENDA | BEACH CLASS CONVENTION BY MAI
+
+R$ 380.000,00
+
+Boa Viagem | Recife/PE
+
+1 QUARTO | SUÍTE | ANDAR ALTO
+
+Uma excelente oportunidade para quem busca investir em um dos endereços mais estratégicos de Boa Viagem.
+
+Este apartamento no Beach Class Convention by MAI reúne localização, praticidade e estrutura de empreendimento voltado também ao público executivo e de negócios.
+
+DESTAQUES DO IMÓVEL
+• 1 quarto sendo suíte
+• Andar alto
+• Excelente localização em Boa Viagem
+• Imóvel escriturado
+• Pronto para financiamento
+• Excelente opção para investimento
+• Potencial para geração de renda
+• Empreendimento com estrutura completa
+
+ESTRUTURA DO EMPREENDIMENTO
+• Piscina
+• Academia
+• Sauna
+• Restaurante
+• Recepção
+• Lavanderia
+• Business Center
+• Salas para eventos e reuniões
+• Elevadores
+• Estacionamento
+• Estrutura de conveniência e serviços
+
+LOCALIZAÇÃO PRIVILEGIADA
+Na Rua Maria Carolina, em Boa Viagem, próximo ao Shopping Recife, praia, restaurantes, serviços e importantes vias de acesso da Zona Sul.
+
+UMA OPORTUNIDADE PARA QUEM PENSA EM PATRIMÔNIO E RENTABILIDADE
+Um imóvel compacto, em localização estratégica e dentro de um empreendimento consolidado, ideal para quem procura uma alternativa de investimento imobiliário em Recife.
+
+ESCRITURADO • FINANCIÁVEL • ANDAR ALTO • 1 SUÍTE`,
+    videos: [],
+    images: Array.from(
+      { length: 19 },
+      (_, i) =>
+        `/imoveis/apartamentos-para-venda/beach-class-convention-by-mai/${i + 1}.jpeg`
+    ),
+    amenities: [
+      "1 Suíte",
+      "Andar Alto",
+      "Piscina",
+      "Academia",
+      "Sauna",
+      "Restaurante no Prédio",
+      "Recepção e Segurança",
+      "Lavanderia",
+      "Business Center",
+      "Próximo ao Shopping Recife",
+      "Escriturado e Financiável",
     ],
   },
 ]
@@ -668,9 +766,7 @@ function ImoveisParaVendaContent() {
 
   return (
     <>
-      {/* ================================================================
-          HERO
-      ================================================================ */}
+      {/* HERO */}
       <section className="pt-28 pb-10 bg-[#0d3b2e] text-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <Link
@@ -690,15 +786,12 @@ function ImoveisParaVendaContent() {
           </h1>
 
           <p className="text-white/75 mt-3 max-w-2xl text-sm md:text-base">
-            Casas exclusivas, condomínios fechados, mansões e apartamentos de
-            alto padrão disponíveis para aquisição.
+            Casas, apartamentos e empreendimentos selecionados para compra residencial em localizações privilegiadas.
           </p>
         </div>
       </section>
 
-      {/* ================================================================
-          CARROSSEL — SOMENTE IMÓVEIS À VENDA
-      ================================================================ */}
+      {/* CARROSSEL */}
       <FeaturedCarousel
         properties={saleProperties}
         title="Imóveis em Destaque para Venda"
@@ -706,86 +799,78 @@ function ImoveisParaVendaContent() {
         type="venda"
       />
 
-      {/* ================================================================
-          GRID + FILTROS
-      ================================================================ */}
+      {/* FILTROS + GRID */}
       <section className="py-12 bg-[#faf7f2]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-
-          {/* FILTROS */}
           <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
-            <div className="flex items-center gap-2 border-l-4 border-[#b85d19] pl-3">
-              <p className="text-sm font-medium text-foreground">
-                Mostrando{" "}
-                <span className="font-bold text-[#0d3b2e]">
-                  {filteredProperties.length}
-                </span>{" "}
-                imóveis
-              </p>
-            </div>
+            <p className="text-sm text-muted-foreground">
+              Exibindo <span className="font-semibold text-foreground">{filteredProperties.length}</span> imóveis para venda
+            </p>
 
-            <div className="inline-flex p-1 bg-white rounded-xl border border-border shadow-sm">
-              {/* TODOS */}
-              <button
-                type="button"
+            {/* BOTÕES DE FILTRO */}
+            <div className="flex flex-wrap items-center gap-2">
+              <Button
+                variant={filterType === "todos" ? "default" : "outline"}
+                size="sm"
                 onClick={() => setFilterType("todos")}
-                className={`flex items-center gap-2 px-4 py-2 text-xs md:text-sm font-medium rounded-lg transition-all ${
+                className={
                   filterType === "todos"
-                    ? "bg-[#0d3b2e] text-white shadow-sm"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
+                    ? "bg-[#0d3b2e] hover:bg-[#092920] text-white"
+                    : "border-border hover:bg-white"
+                }
               >
-                <Building className="h-4 w-4" />
+                <LayoutGrid className="mr-1.5 h-3.5 w-3.5" />
                 Todos ({imoveisVenda.length})
-              </button>
+              </Button>
 
-              {/* CASAS */}
-              <button
-                type="button"
-                onClick={() => setFilterType("casa")}
-                className={`flex items-center gap-2 px-4 py-2 text-xs md:text-sm font-medium rounded-lg transition-all ${
-                  filterType === "casa"
-                    ? "bg-[#0d3b2e] text-white shadow-sm"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                <Home className="h-4 w-4" />
-                Casas ({casasCount})
-              </button>
-
-              {/* APARTAMENTOS */}
-              <button
-                type="button"
+              <Button
+                variant={filterType === "apartamento" ? "default" : "outline"}
+                size="sm"
                 onClick={() => setFilterType("apartamento")}
-                className={`flex items-center gap-2 px-4 py-2 text-xs md:text-sm font-medium rounded-lg transition-all ${
+                className={
                   filterType === "apartamento"
-                    ? "bg-[#0d3b2e] text-white shadow-sm"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
+                    ? "bg-[#0d3b2e] hover:bg-[#092920] text-white"
+                    : "border-border hover:bg-white"
+                }
               >
-                <Building2 className="h-4 w-4" />
+                <Building className="mr-1.5 h-3.5 w-3.5" />
                 Apartamentos ({aptosCount})
-              </button>
+              </Button>
+
+              <Button
+                variant={filterType === "casa" ? "default" : "outline"}
+                size="sm"
+                onClick={() => setFilterType("casa")}
+                className={
+                  filterType === "casa"
+                    ? "bg-[#0d3b2e] hover:bg-[#092920] text-white"
+                    : "border-border hover:bg-white"
+                }
+              >
+                <Home className="mr-1.5 h-3.5 w-3.5" />
+                Casas ({casasCount})
+              </Button>
             </div>
           </div>
 
-          {/* ============================================================
-              GRID DE IMÓVEIS
-          ============================================================ */}
+          {/* GRID DE IMÓVEIS (Ajustado para 4 por fila) */}
           {filteredProperties.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {filteredProperties.map((property) => (
-                <PropertyCard
-                  key={property.id}
-                  property={property}
-                />
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {filteredProperties.map((imovel) => (
+                <PropertyCard key={imovel.id} property={imovel} />
               ))}
             </div>
           ) : (
             <div className="text-center py-16 bg-white rounded-2xl border border-border">
-              <p className="text-muted-foreground text-sm">
-                Nenhum imóvel encontrado nessa categoria no momento.
+              <p className="text-muted-foreground text-lg">
+                Nenhum imóvel encontrado nessa categoria.
               </p>
+              <Button
+                onClick={() => setFilterType("todos")}
+                className="mt-4 bg-[#0d3b2e] hover:bg-[#092920] text-white"
+              >
+                Ver todos os imóveis
+              </Button>
             </div>
           )}
         </div>
@@ -794,17 +879,9 @@ function ImoveisParaVendaContent() {
   )
 }
 
-// =========================================================================
-// EXPORT
-// =========================================================================
-
 export default function ImoveisParaVendaPage() {
   return (
-    <Suspense
-      fallback={
-        <div className="min-h-screen bg-background" />
-      }
-    >
+    <Suspense fallback={<div className="min-h-screen bg-[#faf7f2] pt-28 text-center">Carregando imóveis...</div>}>
       <ImoveisParaVendaContent />
     </Suspense>
   )

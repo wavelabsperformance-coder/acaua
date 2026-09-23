@@ -21,7 +21,7 @@ function PropertyCardSlide({
   uniqueKey: string
   type: "venda" | "aluguel"
 }) {
-  const targetUrl = `/empreendimentos/${property.category}?id=${property.id}#detalhes`
+  const targetUrl = `/imoveis/${property.id}`
 
   const isLocacao = type === "aluguel"
 

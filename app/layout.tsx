@@ -11,19 +11,18 @@ export const metadata: Metadata = {
   // Atualizado para o seu novo domínio oficial
   metadataBase: new URL("https://www.acauaimoveis.com"),
   title: {
-    default: "Acauã Imóveis | Imobiliária de Alto Padrão em Recife",
+    default: "Acauã Imóveis | Recife, Caruaru e Litoral",
     template: "%s | Acauã Imóveis",
   },
   description:
-    "Imobiliária especializada em imóveis de alto padrão em Recife e região. Casas, apartamentos, coberturas e empreendimentos de luxo. Atendimento exclusivo e personalizado.",
+    "Sua imobiliária de confiança em Caruaru, Recife e Litoral. Encontre casas, apartamentos, pontos comerciais e empreendimentos com atendimento exclusivo.",
   keywords: [
-    "imobiliária alto padrão",
-    "imóveis de luxo recife",
-    "apartamentos boa viagem",
-    "casas casa forte",
-    "coberturas recife",
+    "imobiliária caruaru",
     "imobiliária recife",
-    "imóveis premium",
+    "imóveis no litoral pernambucano",
+    "apartamentos boa viagem",
+    "casas em caruaru",
+    "imóveis pernambuco",
     "acauã imóveis",
   ],
   authors: [{ name: "Acauã Imóveis" }],
@@ -34,22 +33,22 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     url: "https://www.acauaimoveis.com",
     siteName: "Acauã Imóveis",
-    title: "Acauã Imóveis | Imobiliária de Alto Padrão em Recife",
+    title: "Acauã Imóveis | Recife, Caruaru e Litoral",
     description:
-      "Imobiliária especializada em imóveis de alto padrão em Recife. Atendimento exclusivo e personalizado.",
+      "Sua imobiliária de confiança em Caruaru, Recife e Litoral. Encontre o imóvel ideal com atendimento exclusivo.",
     images: [
       {
         url: "https://www.acauaimoveis.com/og-image.jpeg", // URL completa e absoluta com o novo domínio
         width: 1200,
         height: 630,
-        alt: "Acauã Imóveis",
+        alt: "Acauã Imóveis - Recife | Caruaru | Litoral",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Acauã Imóveis | Imobiliária de Alto Padrão",
-    description: "Imóveis de luxo em Recife com atendimento exclusivo.",
+    title: "Acauã Imóveis | Recife, Caruaru e Litoral",
+    description: "Sua imobiliária de confiança em Caruaru, Recife e Litoral.",
     images: ["https://www.acauaimoveis.com/og-image.jpeg"],
   },
   robots: {

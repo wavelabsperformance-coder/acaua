@@ -46,7 +46,77 @@ export interface ImovelAluguel {
 // =========================================================================
 
 const imoveisAluguel: ImovelAluguel[] = [
-  // 1. CONDOMÍNIO MR. ROTTERDAM
+  // 1. BEACH CLASS RESIDENCE SANTA MARIA
+  {
+    id: "ap-beach-class-residence-santa-maria",
+    tipo: "apartamento",
+    title: "Apartamento no Beach Class Residence Santa Maria",
+    price: "R$ 3.800 / mês (Água e Gás inclusos)",
+    location: "Boa Viagem, Recife - PE",
+    coverImage:
+      "/imoveis/apartamentos-para-alugar/beach-class-residence-santa-maria/1.jpeg",
+    bedrooms: 2,
+    bathrooms: 2,
+    parking: 1,
+    area: "50m²",
+    description: `EXCELENTE OPORTUNIDADE DE LOCAÇÃO EM BOA VIAGEM!
+
+BEACH CLASS RESIDENCE SANTA MARIA
+
+Se você busca conforto, praticidade e excelente localização em Recife, este apartamento é uma ótima opção para morar em Boa Viagem!
+
+CARACTERÍSTICAS DO IMÓVEL
+• 2 quartos, sendo 1 suíte
+• Armários planejados nos quartos, cozinha e banheiro
+• Ar-condicionado instalado nos dois quartos
+• Varanda aconchegante
+• Apartamento arejado, ventilado e com excelente iluminação natural
+• 1 vaga de garagem rotativa
+
+ESTRUTURA E LAZER DO CONDOMÍNIO
+• Piscina na cobertura, com vista privilegiada e mini bar
+• Espaço gourmet com churrasqueira
+• Mini market no condomínio
+• Lavanderia OMO no prédio
+
+VALOR DA LOCAÇÃO
+R$ 3.800,00 (Água e gás inclusos no valor da locação).
+
+LOCALIZAÇÃO PRIVILEGIADA
+Rua Dr. Pedro de Melo Cahú, 201 – Boa Viagem, Recife/PE.
+Uma localização estratégica, próxima a escolas, hotéis, farmácias, serviços e às principais conveniências do bairro.
+
+• Praia de Boa Viagem: aproximadamente 400 metros
+• Aeroporto Internacional do Recife: aproximadamente 4,5 km
+• Próximo ao Colégio Santa Maria, CBV Boa Viagem e Escola Municipal Karla Patrícia.
+• Fácil acesso a farmácias e serviços (Drogasil e Pague Menos).
+• Próximo ao Beach Class Convention e Dublê Hotel.`,
+    videos: [
+      "/imoveis/apartamentos-para-alugar/beach-class-residence-santa-maria/22.mp4",
+      "/imoveis/apartamentos-para-alugar/beach-class-residence-santa-maria/23.mp4",
+      "/imoveis/apartamentos-para-alugar/beach-class-residence-santa-maria/24.mp4",
+    ],
+    images: Array.from(
+      { length: 21 },
+      (_, i) =>
+        `/imoveis/apartamentos-para-alugar/beach-class-residence-santa-maria/${i + 1}.jpeg`
+    ),
+    amenities: [
+      "1 Suíte",
+      "Armários Planejados",
+      "Ar-condicionado nos Quartos",
+      "Varanda",
+      "Piscina na Cobertura com Mini Bar",
+      "Espaço Gourmet com Churrasqueira",
+      "Mini Market no Condomínio",
+      "Lavanderia OMO",
+      "Água e Gás Inclusos",
+      "400m da Praia de Boa Viagem",
+      "Garagem Rotativa",
+    ],
+  },
+
+  // 2. CONDOMÍNIO MR. ROTTERDAM
   {
     id: "ap-condominio-mr-rotterdam",
     tipo: "apartamento",
@@ -103,7 +173,7 @@ Lazer e comodidades do condomínio:
     ],
   },
 
-  // 2. APARTAMENTO MOBILIADO NO MAURÍCIO DE NASSAU
+  // 3. APARTAMENTO MOBILIADO NO MAURÍCIO DE NASSAU
   {
     id: "ap-mobiliado-mauricio-de-nassau",
     tipo: "apartamento",
@@ -139,7 +209,7 @@ Lazer e comodidades do condomínio:
     ],
   },
 
-  // 3. EDIFÍCIO TEREZA RODRIGUES
+  // 4. EDIFÍCIO TEREZA RODRIGUES
   {
     id: "ap-edificio-tereza-rodrigues",
     tipo: "apartamento",
@@ -210,7 +280,7 @@ Configuração do imóvel:
     ],
   },
 
-  // 4. JARDIM DOS ALECRINS
+  // 5. JARDIM DOS ALECRINS
   {
     id: "ap-edificio-jardim-dos-alecrins",
     tipo: "apartamento",
@@ -270,7 +340,7 @@ Configuração do imóvel:
     ],
   },
 
-  // 5. STUDIO ALTO PADRÃO
+  // 6. STUDIO ALTO PADRÃO
   {
     id: "ap-studio-alto-padrao-shopping",
     tipo: "apartamento",
@@ -328,7 +398,7 @@ Configuração do imóvel:
     ],
   },
 
-  // 6. EDIFÍCIO JOÃO SOARES
+  // 7. EDIFÍCIO JOÃO SOARES
   {
     id: "ap-edificio-joao-soares",
     tipo: "apartamento",
@@ -369,7 +439,7 @@ Configuração do imóvel:
     ],
   },
 
-  // 7. CAMINHO DAS AROEIRAS
+  // 8. CAMINHO DAS AROEIRAS
   {
     id: "ap-caminho-das-aroeiras",
     tipo: "apartamento",
@@ -403,6 +473,61 @@ Configuração do imóvel:
       "Salão de Festas",
       "1 Vaga de Garagem",
       "Portaria 24h",
+    ],
+  },
+
+  // 9. PUERTO BALATA (INDISPONÍVEL / ALUGADO)
+  {
+    id: "ap-puerto-balata-boa-viagem",
+    tipo: "apartamento",
+    title: "Apartamento no Edifício Puerto Balata (Indisponível)",
+    price: "R$ 10.000 / mês (Incluso água, gás e IPTU)",
+    location: "Avenida Navegantes, Boa Viagem, Recife - PE",
+    coverImage: "/imoveis/apartamentos-para-alugar/puerto-balata/1.jpeg",
+    bedrooms: 2,
+    bathrooms: 2,
+    parking: 1,
+    area: "72m²",
+    description: `EXCLUSIVIDADE EDIFÍCIO PUERTO BALATA
+
+Avenida Navegantes
+Próximo ao Quiosque 13
+A poucos passos do mar
+
+Apartamento no 2º andar | 100% mobiliado | Vista mar em todos os ambientes
+
+72m² muito bem distribuídos
+02 quartos, sendo 01 suíte
+Varanda integrada
+Sala ampla e moderna
+Projeto de iluminação sofisticado
+TV na sala e nos quartos
+Ar-condicionado na sala e nos 02 quartos
+01 vaga de garagem coberta
+
+Diferencial de conforto:
+Camas baú com colchões King Koil — marca americana reconhecida internacionalmente e presente em hotéis 5 estrelas como Nanai e Summerville
+
+Todos os ambientes com vista para o mar — quartos e sala trazendo sensação única de conforto, sofisticação e bem-estar.
+
+Valor da locação: R$ 10.000,00
+Incluso água e gás e IPTU 
+
+Um apartamento moderno, elegante e pronto para morar no melhor da Avenida Navegantes.
+
+[Imóvel Indisponível / Alugado]`,
+    videos: [],
+    images: Array.from({ length: 19 }, (_, i) => `/imoveis/apartamentos-para-alugar/puerto-balata/${i + 1}.jpeg`),
+    amenities: [
+      "Indisponível / Alugado",
+      "2 Quartos (1 Suíte)",
+      "100% Mobiliado",
+      "Vista Mar em Todos os Ambientes",
+      "Varanda Integrada",
+      "Ar-condicionado na Sala e Quartos",
+      "Colchões King Koil 5 Estrelas",
+      "Água, Gás e IPTU Inclusos",
+      "1 Vaga Coberta",
     ],
   },
 ]
@@ -440,8 +565,10 @@ function PropertyCard({ property }: { property: ImovelAluguel }) {
     )
   }
 
+  const isIndisponivel = property.id === "ap-puerto-balata-boa-viagem"
+
   return (
-    <article className="group bg-white rounded-2xl overflow-hidden border border-border/80 hover:border-[#b85d19]/40 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+    <article className="group bg-white rounded-2xl overflow-hidden border border-border/80 hover:border-[#b85d19]/40 hover:shadow-xl transition-all duration-300 flex flex-col justify-between relative">
       <div>
         <Link
           href={`/imoveis/${property.id}`}
@@ -450,14 +577,22 @@ function PropertyCard({ property }: { property: ImovelAluguel }) {
           <img
             src={images[currentImgIndex] || "/placeholder.jpg"}
             alt={`${property.title} - foto ${currentImgIndex + 1}`}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${
+              isIndisponivel ? "grayscale opacity-75" : ""
+            }`}
           />
 
           <div className="absolute top-3 left-3 bg-[#b85d19] text-white px-3 py-1 text-xs rounded-full font-medium shadow-sm">
             Locação
           </div>
 
-          {hasVideos && (
+          {isIndisponivel && (
+            <div className="absolute top-3 right-3 bg-red-600 text-white px-3 py-1 text-xs font-bold shadow-sm rounded-full">
+              Alugado / Indisponível
+            </div>
+          )}
+
+          {hasVideos && !isIndisponivel && (
             <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-sm text-white px-2.5 py-1 text-[11px] rounded-full font-medium flex items-center gap-1">
               <Play className="h-3 w-3 fill-white" />
               {property.videos.length > 1
@@ -678,34 +813,16 @@ function ImoveisParaAlugarContent() {
           </div>
 
           {imoveisFiltrados.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {imoveisFiltrados.map((property) => (
-                <PropertyCard
-                  key={property.id}
-                  property={property}
-                />
+                <PropertyCard key={property.id} property={property} />
               ))}
             </div>
           ) : (
-            <div className="text-center py-16 bg-white rounded-2xl border border-dashed border-border p-8">
-              <Home className="h-12 w-12 text-muted-foreground/40 mx-auto mb-3" />
-
-              <h3 className="text-lg font-semibold text-foreground">
-                Nenhum imóvel encontrado
-              </h3>
-
-              <p className="text-sm text-muted-foreground mt-1 max-w-md mx-auto">
-                Não encontramos imóveis na categoria selecionada no momento.
-                Tente filtrar por outra opção.
+            <div className="text-center py-16 bg-white rounded-2xl border border-border">
+              <p className="text-muted-foreground">
+                Nenhum imóvel encontrado para esta categoria.
               </p>
-
-              <Button
-                onClick={() => setTipoFiltro("todos")}
-                variant="outline"
-                className="mt-4 text-[#0d3b2e] border-[#0d3b2e] hover:bg-[#0d3b2e] hover:text-white"
-              >
-                Ver todos os imóveis
-              </Button>
             </div>
           )}
         </div>
@@ -714,17 +831,9 @@ function ImoveisParaAlugarContent() {
   )
 }
 
-// =========================================================================
-// EXPORT
-// =========================================================================
-
 export default function ImoveisParaAlugarPage() {
   return (
-    <Suspense
-      fallback={
-        <div className="min-h-screen bg-background" />
-      }
-    >
+    <Suspense fallback={<div className="py-20 text-center">Carregando imóveis para alugar...</div>}>
       <ImoveisParaAlugarContent />
     </Suspense>
   )

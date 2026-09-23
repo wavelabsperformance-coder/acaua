@@ -26,6 +26,75 @@ export const todosImoveis: ImovelCompleto[] = [
   // --- VENDA ---
   // =========================================================================
   {
+    id: "ap-edificio-ilha-de-ponza-casa-forte",
+    title: "Apartamento no Edifício Ilha de Ponza",
+    price: "R$ 600.000",
+    location: "Casa Forte, Recife - PE",
+    type: "venda",
+    category: "apartamento",
+    featured: true,
+    coverImage: "/imoveis/apartamentos-para-venda/edificio-ilha-de-ponza/1.jpeg",
+    bedrooms: 4,
+    bathrooms: 2,
+    parking: 1,
+    area: "103m²",
+    description: `APARTAMENTO À VENDA NO CORAÇÃO DE CASA FORTE!
+
+EDIFÍCIO ILHA DE PONZA | AO LADO DA PRAÇA DE CASA FORTE
+
+Se você procura espaço, ventilação, localização privilegiada e praticidade, esta é uma excelente oportunidade para morar em uma das regiões mais tradicionais e valorizadas da Zona Norte do Recife.
+
+Localização privilegiada
+Ao lado da Praça de Casa Forte, com fácil acesso a supermercados, escolas, restaurantes, farmácias, serviços e toda a conveniência que o bairro oferece.
+
+SOBRE O APARTAMENTO
+• 103 m² de área
+• 4 quartos
+• Sala ampla
+• Cozinha
+• 1 banheiro social
+• Área de serviço
+• 1 banheiro de serviço
+• Varanda super ventilada
+• Posição frente Sul
+• Vista privilegiada
+• 1 vaga de garagem coberta
+
+Um apartamento com planta generosa e ambientes amplos, ideal para quem não abre mão de espaço e conforto para toda a família.
+
+SOBRE O EDIFÍCIO
+O Edifício Ilha de Ponza está localizado na Rua Edson Álvares, em um dos pontos mais desejados de Casa Forte.
+
+Estrutura e Lazer do Condomínio:
+• Piscina
+• Salão de festas
+• Playground
+• Guarita e sistema de segurança
+• Elevadores
+• Área externa e pilotis
+• Poço artesiano
+• Bicicletário
+• Portão eletrônico
+
+Pode ser financiado!`,
+    images: Array.from({ length: 27 }, (_, i) => `/imoveis/apartamentos-para-venda/edificio-ilha-de-ponza/${i + 1}.jpeg`),
+    amenities: [
+      "4 Quartos",
+      "Varanda Ventilada (Frente Sul)",
+      "Ao Lado da Praça de Casa Forte",
+      "Piscina",
+      "Salão de Festas",
+      "Playground",
+      "Poço Artesiano",
+      "Bicicletário",
+      "Portaria e Segurança 24h",
+      "1 Vaga Coberta",
+      "Aceita Financiamento",
+    ],
+    backUrl: "/empreendimentos/imoveis-para-venda",
+    backLabel: "Voltar para Imóveis para Venda",
+  },
+  {
     id: "ap-viver-bem-indianopolis-908",
     title: "Apartamento no Viver Bem Indianópolis",
     price: "Consulte o valor",
@@ -153,9 +222,65 @@ Estrutura completa de lazer, bem-estar e conveniência:
     backLabel: "Voltar para Imóveis para Venda",
   },
   {
+    id: "ap-vog-ville-norte-terreo",
+    title: "Apartamento Térreo de Esquina no Condomínio Vog Ville Norte",
+    price: "R$ 310.000",
+    location: "Caruaru - PE",
+    type: "venda",
+    category: "apartamento",
+    featured: true,
+    coverImage: "/imoveis/apartamentos-para-venda/vog-ville-norte-terreo/1.jpeg",
+    bedrooms: 2,
+    bathrooms: 2,
+    parking: 1,
+    area: "52m²",
+    description: `Oportunidade exclusiva no Condomínio Vog Ville Norte!
+
+Apartamento térreo de esquina, com posição privilegiada e vista aberta para todo o condomínio. Oferece a máxima privacidade: o único vizinho direto é o do andar superior. Localizado em uma rua tranquila, em um bloco com arquitetura rústica e charmosa estilo bangalô.
+
+Diferenciais do Imóvel:
+• Unidade térrea de esquina
+• Vista panorâmica para todo o condomínio
+• Maior privacidade (apenas um vizinho no andar de cima)
+• Localização em rua tranquila
+• Arquitetura única estilo bangalô
+
+Estrutura de Lazer e Condomínio:
+• Complexo aquático com 3 piscinas integradas
+• 3 Áreas Gourmet com churrasqueiras
+• Academia completa e equipada
+• Salão de Festas e Salão de Jogos
+• Quadra Poliesportiva e Quadra de Areia
+• Área Pet privativa
+• 2 Parques Infantis / Playgrounds
+• Conveniência com Mini Mercado interno
+• Lavanderia OMO compartilhada
+• Bicicletário
+• Energia Solar na área comum (garantindo condomínio mais econômico)
+• 1 Vaga de garagem para automóvel
+
+O Vog Ville Norte destaca-se como o condomínio mais completo e valorizado da região, oferecendo infraestrutura superior, lazer de clube e eficiência energética.`,
+    images: Array.from({ length: 24 }, (_, i) => `/imoveis/apartamentos-para-venda/vog-ville-norte-terreo/${i + 1}.jpeg`),
+    amenities: [
+      "Térreo de Esquina",
+      "Vista para todo o Condomínio",
+      "Estilo Bangalô",
+      "3 Piscinas Integradas",
+      "3 Áreas Gourmet",
+      "Academia e Salão de Jogos",
+      "Quadra Poliesportiva e de Areia",
+      "Área Pet Privativa",
+      "Energia Solar na Área Comum",
+      "Mini Mercado Interno",
+      "1 Vaga de Garagem",
+    ],
+    backUrl: "/empreendimentos/imoveis-para-venda",
+    backLabel: "Voltar para Imóveis para Venda",
+  },
+  {
     id: "ap-edificio-santa-maria-boa-viagem",
     title: "Apartamento de Alto Padrão no Edifício Santa Maria",
-    price: "R$ 2.200.000",
+    price: "R$ 1.980.000",
     location: "Boa Viagem, Recife - PE",
     type: "venda",
     category: "apartamento",
@@ -171,10 +296,145 @@ Estrutura completa de lazer, bem-estar e conveniência:
     backUrl: "/empreendimentos/imoveis-para-venda",
     backLabel: "Voltar para Imóveis para Venda",
   },
+  {
+    id: "ap-beach-class-convention-by-mai",
+    title: "Apartamento no Beach Class Convention by MAI",
+    price: "R$ 380.000",
+    location: "Boa Viagem, Recife - PE",
+    type: "venda",
+    category: "apartamento",
+    featured: true,
+    coverImage: "/imoveis/apartamentos-para-venda/beach-class-convention-by-mai/1.jpeg",
+    bedrooms: 1,
+    bathrooms: 1,
+    parking: 1,
+    area: "Studio / Flat",
+    description: `APARTAMENTO À VENDA | BEACH CLASS CONVENTION BY MAI
+
+R$ 380.000,00 
+
+Boa Viagem | Recife/PE
+
+1 QUARTO | SUÍTE | ANDAR ALTO
+
+Uma excelente oportunidade para quem busca investir em um dos endereços mais estratégicos de Boa Viagem.
+
+Este apartamento no Beach Class Convention by MAI reúne localização, praticidade e estrutura de empreendimento voltado também ao público executivo e de negócios.
+
+DESTAQUES DO IMÓVEL
+• 1 quarto sendo suíte
+• Andar alto
+• Excelente localização em Boa Viagem
+• Imóvel escriturado
+• Pronto para financiamento
+• Excelente opção para investimento
+• Potencial para geração de renda
+• Empreendimento com estrutura completa
+
+ESTRUTURA DO EMPREENDIMENTO
+• Piscina
+• Academia
+• Sauna
+• Restaurante
+• Recepção
+• Lavanderia
+• Business Center
+• Salas para eventos e reuniões
+• Elevadores
+• Estacionamento
+• Estrutura de conveniência e serviços
+
+LOCALIZAÇÃO PRIVILEGIADA
+Na Rua Maria Carolina, em Boa Viagem, próximo ao Shopping Recife, praia, restaurantes, serviços e importantes vias de acesso da Zona Sul.
+
+UMA OPORTUNIDADE PARA QUEM PENSA EM PATRIMÔNIO E RENTABILIDADE
+Um imóvel compacto, em localização estratégica e dentro de um empreendimento consolidado, ideal para quem procura uma alternativa de investimento imobiliário em Recife.
+
+ESCRITURADO • FINANCIÁVEL • ANDAR ALTO • 1 SUÍTE`,
+    images: Array.from({ length: 19 }, (_, i) => `/imoveis/apartamentos-para-venda/beach-class-convention-by-mai/${i + 1}.jpeg`),
+    amenities: [
+      "1 Suíte",
+      "Andar Alto",
+      "Piscina",
+      "Academia",
+      "Sauna",
+      "Restaurante no Prédio",
+      "Recepção e Segurança",
+      "Lavanderia",
+      "Business Center",
+      "Próximo ao Shopping Recife",
+      "Escriturado e Financiável",
+    ],
+    backUrl: "/empreendimentos/imoveis-para-venda",
+    backLabel: "Voltar para Imóveis para Venda",
+  },
 
   // =========================================================================
   // --- LOCAÇÃO ---
   // =========================================================================
+  {
+    id: "ap-beach-class-residence-santa-maria",
+    title: "Apartamento no Beach Class Residence Santa Maria",
+    price: "R$ 3.800 / mês (Água e Gás inclusos)",
+    location: "Boa Viagem, Recife - PE",
+    type: "aluguel",
+    category: "apartamento",
+    featured: true,
+    coverImage: "/imoveis/apartamentos-para-alugar/beach-class-residence-santa-maria/1.jpeg",
+    bedrooms: 2,
+    bathrooms: 2,
+    parking: 1,
+    area: "50m²",
+    description: `EXCELENTE OPORTUNIDADE DE LOCAÇÃO EM BOA VIAGEM!
+
+BEACH CLASS RESIDENCE SANTA MARIA
+
+Se você busca conforto, praticidade e excelente localização em Recife, este apartamento é uma ótima opção para morar em Boa Viagem!
+
+CARACTERÍSTICAS DO IMÓVEL:
+• 2 quartos, sendo 1 suíte
+• Armários planejados nos quartos, cozinha e banheiro
+• Ar-condicionado instalado nos dois quartos
+• Varanda aconchegante
+• Apartamento arejado, ventilado e com excelente iluminação natural
+• 1 vaga de garagem rotativa
+
+ESTRUTURA E LAZER DO CONDOMÍNIO:
+• Piscina na cobertura, com vista privilegiada e mini bar
+• Espaço gourmet com churrasqueira
+• Mini market no condomínio
+• Lavanderia OMO no prédio
+
+LOCALIZAÇÃO PRIVILEGIADA:
+Rua Dr. Pedro de Melo Cahú, 201 – Boa Viagem, Recife/PE.
+Uma localização estratégica, próxima a escolas, hotéis, farmácias, serviços e às principais conveniências do bairro.
+• Praia de Boa Viagem: aproximadamente 400 metros
+• Aeroporto Internacional do Recife: aproximadamente 4,5 km`,
+    videos: [
+      "/imoveis/apartamentos-para-alugar/beach-class-residence-santa-maria/22.mp4",
+      "/imoveis/apartamentos-para-alugar/beach-class-residence-santa-maria/23.mp4",
+      "/imoveis/apartamentos-para-alugar/beach-class-residence-santa-maria/24.mp4",
+    ],
+    images: Array.from(
+      { length: 21 },
+      (_, i) => `/imoveis/apartamentos-para-alugar/beach-class-residence-santa-maria/${i + 1}.jpeg`
+    ),
+    amenities: [
+      "1 Suíte",
+      "Armários Planejados",
+      "Ar-condicionado nos Quartos",
+      "Varanda",
+      "Piscina na Cobertura com Mini Bar",
+      "Espaço Gourmet com Churrasqueira",
+      "Mini Market no Condomínio",
+      "Lavanderia OMO",
+      "Água e Gás Inclusos",
+      "400m da Praia de Boa Viagem",
+      "Garagem Rotativa",
+    ],
+    backUrl: "/empreendimentos/imoveis-para-alugar",
+    backLabel: "Voltar para Imóveis para Alugar",
+  },
   {
     id: "ap-condominio-mr-rotterdam",
     title: "Apartamento Mobiliado no Condomínio Mr. Rotterdam",
@@ -329,6 +589,62 @@ Estrutura completa de lazer, bem-estar e conveniência:
     description: `Excelente casa residencial disponível para locação no bairro Maurício de Nassau. Cômodos amplos, 1 suíte, garagem para 2 carros e quintal nos fundos.`,
     images: Array.from({ length: 10 }, (_, i) => `/imoveis/casas-para-venda/casa-moderna-com-quintal/${i + 1}.jpeg`),
     amenities: ["1 Suíte", "Garagem para 2 Carros", "Quintal Amplo", "Cozinha Integrada", "Ótima Localização"],
+    backUrl: "/empreendimentos/imoveis-para-alugar",
+    backLabel: "Voltar para Imóveis para Alugar",
+  },
+  {
+    id: "ap-puerto-balata-boa-viagem",
+    title: "Apartamento no Edifício Puerto Balata (Indisponível)",
+    price: "R$ 10.000 / mês (Incluso água, gás e IPTU)",
+    location: "Avenida Navegantes, Boa Viagem, Recife - PE",
+    type: "aluguel",
+    category: "apartamento",
+    featured: false,
+    coverImage: "/imoveis/apartamentos-para-alugar/puerto-balata/1.jpeg",
+    bedrooms: 2,
+    bathrooms: 2,
+    parking: 1,
+    area: "72m²",
+    description: `EXCLUSIVIDADE EDIFÍCIO PUERTO BALATA
+
+Avenida Navegantes
+Próximo ao Quiosque 13
+A poucos passos do mar
+
+Apartamento no 2º andar | 100% mobiliado | Vista mar em todos os ambientes
+
+72m² muito bem distribuídos
+02 quartos, sendo 01 suíte
+Varanda integrada
+Sala ampla e moderna
+Projeto de iluminação sofisticado
+TV na sala e nos quartos
+Ar-condicionado na sala e nos 02 quartos
+01 vaga de garagem coberta
+
+Diferencial de conforto:
+Camas baú com colchões King Koil — marca americana reconhecida internacionalmente e presente em hotéis 5 estrelas como Nanai e Summerville
+
+Todos os ambientes com vista para o mar — quartos e sala trazendo sensação única de conforto, sofisticação e bem-estar.
+
+Valor da locação: R$ 10.000,00
+Incluso água e gás e IPTU 
+
+Um apartamento moderno, elegante e pronto para morar no melhor da Avenida Navegantes.
+
+[Imóvel Indisponível / Alugado]`,
+    images: Array.from({ length: 19 }, (_, i) => `/imoveis/apartamentos-para-alugar/puerto-balata/${i + 1}.jpeg`),
+    amenities: [
+      "Indisponível / Alugado",
+      "2 Quartos (1 Suíte)",
+      "100% Mobiliado",
+      "Vista Mar em Todos os Ambientes",
+      "Varanda Integrada",
+      "Ar-condicionado na Sala e Quartos",
+      "Colchões King Koil 5 Estrelas",
+      "Água, Gás e IPTU Inclusos",
+      "1 Vaga Coberta",
+    ],
     backUrl: "/empreendimentos/imoveis-para-alugar",
     backLabel: "Voltar para Imóveis para Alugar",
   },

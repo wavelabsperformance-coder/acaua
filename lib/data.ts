@@ -32,7 +32,6 @@ export const siteConfig = {
 // ============================================
 
 export const heroContent = {
-  
   ctaText: "Falar com Especialista",
   ctaSecondary: "Ver Empreendimentos",
 }
@@ -43,23 +42,23 @@ export const heroContent = {
 
 export const aboutContent = {
   shortDescription:
-    "Há mais de 15 anos transformando sonhos em realidade. Somos referência em imóveis de alto padrão, oferecendo um atendimento personalizado e exclusivo para clientes que buscam o melhor em qualidade de vida.",
+    "Com quase 3 anos de história e fundadores e colaboradores com mais de 10 anos de experiência no mercado, oferecemos um atendimento personalizado e exclusivo para quem busca realizar os melhores negócios imobiliários em Recife, Caruaru e Litoral.",
 
-  fullHistory: `A Acauã Imóveis nasceu em 2008 com um propósito claro: redefinir o mercado imobiliário de alto padrão em Pernambuco.
+  fullHistory: `A Acauã Imóveis nasceu do sonho e da união de profissionais com mais de 10 anos de sólida experiência no mercado imobiliário de Pernambuco.
 
-Fundada por profissionais apaixonados pelo setor, nossa empresa se consolidou como referência em imóveis exclusivos, atendendo uma clientela exigente que busca muito mais do que um imóvel — busca um estilo de vida.
+Fundada por especialistas apaixonados pelo setor, nossa empresa tem quase 3 anos de atuação marcados por um crescimento constante e pelo compromisso em conectar pessoas aos imóveis ideais com transparência, segurança e eficiência.
 
-Ao longo de mais de 15 anos de atuação, construímos uma reputação sólida baseada em três pilares fundamentais: excelência no atendimento, conhecimento profundo do mercado e um portfólio cuidadosamente selecionado de propriedades que representam o que há de melhor em arquitetura, localização e qualidade de vida.
+Combinando a energia de uma imobiliária moderna e conectada às tendências atuais com a bagagem e maturidade de mais de uma década de expertise de nossos gestores e corretores, construímos uma atuação forte em Recife, Caruaru e Litoral.
 
-Nossa equipe é formada por especialistas do mercado imobiliário e profissionais preparados para oferecer uma experiência única e personalizada. Cada cliente é tratado de forma individual, com soluções sob medida para suas necessidades e aspirações.
+Nossa reputação é baseada em três pilares fundamentais: excelência no atendimento, conhecimento profundo do mercado local e um portfólio cuidadosamente selecionado de propriedades residenciais e comerciais.
 
-Hoje, a Acauã Imóveis é sinônimo de confiança, sofisticação e resultados. Seja para comprar, vender ou alugar, estamos prontos para conduzir você nessa jornada com toda a segurança e expertise que você merece.`,
+Cada cliente é tratado de forma única, recebendo consultoria sob medida para suas necessidades e aspirações. Seja para comprar, vender ou alugar, a Acauã Imóveis está pronta para conduzir você nessa jornada com toda a tranquilidade que você merece.`,
 
   mission:
     "Proporcionar experiências imobiliárias excepcionais, conectando pessoas a propriedades que refletem seus sonhos e estilo de vida, com excelência, ética e compromisso.",
 
   vision:
-    "Ser a imobiliária mais admirada e respeitada de Pernambuco, reconhecida pela qualidade superior dos serviços e pelo impacto positivo na vida de nossos clientes.",
+    "Ser a imobiliária referência em Recife, Caruaru e Litoral, reconhecida pela qualidade superior dos serviços e pelo impacto positivo na vida de nossos clientes.",
 
   values: [
     "Excelência em cada detalhe",
@@ -177,7 +176,7 @@ export const testimonials = [
 ]
 
 // ============================================
-// CATEGORIAS DE IMÓVEIS (3 PRINCIPAIS ATUALIZADAS)
+// CATEGORIAS DE IMÓVEIS
 // ============================================
 
 export const propertyCategories = [
@@ -222,79 +221,25 @@ export type Property = {
 }
 
 // ============================================
-// IMÓVEIS DE DESTAQUE (HOME E CARROSSEL)
+// IMÓVEIS PARA O CARROSSEL DE ALUGUEL
 // ============================================
 
-export const featuredProperties: Property[] = [
-  // 1. VIVER BEM INDIANÓPOLIS (Venda) -> Direciona para /empreendimentos/imoveis-para-venda?id=ap-viver-bem-indianopolis-908#detalhes
+export const rentalProperties: Property[] = [
   {
-    id: "ap-viver-bem-indianopolis-908",
-    title: "Apartamento no Viver Bem Indianópolis",
-    location: "Indianópolis, Caruaru - PE",
-    price: "Consulte o valor",
-    area: "63,25m²",
-    bedrooms: 3,
+    id: "ap-beach-class-residence-santa-maria",
+    title: "Apartamento no Beach Class Residence Santa Maria",
+    location: "Boa Viagem, Recife - PE",
+    price: "R$ 3.800 / mês",
+    area: "50m²",
+    bedrooms: 2,
     bathrooms: 2,
     parking: 1,
-    description: "Apartamento moderno de 63,25m² com 3 quartos (1 suíte), varanda e lazer completo com piscina semiolímpica.",
-    category: "imoveis-para-venda",
+    description: "Excelente oportunidade de locação em Boa Viagem com 2 quartos (1 suíte), varanda e área de lazer completa.",
+    category: "imoveis-para-alugar",
     featured: true,
-    images: ["/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/1.jpeg"],
-    video: "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/1.mp4",
+    images: ["/imoveis/apartamentos-para-alugar/beach-class-residence-santa-maria/1.jpeg"],
+    video: "/imoveis/apartamentos-para-alugar/beach-class-residence-santa-maria/22.mp4",
   },
-
-  // 2. GRAVATÁ (Venda) -> Direciona para /empreendimentos/imoveis-para-venda?id=casa-monte-castelo-gravata#detalhes
-  {
-    id: "casa-monte-castelo-gravata",
-    title: "Mansão no Condomínio Monte Castelo",
-    location: "Monte Castelo, Gravatá - PE",
-    price: "R$ 2.400.000",
-    area: "1.000m²",
-    bedrooms: 6,
-    bathrooms: 7,
-    parking: 6,
-    description: "Mansão de alto padrão em condomínio fechado com lote anexo de 20x50m.",
-    category: "imoveis-para-venda",
-    featured: true,
-    images: ["/imoveis/casas-para-venda/casa-monte-castelo-gravata/5.jpeg"],
-    video: "/imoveis/casas-para-venda/casa-monte-castelo-gravata/1.mp4",
-  },
-
-  // 3. EDIFÍCIO SANTA MARIA (Venda) -> Direciona para /empreendimentos/imoveis-para-venda?id=ap-edificio-santa-maria-boa-viagem#detalhes
-  {
-    id: "ap-edificio-santa-maria-boa-viagem",
-    title: "Apartamento no Edifício Santa Maria",
-    location: "Boa Viagem, Recife - PE",
-    price: "R$ 2.200.000",
-    area: "180m²",
-    bedrooms: 4,
-    bathrooms: 6,
-    parking: 3,
-    description: "Apartamento amplo com vista definitiva para o mar, 4 suítes e 3 vagas.",
-    category: "imoveis-para-venda",
-    featured: true,
-    images: ["/imoveis/apartamentos-para-venda/edificio-santa-maria/1.jpeg"],
-    video: null,
-  },
-
-  // 4. THE HOUSE CLUB (Venda) -> Direciona para /empreendimentos/imoveis-para-venda?id=casa-the-house-club-caruaru#detalhes
-  {
-    id: "casa-the-house-club-caruaru",
-    title: "Casa Fechada no The House Club",
-    location: "Luiz Gonzaga, Caruaru - PE",
-    price: "R$ 870.000",
-    area: "123m²",
-    bedrooms: 3,
-    bathrooms: 4,
-    parking: 2,
-    description: "Casa em condomínio fechado com 3 suítes, espaço gourmet e lazer completo.",
-    category: "imoveis-para-venda",
-    featured: true,
-    images: ["/imoveis/casas-para-venda/casa-the-house-club/1.jpeg"],
-    video: null,
-  },
-
-  // 5. EDIFÍCIO TEREZA RODRIGUES (Locação) -> Direciona para /empreendimentos/imoveis-para-alugar?id=ap-edificio-tereza-rodrigues#detalhes
   {
     id: "ap-edificio-tereza-rodrigues",
     title: "Apartamento Edifício Tereza Rodrigues",
@@ -310,42 +255,6 @@ export const featuredProperties: Property[] = [
     images: ["/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/1.jpeg"],
     video: null,
   },
-
-  // 6. VOG VILLE NORTE (Venda) -> Direciona para /empreendimentos/imoveis-para-venda?id=ap-vog-ville-norte#detalhes
-  {
-    id: "ap-vog-ville-norte",
-    title: "Apartamento no Vog Ville Norte",
-    location: "Caruaru - PE",
-    price: "R$ 290.000",
-    area: "52m²",
-    bedrooms: 2,
-    bathrooms: 2,
-    parking: 1,
-    description: "Apartamento pronto para morar com móveis planejados e lazer completo.",
-    category: "imoveis-para-venda",
-    featured: true,
-    images: ["/imoveis/apartamentos-para-venda/edificio-vog-ville-norte/3.jpeg"],
-    video: null,
-  },
-
-  // 7. CASA MODERNA COM QUINTAL (Venda) -> Direciona para /empreendimentos/imoveis-para-venda?id=casa-moderna-com-quintal#detalhes
-  {
-    id: "casa-moderna-com-quintal",
-    title: "Casa Moderna com Amplo Quintal",
-    location: "Caruaru - PE",
-    price: "Consulte o valor",
-    area: "56m²",
-    bedrooms: 2,
-    bathrooms: 2,
-    parking: 1,
-    description: "Imóvel funcional com quintal de 5x7m com potencial de expansão.",
-    category: "imoveis-para-venda",
-    featured: true,
-    images: ["/imoveis/casas-para-venda/casa-moderna-com-quintal/1.jpeg"],
-    video: null,
-  },
-
-  // 8. EDIFÍCIO JARDIM DOS ALECRINS (Locação) -> Direciona para /empreendimentos/imoveis-para-alugar?id=ap-edificio-jardim-dos-alecrins#detalhes
   {
     id: "ap-edificio-jardim-dos-alecrins",
     title: "Mobiliado no Jardim dos Alecrins",
@@ -361,8 +270,6 @@ export const featuredProperties: Property[] = [
     images: ["/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/1.jpeg"],
     video: null,
   },
-
-  // 9. FLAT STUDIO ALTO PADRÃO (Locação) -> Direciona para /empreendimentos/imoveis-para-alugar?id=ap-studio-alto-padrao-shopping#detalhes
   {
     id: "ap-studio-alto-padrao-shopping",
     title: "Studio de Alto Padrão Decorado",
@@ -378,8 +285,6 @@ export const featuredProperties: Property[] = [
     images: ["/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/1.jpeg"],
     video: "/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/19.mp4",
   },
-
-  // 10. EDIFÍCIO JOÃO SOARES (Locação) -> Direciona para /empreendimentos/imoveis-para-alugar?id=ap-edificio-joao-soares#detalhes
   {
     id: "ap-edificio-joao-soares",
     title: "Apartamento no Edifício João Soares",
@@ -395,8 +300,6 @@ export const featuredProperties: Property[] = [
     images: ["/imoveis/apartamentos-para-alugar/edificio-joao-soares/1.jpeg"],
     video: null,
   },
-
-  // 11. CAMINHO DAS AROEIRAS (Locação) -> Direciona para /empreendimentos/imoveis-para-alugar?id=ap-caminho-das-aroeiras#detalhes
   {
     id: "ap-caminho-das-aroeiras",
     title: "Condomínio Caminho das Aroeiras",
@@ -415,16 +318,155 @@ export const featuredProperties: Property[] = [
 ]
 
 // ============================================
-// EXPORTAÇÕES PARA HOME (FILTROS ÚNICOS)
+// IMÓVEIS PARA O CARROSSEL DE VENDA
 // ============================================
 
-export const rentalProperties: Property[] = featuredProperties.filter((p) =>
-  p.category.includes("alugar")
-)
+export const saleProperties: Property[] = [
+  {
+    id: "ap-edificio-ilha-de-ponza-casa-forte",
+    title: "Apartamento no Edifício Ilha de Ponza",
+    location: "Casa Forte, Recife - PE",
+    price: "R$ 600.000",
+    area: "103m²",
+    bedrooms: 4,
+    bathrooms: 2,
+    parking: 1,
+    description: "Apartamento com planta generosa, 4 quartos e varanda ventilada ao lado da Praça de Casa Forte.",
+    category: "imoveis-para-venda",
+    featured: true,
+    images: ["/imoveis/apartamentos-para-venda/edificio-ilha-de-ponza/1.jpeg"],
+    video: null,
+  },
+  {
+    id: "ap-viver-bem-indianopolis-908",
+    title: "Apartamento no Viver Bem Indianópolis",
+    location: "Indianópolis, Caruaru - PE",
+    price: "Consulte o valor",
+    area: "63,25m²",
+    bedrooms: 3,
+    bathrooms: 2,
+    parking: 1,
+    description: "Apartamento moderno de 63,25m² com 3 quartos (1 suíte), varanda e lazer completo com piscina semiolímpica.",
+    category: "imoveis-para-venda",
+    featured: true,
+    images: ["/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/1.jpeg"],
+    video: "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/1.mp4",
+  },
+  {
+    id: "casa-monte-castelo-gravata",
+    title: "Mansão no Condomínio Monte Castelo",
+    location: "Monte Castelo, Gravatá - PE",
+    price: "R$ 2.400.000",
+    area: "1.000m²",
+    bedrooms: 6,
+    bathrooms: 7,
+    parking: 6,
+    description: "Mansão de alto padrão em condomínio fechado com lote anexo de 20x50m.",
+    category: "imoveis-para-venda",
+    featured: true,
+    images: ["/imoveis/casas-para-venda/casa-monte-castelo-gravata/5.jpeg"],
+    video: "/imoveis/casas-para-venda/casa-monte-castelo-gravata/1.mp4",
+  },
+  {
+    id: "ap-edificio-santa-maria-boa-viagem",
+    title: "Apartamento no Edifício Santa Maria",
+    location: "Boa Viagem, Recife - PE",
+    price: "R$ 2.200.000",
+    area: "180m²",
+    bedrooms: 4,
+    bathrooms: 6,
+    parking: 3,
+    description: "Apartamento amplo com vista definitiva para o mar, 4 suítes e 3 vagas.",
+    category: "imoveis-para-venda",
+    featured: true,
+    images: ["/imoveis/apartamentos-para-venda/edificio-santa-maria/1.jpeg"],
+    video: null,
+  },
+  {
+    id: "casa-the-house-club-caruaru",
+    title: "Casa Fechada no The House Club",
+    location: "Luiz Gonzaga, Caruaru - PE",
+    price: "R$ 870.000",
+    area: "123m²",
+    bedrooms: 3,
+    bathrooms: 4,
+    parking: 2,
+    description: "Casa em condomínio fechado com 3 suítes, espaço gourmet e lazer completo.",
+    category: "imoveis-para-venda",
+    featured: true,
+    images: ["/imoveis/casas-para-venda/casa-the-house-club/1.jpeg"],
+    video: null,
+  },
+  {
+    id: "ap-beach-class-convention-by-mai",
+    title: "Apartamento no Beach Class Convention by MAI",
+    location: "Boa Viagem, Recife - PE",
+    price: "R$ 380.000",
+    area: "Studio / Flat",
+    bedrooms: 1,
+    bathrooms: 1,
+    parking: 1,
+    description: "Flat em andar alto, escriturado e ideal para investimento ou moradia em localização estratégica de Boa Viagem.",
+    category: "imoveis-para-venda",
+    featured: true,
+    images: ["/imoveis/apartamentos-para-venda/beach-class-convention-by-mai/1.jpeg"],
+    video: null,
+  },
+  {
+    id: "ap-vog-ville-norte-terreo",
+    title: "Apartamento Térreo no Vog Ville Norte",
+    location: "Caruaru - PE",
+    price: "R$ 310.000",
+    area: "52m²",
+    bedrooms: 2,
+    bathrooms: 2,
+    parking: 1,
+    description: "Unidade térrea de esquina estilo bangalô com vista panorâmica para todo o condomínio e lazer de clube.",
+    category: "imoveis-para-venda",
+    featured: true,
+    images: ["/imoveis/apartamentos-para-venda/vog-ville-norte-terreo/1.jpeg"],
+    video: null,
+  },
+  {
+    id: "ap-vog-ville-norte",
+    title: "Apartamento no Vog Ville Norte",
+    location: "Caruaru - PE",
+    price: "R$ 290.000",
+    area: "52m²",
+    bedrooms: 2,
+    bathrooms: 2,
+    parking: 1,
+    description: "Apartamento pronto para morar com móveis planejados e lazer completo.",
+    category: "imoveis-para-venda",
+    featured: true,
+    images: ["/imoveis/apartamentos-para-venda/edificio-vog-ville-norte/3.jpeg"],
+    video: null,
+  },
+  {
+    id: "casa-moderna-com-quintal",
+    title: "Casa Moderna com Amplo Quintal",
+    location: "Caruaru - PE",
+    price: "Consulte o valor",
+    area: "56m²",
+    bedrooms: 2,
+    bathrooms: 2,
+    parking: 1,
+    description: "Imóvel funcional com quintal de 5x7m com potencial de expansão.",
+    category: "imoveis-para-venda",
+    featured: true,
+    images: ["/imoveis/casas-para-venda/casa-moderna-com-quintal/1.jpeg"],
+    video: null,
+  },
+]
 
-export const saleProperties: Property[] = featuredProperties.filter((p) =>
-  p.category.includes("venda")
-)
+// ============================================
+// COMBINAÇÃO DE TODOS OS DESTAQUES
+// ============================================
+
+export const featuredProperties: Property[] = [
+  ...rentalProperties,
+  ...saleProperties,
+]
 
 // ============================================
 // TIPO DE DADOS DOS CORRETORES
@@ -442,7 +484,7 @@ export type Broker = {
 }
 
 // ============================================
-// IMAGEM DA EQUIPE (HORIZONTAL)
+// IMAGEM DA EQUIPE
 // ============================================
 
 export const teamContent = {
@@ -458,6 +500,7 @@ export const teamContent = {
 // ============================================
 
 export const brokers: Broker[] = [
+  // 1. Gleydson Tabosa
   {
     id: "gleydson-tabosa",
     name: "Gleydson Tabosa",
@@ -465,49 +508,23 @@ export const brokers: Broker[] = [
     role: "Gestor e Proprietário",
     bio: "Gestor e Proprietário da Acauã Imóveis, participa da condução da empresa e acompanha de perto a busca por um atendimento de qualidade e uma experiência positiva para cada cliente.",
     image: "/corretores/gleydson-tabosa.jpeg",
-    whatsapp: "5581991950550",
-    instagram: "https://instagram.com/acauaimoveis",
+    whatsapp: "5581995477776",
+    instagram: "https://instagram.com/Tabosinha",
   },
+
+  // 2. Rafael Nunes
   {
     id: "rafael-nunes",
     name: "Rafael Nunes",
-    creci: "CRECI F 16731",
+    creci: "CRECI F 18559",
     role: "Gestor e Proprietário",
     bio: "Gestor e Proprietário da Acauã Imóveis, atua na gestão da empresa e no relacionamento com clientes, contribuindo para uma experiência imobiliária baseada em confiança, atenção e transparência.",
     image: "/corretores/rafael-nunes.jpeg",
-    whatsapp: "5581991950550",
-    instagram: "https://instagram.com/acauaimoveis",
+    whatsapp: "5581997666571",
+    instagram: "https://instagram.com/rafaelnunes.imoveis",
   },
-  {
-    id: "joyce-monique",
-    name: "Joyce Monique",
-    creci: "CRECI E 2009013813",
-    role: "Corretora de Imóveis",
-    bio: "Profissional dedicada ao atendimento imobiliário da Acauã Imóveis, oferecendo assessoria completa e personalizada para conectar você ao imóvel ideal com segurança e transparência.",
-    image: "/corretores/joyce-monique.jpeg",
-    whatsapp: "5581991950550",
-    instagram: "https://instagram.com/acauaimoveis",
-  },
-  {
-    id: "guilherme-melo",
-    name: "Guilherme de Melo Silva",
-    creci: "CRECI Est : 2009013863",
-    role: "Corretor de Imóveis",
-    bio: "Profissional dedicado da Acauã Imóveis, prestando consultoria especializada e atendimento focado em identificar as melhores oportunidades de investimento e moradia.",
-    image: "/corretores/guilherme-melo.jpeg",
-    whatsapp: "5581991950550",
-    instagram: "https://instagram.com/acauaimoveis",
-  },
-  {
-    id: "weslley-leite",
-    name: "Weslley Leite",
-    creci: "CRECI F 22939",
-    role: "Corretor de Imóveis",
-    bio: "Atua no atendimento aos clientes da Acauã Imóveis, buscando compreender cada necessidade e apresentar oportunidades alinhadas ao perfil de cada cliente, com atenção e transparência.",
-    image: "/corretores/weslley-leite.jpeg",
-    whatsapp: "5581997780319",
-    instagram: "https://instagram.com/acauaimoveis",
-  },
+
+  // 3. Larissa Gonçalves
   {
     id: "larissa-goncalves",
     name: "Larissa Gonçalves",
@@ -516,28 +533,22 @@ export const brokers: Broker[] = [
     bio: "Profissional dedicada ao atendimento imobiliário, acompanhando seus clientes com atenção em cada etapa e buscando tornar a escolha do imóvel mais simples, segura e tranquila.",
     image: "/corretores/larissa-goncalves.jpeg",
     whatsapp: "5581985783476",
-    instagram: "https://instagram.com/acauaimoveis",
+    instagram: "https://instagram.com/larissag.corretora",
   },
+
+  // 4. Janaína Souza
   {
-    id: "maria-nunes",
-    name: "Maria Nunes",
-    creci: "CRECI F 20198",
+    id: "janaina-cabral",
+    name: "Janaína Souza",
+    creci: "CRECI F 19502",
     role: "Corretora de Imóveis",
-    bio: "Atua no atendimento imobiliário com uma abordagem próxima e cuidadosa, ajudando clientes a encontrar oportunidades que estejam de acordo com seus objetivos e expectativas.",
-    image: "/corretores/maria-nunes.jpeg",
-    whatsapp: "5581998495367",
-    instagram: "https://instagram.com/acauaimoveis",
+    bio: "Atua junto aos clientes da Acauã Imóveis oferecendo um atendimento atencioso e personalizado, buscando facilitar cada etapa na escolha do imóvel ideal.",
+    image: "/corretores/janaina-cabral.jpeg",
+    whatsapp: "5581981889893",
+    instagram: "https://instagram.com/janas.corretora",
   },
-  {
-    id: "welston-cristoff",
-    name: "Welston Cristoff",
-    creci: "CRECI F 14974",
-    role: "Corretor de Imóveis",
-    bio: "Profissional da Acauã Imóveis que valoriza o relacionamento com seus clientes, oferecendo acompanhamento próximo e transparente durante o processo de compra, venda ou locação.",
-    image: "/corretores/welston-cristoff.jpeg",
-    whatsapp: "5581992535886",
-    instagram: "https://instagram.com/acauaimoveis",
-  },
+
+  // 5. Thays Andrade
   {
     id: "thays-andrade",
     name: "Thays Andrade",
@@ -546,27 +557,79 @@ export const brokers: Broker[] = [
     bio: "Atua no atendimento aos clientes da Acauã Imóveis, buscando entender suas preferências e apresentar opções de imóveis de forma clara, cuidadosa e personalizada.",
     image: "/corretores/thays-andrade.jpeg",
     whatsapp: "5581992361754",
-    instagram: "https://instagram.com/acauaimoveis",
+    instagram: "https://instagram.com/thaysimoveis",
   },
+
+  // 6. Welston Cristoff
+  {
+    id: "welston-cristoff",
+    name: "Welston Cristoff",
+    creci: "CRECI F 14974",
+    role: "Corretor de Imóveis",
+    bio: "Profissional da Acauã Imóveis que valoriza o relacionamento com seus clientes, oferecendo acompanhamento próximo e transparente durante o processo de compra, venda ou locação.",
+    image: "/corretores/welston-cristoff.jpeg",
+    whatsapp: "5581992535886",
+    instagram: "https://instagram.com/wellcristoff",
+  },
+
+  // 7. George Luis
   {
     id: "george-batista",
-    name: "George Batista",
+    name: "George Luis",
     creci: "CRECI F 21365",
     role: "Corretor de Imóveis",
     bio: "Profissional dedicado ao mercado imobiliário, com foco em compreender o que cada cliente procura e oferecer um atendimento próximo durante toda a jornada.",
     image: "/corretores/george-batista.jpeg",
     whatsapp: "5581992240295",
+    instagram: "https://instagram.com/Georgeluisimoveiss",
+  },
+
+  // 8. Wesley Tabosa
+  {
+    id: "weslley-leite",
+    name: "Wesley Tabosa",
+    creci: "CRECI F 22939",
+    role: "Corretor de Imóveis",
+    bio: "Atua no atendimento aos clientes da Acauã Imóveis, buscando compreender cada necessidade e apresentar oportunidades alinhadas ao perfil de cada cliente, com atenção e transparência.",
+    image: "/corretores/weslley-leite.jpeg",
+    whatsapp: "5581997780319",
     instagram: "https://instagram.com/acauaimoveis",
   },
+
+  // 9. Vitória Ferro (Substitui Maria)
   {
-    id: "janaina-cabral",
-    name: "Janaína Cabral",
-    creci: "CRECI F 19502",
+    id: "vitoria-ferro",
+    name: "Vitória Ferro",
+    creci: "CRECI F 20198",
     role: "Corretora de Imóveis",
-    bio: "Atua junto aos clientes da Acauã Imóveis oferecendo um atendimento atencioso e personalizado, buscando facilitar cada etapa na escolha do imóvel ideal.",
-    image: "/corretores/janaina-cabral.jpeg",
-    whatsapp: "5581981889803",
-    instagram: "https://instagram.com/acauaimoveis",
+    bio: "Atua no atendimento imobiliário com uma abordagem próxima e cuidadosa, ajudando clientes a encontrar oportunidades que estejam de acordo com seus objetivos e expectativas.",
+    image: "/corretores/vitoria-ferro.jpeg",
+    whatsapp: "5581998495367",
+    instagram: "https://instagram.com/vitoriaferro.corretora",
+  },
+
+  // 10. Joyce Monique
+  {
+    id: "joyce-monique",
+    name: "Joyce Monique",
+    creci: "CRECI E 2009013813",
+    role: "Corretora de Imóveis",
+    bio: "Profissional dedicada ao atendimento imobiliário da Acauã Imóveis, oferecendo assessoria completa e personalizada para conectar você ao imóvel ideal com segurança e transparência.",
+    image: "/corretores/joyce-monique.jpeg",
+    whatsapp: "5581973324605",
+    instagram: "https://instagram.com/joycem_consultora",
+  },
+
+  // 11. Guilherme de Melo Silva
+  {
+    id: "guilherme-melo",
+    name: "Guilherme de Melo Silva",
+    creci: "CRECI E 2009013863",
+    role: "Corretor de Imóveis",
+    bio: "Profissional dedicado da Acauã Imóveis, prestando consultoria especializada e atendimento focado em identificar as melhores oportunidades de investimento e moradia.",
+    image: "/corretores/guilherme-melo.png",
+    whatsapp: "5581992544454",
+    instagram: "https://instagram.com/corretor.guilherme.melo",
   },
 ]
 
