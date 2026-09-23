@@ -371,7 +371,7 @@ export const saleProperties: Property[] = [
     id: "ap-edificio-santa-maria-boa-viagem",
     title: "Apartamento no Edifício Santa Maria",
     location: "Boa Viagem, Recife - PE",
-    price: "R$ 2.200.000",
+    price: "R$ 1.980.000",
     area: "180m²",
     bedrooms: 4,
     bathrooms: 6,
