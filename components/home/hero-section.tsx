@@ -20,7 +20,7 @@ export function HeroSection() {
 
         {/* Imagem para Desktop / Notebooks */}
         <img
-          src="/images/hero/capa-acaua.png"
+          src="/capa-acaua.png"
           alt="Acauã Imóveis Desktop"
           className="hidden md:block w-full h-full object-cover object-center"
         />
@@ -77,9 +77,7 @@ export function HeroSection() {
         className="absolute bottom-10 left-1/2 -translate-x-1/2"
       >
         <div className="flex flex-col items-center gap-3 text-white/60">
-          <span className="text-[10px] uppercase tracking-[0.3em] font-medium">
-            Explorar
-          </span>
+         
 
           <div className="w-px h-14 bg-gradient-to-b from-white/60 to-transparent" />
         </div>
