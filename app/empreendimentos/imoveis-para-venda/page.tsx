@@ -11,24 +11,20 @@ import {
   MapPin,
   ChevronLeft,
   ChevronRight,
+  ChevronDown,
   Play,
   Home,
-  Building2,
   Building,
-  LayoutGrid,
+  Filter,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { saleProperties } from "@/lib/data"
 import { FeaturedCarousel } from "@/components/featured-carousel"
 
-// =========================================================================
-// IMÓVEIS PARA VENDA (CASAS E APARTAMENTOS COM ATRIBUTO 'type')
-// =========================================================================
-
 export interface ImovelVenda {
   id: string
+  tipo: "casa" | "apartamento"
   title: string
-  type: "casa" | "apartamento"
   price: string
   location: string
   coverImage: string
@@ -37,17 +33,147 @@ export interface ImovelVenda {
   parking: number
   area: string
   description: string
-  videos: string[]
+  videos?: string[]
   images: string[]
   amenities: string[]
 }
 
+// Função para converter strings de preço (ex: "R$ 900.000") em números
+function parsePreco(priceStr: string): number {
+  if (!priceStr || priceStr.toLowerCase().includes("consulte")) return 0
+  const cleanStr = priceStr.replace(/[^\d]/g, "")
+  return cleanStr ? parseInt(cleanStr, 10) : 0
+}
+
 const imoveisVenda: ImovelVenda[] = [
-  // 1. EDIFÍCIO ILHA DE PONZA - CASA FORTE
+  // 1. CASA GREEN GARDEN RESIDENCE
+  {
+    id: "casa-condominio-green-garden-residence",
+    tipo: "casa",
+    title: "Casa no Condomínio Green Garden Residence",
+    price: "R$ 900.000",
+    location: "Caruaru - PE",
+    coverImage:
+      "/imoveis/casas-para-venda/casa-green-garden-residence/1.jpeg",
+    bedrooms: 3,
+    bathrooms: 3,
+    parking: 4,
+    area: "115m²",
+    description: `CASA À VENDA NO CONDOMÍNIO GREEN GARDEN RESIDENCE
+
+Excelente oportunidade para morar com conforto, segurança 24 horas e infraestrutura completa em condomínio fechado.
+
+DESCRIÇÃO DO IMÓVEL:
+• Área construída de 115 m²
+• Garagem para 4 carros
+• 3 dormitórios, sendo 2 suítes
+• Banheiro social
+• Sala ampla para ambientes de estar e jantar
+• Cozinha tipo americana
+• Escada de acesso ao 1º andar em madeira com estilo rústico
+• Varanda
+• Quintal
+
+Condomínio com portaria e segurança 24h e estrutura completa de lazer.
+
+VALOR DE VENDA: R$ 900.000,00`,
+    videos: [],
+    images: Array.from(
+      { length: 16 },
+      (_, i) =>
+        `/imoveis/casas-para-venda/casa-green-garden-residence/${i + 1}.jpeg`
+    ),
+    amenities: [
+      "2 Suítes",
+      "Garagem para 4 Carros",
+      "Cozinha Americana",
+      "Escada Rústica em Madeira",
+      "Varanda e Quintal",
+      "Portaria e Segurança 24h",
+      "Infraestrutura Completa de Condomínio",
+    ],
+  },
+
+  // 2. CASA NO BAIRRO MAURÍCIO DE NASSAU
+  {
+    id: "casa-mauricio-de-nassau-acqua-home-clube",
+    tipo: "casa",
+    title: "Casa de Alto Padrão no Bairro Maurício de Nassau",
+    price: "R$ 1.500.000",
+    location: "Maurício de Nassau, Caruaru - PE",
+    coverImage:
+      "/imoveis/casas-para-venda/casa-mauricio-de-nassau-acqua/1.jpeg",
+    bedrooms: 8,
+    bathrooms: 6,
+    parking: 4,
+    area: "520m²",
+    description: `CASA À VENDA NO BAIRRO MAURÍCIO DE NASSAU
+
+Ao lado do Edifício Acqua Home Clube!
+
+Uma residência fantástica com excelente espaço interno e área construída de 520 m² em um terreno de 12x27m no coração do Bairro Maurício de Nassau.`,
+    videos: [],
+    images: Array.from(
+      { length: 20 },
+      (_, i) =>
+        `/imoveis/casas-para-venda/casa-mauricio-de-nassau-acqua/${i + 1}.jpeg`
+    ),
+    amenities: [
+      "3 Suítes Master com Hidromassagem",
+      "520m² de Área Construída",
+      "Garagem para 4 Veículos",
+      "Escritório",
+      "Salão para Área Gourmet",
+      "Cozinha de Apoio + Despensa",
+      "Jardim de Inverno",
+      "Quintal",
+      "Varanda",
+      "Ao Lado do Acqua Home Clube",
+    ],
+  },
+
+  // 3. EDIFÍCIO CELY MIRANDA
+  {
+    id: "ap-edificio-cely-miranda-universitario",
+    tipo: "apartamento",
+    title: "Apartamento no Edifício Cely Miranda",
+    price: "R$ 1.750.000",
+    location: "Universitário, Caruaru - PE",
+    coverImage:
+      "/imoveis/apartamentos-para-venda/edificio-cely-miranda/1.jpeg",
+    bedrooms: 4,
+    bathrooms: 4,
+    parking: 3,
+    area: "172m²",
+    description: `UM DOS APARTAMENTOS MAIS EXCLUSIVOS DE CARUARU
+
+EDIFÍCIO CELY MIRANDA | UNIVERSITÁRIO`,
+    videos: [],
+    images: Array.from(
+      { length: 40 },
+      (_, i) =>
+        `/imoveis/apartamentos-para-venda/edificio-cely-miranda/${i + 1}.jpeg`
+    ),
+    amenities: [
+      "4 Suítes Privativas",
+      "100% Reformado",
+      "Porteira Fechada",
+      "3 Vagas Cobertas",
+      "Piscina com Raia",
+      "Academia / Fitness",
+      "Espaço Gourmet",
+      "Salão de Festas",
+      "Brinquedoteca",
+      "Portaria 24h",
+      "Escriturado e Financiável",
+    ],
+  },
+
+  // 4. EDIFÍCIO ILHA DE PONZA
   {
     id: "ap-edificio-ilha-de-ponza-casa-forte",
+    tipo: "apartamento",
     title: "Apartamento no Edifício Ilha de Ponza",
-    type: "apartamento",
     price: "R$ 600.000",
     location: "Casa Forte, Recife - PE",
     coverImage:
@@ -56,45 +182,7 @@ const imoveisVenda: ImovelVenda[] = [
     bathrooms: 2,
     parking: 1,
     area: "103m²",
-    description: `APARTAMENTO À VENDA NO CORAÇÃO DE CASA FORTE!
-
-EDIFÍCIO ILHA DE PONZA | AO LADO DA PRAÇA DE CASA FORTE
-
-Se você procura espaço, ventilação, localização privileged e praticidade, esta é uma excelente oportunidade para morar em uma das regiões mais tradicionais e valorizadas da Zona Norte do Recife.
-
-Localização privilegiada
-Ao lado da Praça de Casa Forte, com fácil acesso a supermercados, escolas, restaurantes, farmácias, serviços e toda a conveniência que o bairro oferece.
-
-SOBRE O APARTAMENTO
-• 103 m² de área
-• 4 quartos
-• Sala ampla
-• Cozinha
-• 1 banheiro social
-• Área de serviço
-• 1 banheiro de serviço
-• Varanda super ventilada
-• Posição frente Sul
-• Vista privilegiada
-• 1 vaga de garagem coberta
-
-Um apartamento com planta generosa e ambientes amplos, ideal para quem não abre mão de espaço e conforto para toda a família.
-
-SOBRE O EDIFÍCIO
-O Edifício Ilha de Ponza está localizado na Rua Edson Álvares, em um dos pontos mais desejados de Casa Forte.
-
-Estrutura e Lazer do Condomínio:
-• Piscina
-• Salão de festas
-• Playground
-• Guarita e sistema de segurança
-• Elevadores
-• Área externa e pilotis
-• Poço artesiano
-• Bicicletário
-• Portão eletrônico
-
-Pode ser financiado!`,
+    description: `APARTAMENTO À VENDA NO CORAÇÃO DE CASA FORTE!`,
     videos: [],
     images: Array.from(
       { length: 27 },
@@ -116,11 +204,11 @@ Pode ser financiado!`,
     ],
   },
 
-  // 2. VIVER BEM INDIANÓPOLIS - TORRE 1 APTO 908
+  // 5. VIVER BEM INDIANÓPOLIS - AP 908
   {
     id: "ap-viver-bem-indianopolis-908",
+    tipo: "apartamento",
     title: "Apartamento no Viver Bem Indianópolis",
-    type: "apartamento",
     price: "Consulte o valor",
     location: "Indianópolis, Caruaru - PE",
     coverImage:
@@ -129,21 +217,7 @@ Pode ser financiado!`,
     bathrooms: 2,
     parking: 1,
     area: "63,25m²",
-    description: `Excelente oportunidade de compra no condomínio Viver Bem Indianópolis. Apartamento de 63,25 m², localizado na Torre 1 – apartamento 908, com uma planta moderna, funcional e bem distribuída.
-
-O imóvel conta com 3 quartos, sendo 1 suíte, sala para 2 ambientes, varanda, banheiro social e cozinha integrada à área de serviço, proporcionando praticidade e conforto para o dia a dia.
-
-Estrutura completa de lazer, bem-estar e conveniência:
-• Piscina com raia semiolímpica e piscina infantil
-• Espaço churrasco e Espaço Gourmet
-• Salão de festas
-• Academia completa e equipada
-• Sala multifuncional
-• Coworking estruturado
-• Espaço Box e bicicletário
-• Ponto de carregamento para veículo elétrico
-
-Um empreendimento pensado para oferecer qualidade de vida, praticidade e lazer completo, ideal para quem busca morar bem em um apartamento moderno e funcional.`,
+    description: `Excelente apartamento de 63,25 m², localizado na Torre 1 – apartamento 908, com uma planta moderna, funcional e bem distribuída.`,
     videos: [
       "/imoveis/apartamentos-para-venda/edificio-viver-bem-indianopolis/1.mp4",
     ],
@@ -155,22 +229,22 @@ Um empreendimento pensado para oferecer qualidade de vida, praticidade e lazer c
     amenities: [
       "1 Suíte",
       "Varanda",
-      "Planta de 63,25m² (Torre 1 - Apto 908)",
-      "Piscina com Raia Semiolímpica e Infantil",
-      "Espaço Churrasco e Gourmet",
+      "Piscina com Raia Semiolímpica",
+      "Piscina Infantil",
       "Academia Equipada",
+      "Espaço Gourmet e Churrasqueira",
       "Coworking",
-      "Espaço Box e Bicicletário",
       "Ponto para Veículo Elétrico",
+      "Bicicletário",
       "Salão de Festas",
     ],
   },
 
-  // 3. MANSÃO NO CONDOMÍNIO MONTE CASTELO
+  // 6. MANSÃO MONTE CASTELO - GRAVATÁ
   {
     id: "casa-monte-castelo-gravata",
+    tipo: "casa",
     title: "Mansão de Alto Padrão no Condomínio Monte Castelo",
-    type: "casa",
     price: "R$ 2.400.000",
     location: "Condomínio Monte Castelo, Gravatá - PE",
     coverImage:
@@ -178,26 +252,8 @@ Um empreendimento pensado para oferecer qualidade de vida, praticidade e lazer c
     bedrooms: 6,
     bathrooms: 7,
     parking: 6,
-    area: "1.000m² terreno (com lote anexo)",
-    description: `Exclusiva mansão de alto padrão no prestigiado Condomínio Monte Castelo em Gravatá - PE. Imóvel e lote totalmente escriturados.
-
-Projeto de arquitetura moderna integrando madeira nobre, vidro e concreto aparente, com pé-direito duplo e teto integralmente revestido em madeira.
-
-Configuração do imóvel:
-• 6 quartos amplos, todos configurados como suítes privativas
-• Sala de estar ampla e moderna mobiliada com sofá de couro de alta qualidade
-• Varanda panorâmica com 2 balanços modernos e vista deslumbrante para as colinas
-• Cozinha 100% equipada com eletrodomésticos e móveis planejados
-• Sala de jantar com mesa maciça em madeira para 12 lugares
-• Área gourmet privativa com churrasqueira e chuveirão
-• Projeto paisagístico com ampla jardinagem integrada
-• Garagem com capacidade para até 6 veículos
-
-Lote Adicional Incluso:
-• Terreno anexo medindo 20 x 50 metros (1.000 m²), possibilitando a construção de uma segunda casa, quadras ou uma ampla área de lazer com piscina privativa.
-
-Contato direto com o corretor responsável:
-Gleydson Tabosa - (81) 99547-7776`,
+    area: "1.000m² terreno",
+    description: `Exclusiva mansão de alto padrão no prestigiado Condomínio Monte Castelo em Gravatá - PE. Imóvel e lote totalmente escriturados.`,
     videos: [
       "/imoveis/casas-para-venda/casa-monte-castelo-gravata/1.mp4",
     ],
@@ -211,23 +267,19 @@ Gleydson Tabosa - (81) 99547-7776`,
     ],
     amenities: [
       "6 Suítes Privativas",
-      "Lote Adicional 20x50m Incluso",
-      "Casa e Lote Escriturados",
-      "Pé-direito Alto Revestido em Madeira",
+      "Lote Anexo 20x50m Incluso",
       "Varanda Panorâmica",
-      "Espaço Gourmet com Churrasqueira",
-      "Cozinha Completa Equipada",
+      "Espaço Gourmet",
       "Garagem para 6 Veículos",
-      "Condomínio Fechado de Alto Padrão",
-      "Segurança e Portaria 24h",
+      "Portaria 24h",
     ],
   },
 
-  // 4. CASA MODERNA COM QUINTAL
+  // 7. CASA MODERNA COM QUINTAL
   {
     id: "casa-moderna-com-quintal",
+    tipo: "casa",
     title: "Casa Moderna com Quintal e Excelente Padrão",
-    type: "casa",
     price: "Consulte o valor",
     location: "Caruaru - PE",
     coverImage:
@@ -236,20 +288,7 @@ Gleydson Tabosa - (81) 99547-7776`,
     bathrooms: 2,
     parking: 1,
     area: "56m²",
-    description: `Excelente oportunidade de casa à venda com ótimo padrão de acabamento e aproveitamento inteligente de espaços. 
-
-Imóvel construído em terreno medindo 7 x 22 metros, totalizando 154 m² de terreno e 56 m² de área construída coberta, oferecendo conforto, funcionalidade e grande potencial de ampliação.
-
-Configuração do imóvel:
-• Área frontal de 5 x 7 metros com garagem para 1 carro
-• Sala de estar e jantar integradas, proporcionando amplitude e aconchego
-• Cozinha planejada com móveis sob medida e bancada em mármore
-• 2 quartos bem ventilados (sendo 1 suíte)
-• Banheiros completos com bancadas em mármore, móveis planejados e projeto de luminárias
-• Quintal amplo nos fundos medindo 5 x 7 metros, com estrutura e espaço para construção de um terceiro quarto ou área de lazer privativa
-
-Imóvel ideal para quem busca modernidade, excelente distribuição de cômodos e possibilidade futura de expansão.`,
-    videos: [],
+    description: `Excelente oportunidade de casa à venda com ótimo padrão de acabamento e quintal amplo nos fundos de 5x7m.`,
     images: Array.from(
       { length: 10 },
       (_, i) =>
@@ -257,21 +296,18 @@ Imóvel ideal para quem busca modernidade, excelente distribuição de cômodos 
     ),
     amenities: [
       "1 Suíte",
-      "Cozinha Planejada com Mármore",
-      "Móveis Planejados nos Banheiros",
-      "Salas de Estar e Jantar Integradas",
+      "Cozinha Planejada",
       "Quintal Amplo (5x7m)",
-      "Espaço para 3º Quarto",
-      "Área Frontal com Garagem",
+      "Garagem Privativa",
       "Projeto Luminotécnico",
     ],
   },
 
-  // 5. THE HOUSE CLUB
+  // 8. THE HOUSE CLUB
   {
     id: "casa-the-house-club-caruaru",
+    tipo: "casa",
     title: "Casa em Condomínio Fechado no The House Club",
-    type: "casa",
     price: "R$ 870.000",
     location: "Luiz Gonzaga, Caruaru - PE",
     coverImage:
@@ -280,56 +316,26 @@ Imóvel ideal para quem busca modernidade, excelente distribuição de cômodos 
     bathrooms: 4,
     parking: 2,
     area: "123m²",
-    description: `Excelente oportunidade de compra no condomínio fechado The House Club, localizado no bairro Luiz Gonzaga em Caruaru - PE. 
-
-Um imóvel projetado para oferecer conforto, segurança e uma estrutura de lazer completa para toda a família. Aceita financiamento bancário.
-
-Metragens:
-• Área construída: 123 m²
-• Área total do terreno: 190 m²
-
-Configuração do imóvel:
-• 3 suítes amplas (sendo 1 suíte master com closet)
-• Sala para 2 ambientes (estar e jantar)
-• Cozinha funcional integrada
-• Banheiro social / lavabo
-• Área de serviço privativa
-• Espaço gourmet com churrasqueira
-• Espaço preparado para instalação de jacuzzi
-• 2 vagas de garagem cobertas
-
-Lazer e infraestrutura do condomínio:
-• Piscina adulto e infantil
-• Academia completa equipada
-• Salão de festas
-• Quadra poliesportiva
-• Playground infantil e áreas de convivência arborizadas
-• Portaria com segurança e controle de acesso 24 horas`,
-    videos: [],
+    description: `Excelente casa em condomínio fechado com 3 suítes, espaço gourmet, preparação para jacuzzi e área de lazer completa.`,
     images: Array.from(
       { length: 18 },
       (_, i) =>
         `/imoveis/casas-para-venda/casa-the-house-club/${i + 1}.jpeg`
     ),
     amenities: [
-      "3 Suítes (1 Master com Closet)",
-      "Espaço Gourmet com Churrasqueira",
-      "Ponto para Instalação de Jacuzzi",
-      "Aceita Financiamento Bancário",
-      "Condomínio Fechado com Portaria 24h",
-      "Piscina Adulto e Infantil",
-      "Academia Equipada",
-      "Quadra Poliesportiva",
-      "Salão de Festas e Playground",
-      "2 Vagas Cobertas",
+      "3 Suítes",
+      "Espaço Gourmet",
+      "Preparação para Jacuzzi",
+      "Piscina e Academia",
+      "Portaria 24h",
     ],
   },
 
-  // 6. VOG VILLE NORTE (1º ANDAR)
+  // 9. VOG VILLE NORTE
   {
     id: "ap-vog-ville-norte",
-    title: "Apartamento Pronto para Morar no Condomínio Vog Ville Norte",
-    type: "apartamento",
+    tipo: "apartamento",
+    title: "Apartamento Pronto para Morar no Vog Ville Norte",
     price: "R$ 290.000",
     location: "Caruaru - PE",
     coverImage:
@@ -338,24 +344,7 @@ Lazer e infraestrutura do condomínio:
     bathrooms: 2,
     parking: 1,
     area: "52m²",
-    description: `Excelente oportunidade de compra no condomínio Vog Ville Norte. Apartamento completo, pronto para morar, com móveis planejados, conforto e praticidade.
-
-Configuração do imóvel:
-• 1º andar com varanda integrada
-• 2 quartos (sendo 1 suíte)
-• Ambos os quartos equipados com ar-condicionado
-• Banheiro social completo
-• Cozinha planejada com móveis sob medida, forno embutido, cooktop e coifa
-• 1 vaga de garagem descoberta
-
-Estrutura e lazer do condomínio:
-• Piscina adulto e infantil
-• Academia equipada
-• Mercadinho interno de conveniência
-• Lavanderia compartilhada OMO
-• Bicicletário e pista de cooper
-• Salão de festas
-• Portaria com segurança 24 horas`,
+    description: `Apartamento completo, pronto para morar, com móveis planejados, ar-condicionado e lazer com piscina e academia.`,
     videos: [
       "/imoveis/apartamentos-para-venda/edificio-vog-ville-norte/1.mp4",
       "/imoveis/apartamentos-para-venda/edificio-vog-ville-norte/2.mp4",
@@ -367,23 +356,18 @@ Estrutura e lazer do condomínio:
     ),
     amenities: [
       "1 Suíte",
-      "Ar-condicionado nos Quartos",
-      "Cozinha Planejada com Fogão e Forno",
+      "Ar-condicionado",
+      "Móveis Planejados",
       "Piscina Adulto e Infantil",
       "Academia Equipada",
-      "Lavanderia OMO",
-      "Mercadinho Interno",
-      "Pista de Cooper e Bicicletário",
-      "Portaria 24h",
-      "1 Vaga de Garagem",
     ],
   },
 
-  // 7. VOG VILLE NORTE (TÉRREO DE ESQUINA)
+  // 10. VOG VILLE NORTE TÉRREO DE ESQUINA
   {
     id: "ap-vog-ville-norte-terreo",
+    tipo: "apartamento",
     title: "Apartamento Térreo de Esquina no Condomínio Vog Ville Norte",
-    type: "apartamento",
     price: "R$ 310.000",
     location: "Caruaru - PE",
     coverImage:
@@ -392,33 +376,7 @@ Estrutura e lazer do condomínio:
     bathrooms: 2,
     parking: 1,
     area: "52m²",
-    description: `Oportunidade exclusiva no Condomínio Vog Ville Norte!
-
-Apartamento térreo de esquina, com posição privilegiada e vista aberta para todo o condomínio. Oferece a máxima privacidade: o único vizinho direto é o do andar superior. Localizado em uma rua tranquila, em um bloco com arquitetura rústica e charmosa estilo bangalô.
-
-Diferenciais do Imóvel:
-• Unidade térrea de esquina
-• Vista panorâmica para todo o condomínio
-• Maior privacidade (apenas um vizinho no andar de cima)
-• Localização em rua tranquila
-• Arquitetura única estilo bangalô
-
-Estrutura de Lazer e Condomínio:
-• Complexo aquático com 3 piscinas integradas
-• 3 Áreas Gourmet com churrasqueiras
-• Academia completa e equipada
-• Salão de Festas e Salão de Jogos
-• Quadra Poliesportiva e Quadra de Areia
-• Área Pet privativa
-• 2 Parques Infantis / Playgrounds
-• Conveniência com Mini Mercado interno
-• Lavanderia OMO compartilhada
-• Bicicletário
-• Energia Solar na área comum (garantindo condomínio mais econômico)
-• 1 Vaga de garagem para automóvel
-
-O Vog Ville Norte destaca-se como o condomínio mais completo e valorizado da região, oferecendo infraestrutura superior, lazer de clube e eficiência energética.`,
-    videos: [],
+    description: `Oportunidade exclusiva no Condomínio Vog Ville Norte! Unidade térrea de esquina com vista panorâmica.`,
     images: Array.from(
       { length: 24 },
       (_, i) =>
@@ -439,11 +397,11 @@ O Vog Ville Norte destaca-se como o condomínio mais completo e valorizado da re
     ],
   },
 
-  // 8. EDIFÍCIO SANTA MARIA
+  // 11. EDIFÍCIO SANTA MARIA
   {
     id: "ap-edificio-santa-maria-boa-viagem",
+    tipo: "apartamento",
     title: "Apartamento de Alto Padrão no Edifício Santa Maria",
-    type: "apartamento",
     price: "R$ 1.980.000",
     location: "Boa Viagem, Recife - PE",
     coverImage:
@@ -452,55 +410,26 @@ O Vog Ville Norte destaca-se como o condomínio mais completo e valorizado da re
     bathrooms: 6,
     parking: 3,
     area: "180m²",
-    description: `Exclusivo apartamento de alto padrão no Edifício Santa Maria, situado em localização privilegiada no bairro de Boa Viagem, entre o Colégio Santa Maria e o Colégio Boa Viagem, a apenas 500 metros da praia.
-
-Imóvel amplo, sofisticado e com vista definitiva para o mar. Documentação 100% regular (quitado, escriturado, registrado e sem débitos, livre para venda imediata).
-
-Configuração do imóvel:
-• Área privativa: 180 m²
-• 4 suítes amplas e confortáveis
-• Sala integrada para 4 ambientes
-• Vista aberta e definitiva para o mar
-• Lavabo social
-• Despensa funcional
-• Dependência completa de serviço (quarto e WC)
-• 3 excelentes vagas de garagem
-
-Estrutura do condomínio:
-• 3 elevadores modernos
-• 2 estações de recarga para carros elétricos
-• Piscina adulto e infantil
-• Espaço gourmet com churrasqueira
-• Sauna e salão de festas
-
-Informações financeiras:
-• Valor de venda: R$ 2.200.000,00
-• Taxa condominial: R$ 1.680,00 (água e gás inclusos)
-• IPTU mensal: R$ 691,00`,
-    videos: [],
+    description: `Apartamento amplo de alto padrão com vista definitiva para o mar em Boa Viagem, 4 suítes, 3 vagas e lazer completo.`,
     images: Array.from(
       { length: 29 },
       (_, i) =>
         `/imoveis/apartamentos-para-venda/edificio-santa-maria/${i + 1}.jpeg`
     ),
     amenities: [
-      "4 Suítes Amplas",
-      "Vista Definitiva para o Mar",
+      "4 Suítes",
+      "Vista para o Mar",
       "3 Vagas de Garagem",
-      "2 Estações para Carros Elétricos",
+      "Estação de Carro Elétrico",
       "Piscina e Sauna",
-      "Espaço Gourmet e Salão de Festas",
-      "3 Elevadores",
-      "Apenas 500m da Praia de Boa Viagem",
-      "Documentação 100% Regular",
     ],
   },
 
-  // 9. BEACH CLASS CONVENTION BY MAI
+  // 12. BEACH CLASS CONVENTION BY MAI
   {
     id: "ap-beach-class-convention-by-mai",
+    tipo: "apartamento",
     title: "Apartamento no Beach Class Convention by MAI",
-    type: "apartamento",
     price: "R$ 380.000",
     location: "Boa Viagem, Recife - PE",
     coverImage:
@@ -509,49 +438,7 @@ Informações financeiras:
     bathrooms: 1,
     parking: 1,
     area: "Studio / Flat",
-    description: `APARTAMENTO À VENDA | BEACH CLASS CONVENTION BY MAI
-
-R$ 380.000,00
-
-Boa Viagem | Recife/PE
-
-1 QUARTO | SUÍTE | ANDAR ALTO
-
-Uma excelente oportunidade para quem busca investir em um dos endereços mais estratégicos de Boa Viagem.
-
-Este apartamento no Beach Class Convention by MAI reúne localização, praticidade e estrutura de empreendimento voltado também ao público executivo e de negócios.
-
-DESTAQUES DO IMÓVEL
-• 1 quarto sendo suíte
-• Andar alto
-• Excelente localização em Boa Viagem
-• Imóvel escriturado
-• Pronto para financiamento
-• Excelente opção para investimento
-• Potencial para geração de renda
-• Empreendimento com estrutura completa
-
-ESTRUTURA DO EMPREENDIMENTO
-• Piscina
-• Academia
-• Sauna
-• Restaurante
-• Recepção
-• Lavanderia
-• Business Center
-• Salas para eventos e reuniões
-• Elevadores
-• Estacionamento
-• Estrutura de conveniência e serviços
-
-LOCALIZAÇÃO PRIVILEGIADA
-Na Rua Maria Carolina, em Boa Viagem, próximo ao Shopping Recife, praia, restaurantes, serviços e importantes vias de acesso da Zona Sul.
-
-UMA OPORTUNIDADE PARA QUEM PENSA EM PATRIMÔNIO E RENTABILIDADE
-Um imóvel compacto, em localização estratégica e dentro de um empreendimento consolidado, ideal para quem procura uma alternativa de investimento imobiliário em Recife.
-
-ESCRITURADO • FINANCIÁVEL • ANDAR ALTO • 1 SUÍTE`,
-    videos: [],
+    description: `Apartamento no Beach Class Convention by MAI reunindo localização, praticidade e estrutura para público executivo.`,
     images: Array.from(
       { length: 19 },
       (_, i) =>
@@ -573,14 +460,15 @@ ESCRITURADO • FINANCIÁVEL • ANDAR ALTO • 1 SUÍTE`,
   },
 ]
 
-// =========================================================================
-// COMPONENTE DO CARD
-// =========================================================================
-
 function PropertyCard({ property }: { property: ImovelVenda }) {
   const [currentImgIndex, setCurrentImgIndex] = useState(0)
 
-  const totalImages = property.images.length
+  const images =
+    property.images && property.images.length > 0
+      ? property.images
+      : [property.coverImage]
+
+  const totalImages = images.length
   const hasVideos = property.videos && property.videos.length > 0
 
   const handlePrev = (e: React.MouseEvent) => {
@@ -602,56 +490,37 @@ function PropertyCard({ property }: { property: ImovelVenda }) {
   }
 
   return (
-    <article className="group bg-white rounded-2xl overflow-hidden border border-border/80 hover:border-[#b85d19]/40 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+    <article className="group bg-white rounded-2xl overflow-hidden border border-border/80 hover:border-[#b85d19]/40 hover:shadow-xl transition-all duration-300 flex flex-col justify-between relative">
       <div>
         <Link
           href={`/imoveis/${property.id}`}
           className="block aspect-[4/3] overflow-hidden relative bg-muted cursor-pointer"
         >
           <img
-            src={
-              property.images[currentImgIndex] ||
-              property.coverImage ||
-              "/placeholder.jpg"
-            }
+            src={images[currentImgIndex] || "/placeholder.jpg"}
             alt={`${property.title} - foto ${currentImgIndex + 1}`}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
 
-          {/* TAG DO TIPO */}
-          <div className="absolute top-3 left-3 bg-[#0d3b2e] text-white px-3 py-1 text-xs rounded-full font-medium shadow-sm flex items-center gap-1.5">
-            {property.type === "casa" ? (
-              <>
-                <Home className="h-3 w-3" />
-                Casa
-              </>
-            ) : (
-              <>
-                <Building2 className="h-3 w-3" />
-                Apartamento
-              </>
-            )}
+          <div className="absolute top-3 left-3 bg-[#0d3b2e] text-white px-3 py-1 text-xs rounded-full font-medium shadow-sm">
+            Venda
           </div>
 
-          {/* VÍDEO */}
           {hasVideos && (
             <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-sm text-white px-2.5 py-1 text-[11px] rounded-full font-medium flex items-center gap-1">
               <Play className="h-3 w-3 fill-white" />
-
-              {property.videos.length > 1
+              {property.videos && property.videos.length > 1
                 ? `${property.videos.length} Vídeos`
                 : "Vídeo"}
             </div>
           )}
 
-          {/* CONTADOR DE FOTOS */}
           {totalImages > 1 && (
             <div className="absolute bottom-3 left-3 bg-black/60 backdrop-blur-sm text-white text-[11px] font-medium px-2 py-0.5 rounded-md">
               {currentImgIndex + 1} / {totalImages}
             </div>
           )}
 
-          {/* SETAS */}
           {totalImages > 1 && (
             <>
               <button
@@ -681,10 +550,7 @@ function PropertyCard({ property }: { property: ImovelVenda }) {
             {property.location}
           </span>
 
-          <Link
-            href={`/imoveis/${property.id}`}
-            className="block"
-          >
+          <Link href={`/imoveis/${property.id}`} className="block">
             <h3 className="text-base font-semibold text-foreground group-hover:text-[#b85d19] transition-colors mt-2 line-clamp-1 font-serif">
               {property.title}
             </h3>
@@ -719,7 +585,6 @@ function PropertyCard({ property }: { property: ImovelVenda }) {
         </div>
       </div>
 
-      {/* PREÇO + BOTÃO */}
       <div className="p-5 pt-0">
         <div className="pt-4 border-t border-border flex items-center justify-between">
           <span className="text-sm font-semibold text-[#0d3b2e] line-clamp-1 mr-2">
@@ -741,32 +606,43 @@ function PropertyCard({ property }: { property: ImovelVenda }) {
   )
 }
 
-// =========================================================================
-// CONTEÚDO DA PÁGINA
-// =========================================================================
-
 function ImoveisParaVendaContent() {
-  const [filterType, setFilterType] = useState<
-    "todos" | "casa" | "apartamento"
+  const [tipoFiltro, setTipoFiltro] = useState<
+    "todos" | "apartamento" | "casa"
   >("todos")
 
-  const filteredProperties = imoveisVenda.filter((property) => {
-    if (filterType === "todos") return true
+  const [cidadeFiltro, setCidadeFiltro] = useState<string>("todas")
+  const [faixaPrecoFiltro, setFaixaPrecoFiltro] = useState<string>("todas")
 
-    return property.type === filterType
+  // Lógica de filtragem combinada
+  const imoveisFiltrados = imoveisVenda.filter((imovel) => {
+    // 1. Tipo
+    if (tipoFiltro !== "todos" && imovel.tipo !== tipoFiltro) return false
+
+    // 2. Cidade
+    if (cidadeFiltro !== "todas") {
+      const loc = imovel.location.toLowerCase()
+      if (cidadeFiltro === "caruaru" && !loc.includes("caruaru")) return false
+      if (cidadeFiltro === "recife" && !loc.includes("recife")) return false
+      if (cidadeFiltro === "gravata" && !loc.includes("gravatá") && !loc.includes("gravata")) return false
+    }
+
+    // 3. Faixa de Preço
+    if (faixaPrecoFiltro !== "todas") {
+      const valor = parsePreco(imovel.price)
+      if (valor > 0) {
+        if (faixaPrecoFiltro === "ate_300" && valor > 300000) return false
+        if (faixaPrecoFiltro === "300_600" && (valor < 300000 || valor > 600000)) return false
+        if (faixaPrecoFiltro === "600_1500" && (valor < 600000 || valor > 1500000)) return false
+        if (faixaPrecoFiltro === "acima_1500" && valor < 1500000) return false
+      }
+    }
+
+    return true
   })
-
-  const casasCount = imoveisVenda.filter(
-    (p) => p.type === "casa"
-  ).length
-
-  const aptosCount = imoveisVenda.filter(
-    (p) => p.type === "apartamento"
-  ).length
 
   return (
     <>
-      {/* HERO */}
       <section className="pt-28 pb-10 bg-[#0d3b2e] text-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <Link
@@ -786,12 +662,12 @@ function ImoveisParaVendaContent() {
           </h1>
 
           <p className="text-white/75 mt-3 max-w-2xl text-sm md:text-base">
-            Casas, apartamentos e empreendimentos selecionados para compra residencial em localizações privilegiadas.
+            Casas, apartamentos e residências selecionadas para compra nas
+            regiões mais valorizadas.
           </p>
         </div>
       </section>
 
-      {/* CARROSSEL */}
       <FeaturedCarousel
         properties={saleProperties}
         title="Imóveis em Destaque para Venda"
@@ -799,78 +675,146 @@ function ImoveisParaVendaContent() {
         type="venda"
       />
 
-      {/* FILTROS + GRID */}
       <section className="py-12 bg-[#faf7f2]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
-            <p className="text-sm text-muted-foreground">
-              Exibindo <span className="font-semibold text-foreground">{filteredProperties.length}</span> imóveis para venda
-            </p>
+          
+          {/* BARRA DE FILTROS HIGH-END / ESTILO PORTAL DE LUXO */}
+          <div className="bg-white rounded-2xl p-4 md:p-6 shadow-xl shadow-black/5 border border-border/60 mb-12">
+            
+            {/* Topo da barra: Título limpo e Badge de Contagem */}
+            <div className="flex items-center justify-between px-2 mb-4">
+              <div className="flex items-center gap-2">
+                <Filter className="h-4 w-4 text-[#b85d19]" />
+                <span className="text-xs font-bold uppercase tracking-widest text-[#0d3b2e]">
+                  Filtrar Catálogo
+                </span>
+              </div>
 
-            {/* BOTÕES DE FILTRO */}
-            <div className="flex flex-wrap items-center gap-2">
-              <Button
-                variant={filterType === "todos" ? "default" : "outline"}
-                size="sm"
-                onClick={() => setFilterType("todos")}
-                className={
-                  filterType === "todos"
-                    ? "bg-[#0d3b2e] hover:bg-[#092920] text-white"
-                    : "border-border hover:bg-white"
-                }
-              >
-                <LayoutGrid className="mr-1.5 h-3.5 w-3.5" />
-                Todos ({imoveisVenda.length})
-              </Button>
+              <div className="flex items-center gap-3">
+                <span className="text-xs font-medium text-muted-foreground">
+                  <strong className="text-[#0d3b2e] font-bold">{imoveisFiltrados.length}</strong> {imoveisFiltrados.length === 1 ? "imóvel encontrado" : "imóveis encontrados"}
+                </span>
 
-              <Button
-                variant={filterType === "apartamento" ? "default" : "outline"}
-                size="sm"
-                onClick={() => setFilterType("apartamento")}
-                className={
-                  filterType === "apartamento"
-                    ? "bg-[#0d3b2e] hover:bg-[#092920] text-white"
-                    : "border-border hover:bg-white"
-                }
-              >
-                <Building className="mr-1.5 h-3.5 w-3.5" />
-                Apartamentos ({aptosCount})
-              </Button>
+                {(tipoFiltro !== "todos" || cidadeFiltro !== "todas" || faixaPrecoFiltro !== "todas") && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setTipoFiltro("todos")
+                      setCidadeFiltro("todas")
+                      setFaixaPrecoFiltro("todas")
+                    }}
+                    className="text-xs font-semibold text-[#b85d19] hover:text-[#0d3b2e] transition-colors"
+                  >
+                    Resetar
+                  </button>
+                )}
+              </div>
+            </div>
 
-              <Button
-                variant={filterType === "casa" ? "default" : "outline"}
-                size="sm"
-                onClick={() => setFilterType("casa")}
-                className={
-                  filterType === "casa"
-                    ? "bg-[#0d3b2e] hover:bg-[#092920] text-white"
-                    : "border-border hover:bg-white"
-                }
-              >
-                <Home className="mr-1.5 h-3.5 w-3.5" />
-                Casas ({casasCount})
-              </Button>
+            {/* Container Único com Divisórias Internas */}
+            <div className="grid grid-cols-1 md:grid-cols-3 bg-[#faf8f5] rounded-xl border border-border/80 divide-y md:divide-y-0 md:divide-x divide-border/80 overflow-hidden">
+              
+              {/* CAMPO 1: TIPO DE IMÓVEL */}
+              <div className="relative p-3.5 px-4 hover:bg-white transition-colors duration-200 flex items-center gap-3">
+                <div className="p-2.5 rounded-lg bg-[#0d3b2e]/5 text-[#0d3b2e] shrink-0">
+                  <Home className="h-4 w-4" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <label className="block text-[10px] font-bold uppercase tracking-wider text-[#b85d19]">
+                    Tipo de Imóvel
+                  </label>
+                  <div className="relative mt-0.5">
+                    <select
+                      value={tipoFiltro}
+                      onChange={(e) => setTipoFiltro(e.target.value as any)}
+                      className="w-full bg-transparent text-sm font-semibold text-foreground focus:outline-none appearance-none cursor-pointer pr-6 truncate"
+                    >
+                      <option value="todos">Todos os Tipos (Casas e Apts)</option>
+                      <option value="casa">Casas</option>
+                      <option value="apartamento">Apartamentos</option>
+                    </select>
+                    <ChevronDown className="absolute right-0 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+                  </div>
+                </div>
+              </div>
+
+              {/* CAMPO 2: CIDADE / REGIÃO */}
+              <div className="relative p-3.5 px-4 hover:bg-white transition-colors duration-200 flex items-center gap-3">
+                <div className="p-2.5 rounded-lg bg-[#0d3b2e]/5 text-[#0d3b2e] shrink-0">
+                  <MapPin className="h-4 w-4" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <label className="block text-[10px] font-bold uppercase tracking-wider text-[#b85d19]">
+                    Localização
+                  </label>
+                  <div className="relative mt-0.5">
+                    <select
+                      value={cidadeFiltro}
+                      onChange={(e) => setCidadeFiltro(e.target.value)}
+                      className="w-full bg-transparent text-sm font-semibold text-foreground focus:outline-none appearance-none cursor-pointer pr-6 truncate"
+                    >
+                      <option value="todas">Todas as Cidades</option>
+                      <option value="caruaru">Caruaru - PE</option>
+                      <option value="recife">Recife - PE</option>
+                      <option value="gravata">Gravatá - PE</option>
+                    </select>
+                    <ChevronDown className="absolute right-0 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+                  </div>
+                </div>
+              </div>
+
+              {/* CAMPO 3: FAIXA DE PREÇO */}
+              <div className="relative p-3.5 px-4 hover:bg-white transition-colors duration-200 flex items-center gap-3">
+                <div className="p-2.5 rounded-lg bg-[#0d3b2e]/5 text-[#0d3b2e] shrink-0">
+                  <Building className="h-4 w-4" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <label className="block text-[10px] font-bold uppercase tracking-wider text-[#b85d19]">
+                    Valor Investimento
+                  </label>
+                  <div className="relative mt-0.5">
+                    <select
+                      value={faixaPrecoFiltro}
+                      onChange={(e) => setFaixaPrecoFiltro(e.target.value)}
+                      className="w-full bg-transparent text-sm font-semibold text-foreground focus:outline-none appearance-none cursor-pointer pr-6 truncate"
+                    >
+                      <option value="todas">Todas as Faixas de Preço</option>
+                      <option value="ate_300">Até R$ 300 mil</option>
+                      <option value="300_600">R$ 300 mil – R$ 600 mil</option>
+                      <option value="600_1500">R$ 600 mil – R$ 1,5 milhão</option>
+                      <option value="acima_1500">Acima de R$ 1,5 milhão</option>
+                    </select>
+                    <ChevronDown className="absolute right-0 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
 
-          {/* GRID DE IMÓVEIS (Ajustado para 4 por fila) */}
-          {filteredProperties.length > 0 ? (
+          {/* GRID DOS IMÓVEIS FILTRADOS */}
+          {imoveisFiltrados.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {filteredProperties.map((imovel) => (
-                <PropertyCard key={imovel.id} property={imovel} />
+              {imoveisFiltrados.map((property) => (
+                <PropertyCard key={property.id} property={property} />
               ))}
             </div>
           ) : (
             <div className="text-center py-16 bg-white rounded-2xl border border-border">
-              <p className="text-muted-foreground text-lg">
-                Nenhum imóvel encontrado nessa categoria.
+              <p className="text-muted-foreground text-sm">
+                Nenhum imóvel encontrado com os filtros selecionados.
               </p>
-              <Button
-                onClick={() => setFilterType("todos")}
-                className="mt-4 bg-[#0d3b2e] hover:bg-[#092920] text-white"
+              <button
+                type="button"
+                onClick={() => {
+                  setTipoFiltro("todos")
+                  setCidadeFiltro("todas")
+                  setFaixaPrecoFiltro("todas")
+                }}
+                className="mt-3 text-[#0d3b2e] font-semibold hover:underline text-sm"
               >
-                Ver todos os imóveis
-              </Button>
+                Resetar filtros
+              </button>
             </div>
           )}
         </div>
@@ -881,7 +825,7 @@ function ImoveisParaVendaContent() {
 
 export default function ImoveisParaVendaPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-[#faf7f2] pt-28 text-center">Carregando imóveis...</div>}>
+    <Suspense fallback={<div className="py-20 text-center">Carregando imóveis para venda...</div>}>
       <ImoveisParaVendaContent />
     </Suspense>
   )

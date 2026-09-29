@@ -26,6 +26,217 @@ export const todosImoveis: ImovelCompleto[] = [
   // --- VENDA ---
   // =========================================================================
   {
+    id: "casa-condominio-green-garden-residence",
+    title: "Casa no Condomínio Green Garden Residence",
+    price: "R$ 900.000",
+    location: "Caruaru - PE",
+    type: "venda",
+    category: "casa",
+    featured: true,
+    coverImage: "/imoveis/casas-para-venda/casa-green-garden-residence/1.jpeg",
+    bedrooms: 3,
+    bathrooms: 3,
+    parking: 4,
+    area: "115m²",
+    description: `CASA À VENDA NO CONDOMÍNIO GREEN GARDEN RESIDENCE
+
+Excelente oportunidade para morar com conforto, segurança 24 horas e infraestrutura completa em condomínio fechado.
+
+DESCRIÇÃO DO IMÓVEL:
+• Área construída de 115 m²
+• Garagem para 4 carros
+• 3 dormitórios, sendo 2 suítes
+• Banheiro social
+• Sala ampla para ambientes de estar e jantar
+• Cozinha tipo americana
+• Escada de acesso ao 1º andar em madeira com estilo rústico
+• Varanda
+• Quintal
+
+Condomínio com portaria e segurança 24h e estrutura completa de lazer.
+
+VALOR DE VENDA: R$ 900.000,00`,
+    images: Array.from({ length: 2 }, (_, i) => `/imoveis/casas-para-venda/casa-green-garden-residence/${i + 1}.jpeg`),
+    amenities: [
+      "2 Suítes",
+      "Garagem para 4 Carros",
+      "Cozinha Americana",
+      "Escada Rústica em Madeira",
+      "Varanda e Quintal",
+      "Portaria e Segurança 24h",
+      "Infraestrutura Completa de Condomínio",
+    ],
+    backUrl: "/empreendimentos/imoveis-para-venda",
+    backLabel: "Voltar para Imóveis para Venda",
+  },
+  {
+    id: "casa-mauricio-de-nassau-acqua-home-clube",
+    title: "Casa de Alto Padrão no Bairro Maurício de Nassau",
+    price: "R$ 1.500.000",
+    location: "Maurício de Nassau, Caruaru - PE",
+    type: "venda",
+    category: "casa",
+    featured: true,
+    coverImage: "/imoveis/casas-para-venda/casa-mauricio-de-nassau-acqua/1.jpeg",
+    bedrooms: 8,
+    bathrooms: 6,
+    parking: 4,
+    area: "520m²",
+    description: `CASA À VENDA NO BAIRRO MAURÍCIO DE NASSAU
+
+Ao lado do Edifício Acqua Home Clube!
+
+Uma residência fantástica com excelente espaço interno e área construída de 520 m² em um terreno de 12x27m no coração do Bairro Maurício de Nassau.
+
+DESCRIÇÃO DO IMÓVEL:
+
+Área Construída: 520 m²
+Área do Terreno: 12x27m
+
+PAVIMENTO TÉRREO:
+• Garagem para 4 vagas
+• Terraço
+• Sala ampla para 2 ambientes
+• 2 quartos de hóspedes
+• Banheiro social
+• Cozinha ampla
+• Área de serviço
+• Quintal
+• Cozinha de apoio + despensa
+• Dependência completa de serviço + banheiro
+• 2 quartos de hóspedes na área de serviço
+• Jardim de inverno
+
+1º ANDAR:
+• Escada de acesso
+• Varanda privativa
+• Escritório
+• Sala ampla de TV
+• 3 suítes master com hidromassagem
+• Salão para área gourmet
+• 1 quarto adicional
+• Banheiro social
+
+VALOR DE VENDA: R$ 1.500.000,00
+
+Localização nobre, ao lado do Edifício Acqua Home Clube, próxima a polos de saúde, educação e principais avenidas da cidade.`,
+    images: Array.from({ length: 20 }, (_, i) => `/imoveis/casas-para-venda/casa-mauricio-de-nassau-acqua/${i + 1}.jpeg`),
+    amenities: [
+      "3 Suítes Master com Hidromassagem",
+      "520m² de Área Construída",
+      "Garagem para 4 Veículos",
+      "Escritório",
+      "Salão para Área Gourmet",
+      "Cozinha de Apoio + Despensa",
+      "Jardim de Inverno",
+      "Quintal",
+      "Varanda",
+      "Ao Lado do Acqua Home Clube",
+    ],
+    backUrl: "/empreendimentos/imoveis-para-venda",
+    backLabel: "Voltar para Imóveis para Venda",
+  },
+  {
+    id: "ap-edificio-cely-miranda-universitario",
+    title: "Apartamento no Edifício Cely Miranda",
+    price: "R$ 1.750.000",
+    location: "Universitário, Caruaru - PE",
+    type: "venda",
+    category: "apartamento",
+    featured: true,
+    coverImage: "/imoveis/apartamentos-para-venda/edificio-cely-miranda/1.jpeg",
+    bedrooms: 4,
+    bathrooms: 4,
+    parking: 3,
+    area: "172m²",
+    description: `UM DOS APARTAMENTOS MAIS EXCLUSIVOS DE CARUARU
+
+EDIFÍCIO CELY MIRANDA | UNIVERSITÁRIO
+
+Uma residência diferenciada para quem procura amplitude, sofisticação, localização privilegiada e praticidade, em um dos endereços mais desejados de Caruaru.
+
+Av. Amazonas, nº 1017 a 1203 – Universitário, Caruaru/PE
+172 m²
+4 suítes
+3 vagas de garagem cobertas
+100% reformado
+Porteira fechada
+Escriturado e regularizado
+Aceita financiamento
+
+UM APARTAMENTO PRONTO PARA MORAR
+
+Você não precisa enfrentar obra, reforma ou período de espera.
+
+O imóvel foi completamente reformado e será comercializado porteira fechada, proporcionando uma experiência de compra diferenciada: você adquire um apartamento pronto, completo e cuidadosamente preparado para morar.
+
+ESTRUTURA DO EDIFÍCIO CELY MIRANDA
+
+Um condomínio pensado para oferecer conforto, lazer e segurança:
+
+• Piscinas adulto e infantil
+• Piscina com raia
+• Academia / fitness
+• Salão de festas
+• Espaço gourmet
+• Brinquedoteca
+• Área esportiva
+• Área de lazer
+• Elevadores sociais e de serviço
+• Portaria 24 horas
+
+LOCALIZAÇÃO PRIVILEGIADA
+
+Morar no Universitário significa estar cercado por uma das estruturas mais completas da cidade.
+
+No entorno estão importantes pontos de saúde, educação, serviços, gastronomia, comércio e conveniência, incluindo:
+
+• Polo Médico / Centro Médico do Agreste
+• Hospital da Unimed
+• Hospital Santa Águeda
+• Polo Jurídico de Caruaru
+• Fórum Estadual
+• Fórum Federal
+• ASCES-UNITA
+• Wyden / instituições de ensino
+• Supermercados e conveniências
+• Farmácias
+• Academias
+• Colégios e escolas
+• Restaurantes e serviços
+
+A região ainda oferece acesso estratégico às principais vias de Caruaru, conectando o Universitário a Maurício de Nassau, Indianópolis, Centro e às principais rodovias de acesso à cidade.
+
+É uma localização que combina qualidade de vida para morar e praticidade para trabalhar, especialmente para profissionais das áreas médica, jurídica e empresarial.
+
+VALOR DE VENDA
+
+R$ 1.750.000,00
+
+Imóvel escriturado e regularizado
+Aceita financiamento bancário
+
+Um imóvel diferenciado, em um endereço diferenciado, para quem não abre mão de exclusividade.
+
+Visitas exclusivamente mediante agendamento.`,
+    images: Array.from({ length: 40 }, (_, i) => `/imoveis/apartamentos-para-venda/edificio-cely-miranda/${i + 1}.jpeg`),
+    amenities: [
+      "4 Suítes Privativas",
+      "100% Reformado",
+      "Porteira Fechada",
+      "3 Vagas Cobertas",
+      "Piscina com Raia",
+      "Academia / Fitness",
+      "Espaço Gourmet",
+      "Salão de Festas",
+      "Brinquedoteca",
+      "Portaria 24h",
+      "Escriturado e Financiável",
+    ],
+    backUrl: "/empreendimentos/imoveis-para-venda",
+    backLabel: "Voltar para Imóveis para Venda",
+  },
+  {
     id: "ap-edificio-ilha-de-ponza-casa-forte",
     title: "Apartamento no Edifício Ilha de Ponza",
     price: "R$ 600.000",
@@ -42,7 +253,7 @@ export const todosImoveis: ImovelCompleto[] = [
 
 EDIFÍCIO ILHA DE PONZA | AO LADO DA PRAÇA DE CASA FORTE
 
-Se você procura espaço, ventilação, localização privilegeda e praticidade, esta é uma excelente oportunidade para morar em uma das regiões mais tradicionais e valorizadas da Zona Norte do Recife.
+Se você procura espaço, ventilação, localização privilegiada e praticidade, esta é uma excelente oportunidade para morar em uma das regiões mais tradicionais e valorizadas da Zona Norte do Recife.
 
 Localização privilegiada
 Ao lado da Praça de Casa Forte, com fácil acesso a supermercados, escolas, restaurantes, farmácias, serviços e toda a conveniência que o bairro oferece.
@@ -236,30 +447,7 @@ Estrutura completa de lazer, bem-estar e conveniência:
     area: "52m²",
     description: `Oportunidade exclusiva no Condomínio Vog Ville Norte!
 
-Apartamento térreo de esquina, com posição privilegiada e vista aberta para todo o condomínio. Oferece a máxima privacidade: o único vizinho direto é o do andar superior. Localizado em uma rua tranquila, em um bloco com arquitetura rústica e charmosa estilo bangalô.
-
-Diferenciais do Imóvel:
-• Unidade térrea de esquina
-• Vista panorâmica para todo o condomínio
-• Maior privacidade (apenas um vizinho no andar de cima)
-• Localização em rua tranquila
-• Arquitetura única estilo bangalô
-
-Estrutura de Lazer e Condomínio:
-• Complexo aquático com 3 piscinas integradas
-• 3 Áreas Gourmet com churrasqueiras
-• Academia completa e equipada
-• Salão de Festas e Salão de Jogos
-• Quadra Poliesportiva e Quadra de Areia
-• Área Pet privativa
-• 2 Parques Infantis / Playgrounds
-• Conveniência com Mini Mercado interno
-• Lavanderia OMO compartilhada
-• Bicicletário
-• Energia Solar na área comum (garantindo condomínio mais econômico)
-• 1 Vaga de garagem para automóvel
-
-O Vog Ville Norte destaca-se como o condomínio mais completo e valorizado da região, oferecendo infraestrutura superior, lazer de clube e eficiência energética.`,
+Apartamento térreo de esquina, com posição privilegiada e vista aberta para todo o condomínio. Oferece a máxima privacidade: o único vizinho direto é o do andar superior. Localizado em uma rua tranquila, em um bloco com arquitetura rústica e charmosa estilo bangalô.`,
     images: Array.from({ length: 24 }, (_, i) => `/imoveis/apartamentos-para-venda/vog-ville-norte-terreo/${i + 1}.jpeg`),
     amenities: [
       "Térreo de Esquina",
@@ -317,40 +505,7 @@ Boa Viagem | Recife/PE
 
 1 QUARTO | SUÍTE | ANDAR ALTO
 
-Uma excelente oportunidade para quem busca investir em um dos endereços mais estratégicos de Boa Viagem.
-
-Este apartamento no Beach Class Convention by MAI reúne localização, praticidade e estrutura de empreendimento voltado também ao público executivo e de negócios.
-
-DESTAQUES DO IMÓVEL
-• 1 quarto sendo suíte
-• Andar alto
-• Excelente localização em Boa Viagem
-• Imóvel escriturado
-• Pronto para financiamento
-• Excelente opção para investimento
-• Potencial para geração de renda
-• Empreendimento com estrutura completa
-
-ESTRUTURA DO EMPREENDIMENTO
-• Piscina
-• Academia
-• Sauna
-• Restaurante
-• Recepção
-• Lavanderia
-• Business Center
-• Salas para eventos e reuniões
-• Elevadores
-• Estacionamento
-• Estrutura de conveniência e serviços
-
-LOCALIZAÇÃO PRIVILEGIADA
-Na Rua Maria Carolina, em Boa Viagem, próximo ao Shopping Recife, praia, restaurantes, serviços e importantes vias de acesso da Zona Sul.
-
-UMA OPORTUNIDADE PARA QUEM PENSA EM PATRIMÔNIO E RENTABILIDADE
-Um imóvel compacto, em localização estratégica e dentro de um empreendimento consolidado, ideal para quem procura uma alternativa de investimento imobiliário em Recife.
-
-ESCRITURADO • FINANCIÁVEL • ANDAR ALTO • 1 SUÍTE`,
+Uma excelente oportunidade para quem busca investir em um dos endereços mais estratégicos de Boa Viagem.`,
     images: Array.from({ length: 19 }, (_, i) => `/imoveis/apartamentos-para-venda/beach-class-convention-by-mai/${i + 1}.jpeg`),
     amenities: [
       "1 Suíte",
@@ -400,7 +555,7 @@ CARACTERÍSTICAS DO IMÓVEL:
 • 1 vaga de garagem rotativa
 
 ESTRUTURA E LAZER DO CONDOMÍNIO:
-• Piscina na cobertura, com vista privilegeda e mini bar
+• Piscina na cobertura, com vista privilegiada e mini bar
 • Espaço gourmet com churrasqueira
 • Mini market no condomínio
 • Lavanderia OMO no prédio
@@ -710,6 +865,46 @@ Um apartamento moderno, elegante e pronto para morar no melhor da Avenida Navega
   // =========================================================================
   // --- COMERCIAL ---
   // =========================================================================
+  {
+    id: "sala-comercial-galeria-avenida-center",
+    title: "Sala Comercial na Galeria Avenida Center",
+    price: "R$ 1.800 / mês (Incluso Condomínio e IPTU)",
+    location: "Av. Agamenon Magalhães, Maurício de Nassau, Caruaru - PE",
+    type: "comercial",
+    category: "ponto",
+    featured: true,
+    coverImage: "/imoveis/pontos-comerciais/sala-galeria-avenida-center/1.jpeg",
+    bedrooms: 0,
+    bathrooms: 1,
+    parking: 0,
+    area: "30m²",
+    description: `OPORTUNIDADE DE ALUGUEL — SALA COMERCIAL NA AGAMENON MAGALHÃES!
+
+Excelente oportunidade para instalar ou expandir o seu negócio no coração de Caruaru!
+
+Localização Privilegiada: Galeria Avenida Center (no mesmo prédio onde funciona a Claro)
+Endereço: Av. Agamenon Magalhães, 297 - Maurício de Nassau, Caruaru - PE
+
+Valor: R$ 1.800,00/mês
+TUDO INCLUSO: Condomínio e IPTU já estão inclusos no valor do aluguel! Sem surpresas no fim do mês.
+
+Destaques:
+• Ponto de altíssima visibilidade e grande fluxo na principal avenida da cidade
+• Bairro nobre e estratégico (Maurício de Nassau)
+• Perfeito para escritórios, consultórios, estética ou prestação de serviços`,
+    videos: ["/imoveis/pontos-comerciais/sala-galeria-avenida-center/1.mp4"],
+    images: Array.from({ length: 9 }, (_, i) => `/imoveis/pontos-comerciais/sala-galeria-avenida-center/${i + 1}.jpeg`),
+    amenities: [
+      "Galeria Avenida Center",
+      "Av. Agamenon Magalhães",
+      "Condomínio e IPTU Inclusos",
+      "Bairro Maurício de Nassau",
+      "Grande Fluxo de Pedestres e Veículos",
+      "Ideal para Consultórios e Escritórios",
+    ],
+    backUrl: "/empreendimentos/pontos-comerciais",
+    backLabel: "Voltar para Pontos Comerciais",
+  },
   {
     id: "ponto-comercial-agamenon-magalhaes",
     title: "Ponto Comercial na Avenida Agamenon Magalhães",
