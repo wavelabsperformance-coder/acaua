@@ -11,18 +11,15 @@ import {
   MapPin,
   ChevronLeft,
   ChevronRight,
+  ChevronDown,
   Play,
   Home,
   Building,
-  LayoutGrid,
+  Filter,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { rentalProperties } from "@/lib/data"
 import { FeaturedCarousel } from "@/components/featured-carousel"
-
-// =========================================================================
-// INTERFACE E ESTRUTURA DE DADOS DOS IMÓVEIS PARA ALUGAR
-// =========================================================================
 
 export interface ImovelAluguel {
   id: string
@@ -41,9 +38,11 @@ export interface ImovelAluguel {
   amenities: string[]
 }
 
-// =========================================================================
-// IMÓVEIS PARA ALUGAR
-// =========================================================================
+function parsePrecoAluguel(priceStr: string): number {
+  if (!priceStr || priceStr.toLowerCase().includes("consulte")) return 0
+  const cleanStr = priceStr.split("/")[0].replace(/[^\d]/g, "")
+  return cleanStr ? parseInt(cleanStr, 10) : 0
+}
 
 const imoveisAluguel: ImovelAluguel[] = [
   // 1. BEACH CLASS RESIDENCE SANTA MARIA
@@ -51,7 +50,7 @@ const imoveisAluguel: ImovelAluguel[] = [
     id: "ap-beach-class-residence-santa-maria",
     tipo: "apartamento",
     title: "Apartamento no Beach Class Residence Santa Maria",
-    price: "R$ 3.800 / mês (Água e Gás inclusos)",
+    price: "R$ 3.800 / mês",
     location: "Boa Viagem, Recife - PE",
     coverImage:
       "/imoveis/apartamentos-para-alugar/beach-class-residence-santa-maria/1.jpeg",
@@ -59,61 +58,16 @@ const imoveisAluguel: ImovelAluguel[] = [
     bathrooms: 2,
     parking: 1,
     area: "50m²",
-    description: `EXCELENTE OPORTUNIDADE DE LOCAÇÃO EM BOA VIAGEM!
-
-BEACH CLASS RESIDENCE SANTA MARIA
-
-Se você busca conforto, praticidade e excelente localização em Recife, este apartamento é uma ótima opção para morar em Boa Viagem!
-
-CARACTERÍSTICAS DO IMÓVEL
-• 2 quartos, sendo 1 suíte
-• Armários planejados nos quartos, cozinha e banheiro
-• Ar-condicionado instalado nos dois quartos
-• Varanda aconchegante
-• Apartamento arejado, ventilado e com excelente iluminação natural
-• 1 vaga de garagem rotativa
-
-ESTRUTURA E LAZER DO CONDOMÍNIO
-• Piscina na cobertura, com vista privilegiada e mini bar
-• Espaço gourmet com churrasqueira
-• Mini market no condomínio
-• Lavanderia OMO no prédio
-
-VALOR DA LOCAÇÃO
-R$ 3.800,00 (Água e gás inclusos no valor da locação).
-
-LOCALIZAÇÃO PRIVILEGIADA
-Rua Dr. Pedro de Melo Cahú, 201 – Boa Viagem, Recife/PE.
-Uma localização estratégica, próxima a escolas, hotéis, farmácias, serviços e às principais conveniências do bairro.
-
-• Praia de Boa Viagem: aproximadamente 400 metros
-• Aeroporto Internacional do Recife: aproximadamente 4,5 km
-• Próximo ao Colégio Santa Maria, CBV Boa Viagem e Escola Municipal Karla Patrícia.
-• Fácil acesso a farmácias e serviços (Drogasil e Pague Menos).
-• Próximo ao Beach Class Convention e Dublê Hotel.`,
+    description: `EXCELENTE OPORTUNIDADE DE LOCAÇÃO EM BOA VIAGEM!`,
     videos: [
       "/imoveis/apartamentos-para-alugar/beach-class-residence-santa-maria/22.mp4",
-      "/imoveis/apartamentos-para-alugar/beach-class-residence-santa-maria/23.mp4",
-      "/imoveis/apartamentos-para-alugar/beach-class-residence-santa-maria/24.mp4",
     ],
     images: Array.from(
       { length: 21 },
       (_, i) =>
         `/imoveis/apartamentos-para-alugar/beach-class-residence-santa-maria/${i + 1}.jpeg`
     ),
-    amenities: [
-      "1 Suíte",
-      "Armários Planejados",
-      "Ar-condicionado nos Quartos",
-      "Varanda",
-      "Piscina na Cobertura com Mini Bar",
-      "Espaço Gourmet com Churrasqueira",
-      "Mini Market no Condomínio",
-      "Lavanderia OMO",
-      "Água e Gás Inclusos",
-      "400m da Praia de Boa Viagem",
-      "Garagem Rotativa",
-    ],
+    amenities: ["1 Suíte", "Armários Planejados", "Piscina na Cobertura"],
   },
 
   // 2. CONDOMÍNIO MR. ROTTERDAM
@@ -121,7 +75,7 @@ Uma localização estratégica, próxima a escolas, hotéis, farmácias, serviç
     id: "ap-condominio-mr-rotterdam",
     tipo: "apartamento",
     title: "Apartamento Mobiliado no Condomínio Mr. Rotterdam",
-    price: "R$ 2.400 / mês (Incluso Condomínio e IPTU)",
+    price: "R$ 2.400 / mês",
     location: "Universitário, Caruaru - PE",
     coverImage:
       "/imoveis/apartamentos-para-alugar/edificio-mr-rotterdam/2.jpeg",
@@ -129,48 +83,14 @@ Uma localização estratégica, próxima a escolas, hotéis, farmácias, serviç
     bathrooms: 1,
     parking: 1,
     area: "38m²",
-    description: `Excelente oportunidade de locação no Condomínio Mr. Rotterdam, situado na Av. Amazonas no Bairro Universitário, em frente ao Hospital Unimed.
-
-Imóvel totalmente mobiliado e decorado, no 4º andar, com posição estratégica voltada para o Sul, garantindo ótima ventilação e iluminação natural.
-
-Configuração do imóvel:
-• 1 quarto com armários sob medida e ar-condicionado
-• Sala de estar com sofá, TV e mesa de jantar
-• Cozinha completa equipada com geladeira, fogão e micro-ondas
-• Banheiro social com box blindex e armário planejado
-• 1 vaga de garagem coberta
-
-Lazer e comodidades do condomínio:
-• Piscina adulto e infantil com deck molhado
-• Academia climatizada e equipada
-• Salão de festas decorado
-• Portaria com segurança 24 horas`,
+    description: `Excelente oportunidade de locação no Condomínio Mr. Rotterdam.`,
     videos: [],
-    images: [
-      "/imoveis/apartamentos-para-alugar/edificio-mr-rotterdam/2.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-mr-rotterdam/1.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-mr-rotterdam/3.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-mr-rotterdam/4.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-mr-rotterdam/5.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-mr-rotterdam/6.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-mr-rotterdam/7.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-mr-rotterdam/8.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-mr-rotterdam/9.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-mr-rotterdam/10.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-mr-rotterdam/11.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-mr-rotterdam/12.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-mr-rotterdam/13.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-mr-rotterdam/14.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-mr-rotterdam/15.jpeg",
-    ],
-    amenities: [
-      "100% Mobiliado",
-      "4º Andar (Posição Sul)",
-      "Piscina com Deck",
-      "Academia Equipada",
-      "Condomínio e IPTU Inclusos",
-      "Portaria 24h",
-    ],
+    images: Array.from(
+      { length: 15 },
+      (_, i) =>
+        `/imoveis/apartamentos-para-alugar/edificio-mr-rotterdam/${i + 1}.jpeg`
+    ),
+    amenities: ["100% Mobiliado", "Piscina com Deck", "Academia Equipada"],
   },
 
   // 3. APARTAMENTO MOBILIADO NO MAURÍCIO DE NASSAU
@@ -178,7 +98,7 @@ Lazer e comodidades do condomínio:
     id: "ap-mobiliado-mauricio-de-nassau",
     tipo: "apartamento",
     title: "Apartamento Mobiliado no Maurício de Nassau",
-    price: "R$ 1.700 / mês (Incluso Taxas)",
+    price: "R$ 1.700 / mês",
     location: "Maurício de Nassau, Caruaru - PE",
     coverImage:
       "/imoveis/apartamentos-para-alugar/apartamento-mobiliado-mauricio-de-nassau/1.jpeg",
@@ -186,27 +106,14 @@ Lazer e comodidades do condomínio:
     bathrooms: 1,
     parking: 1,
     area: "35m²",
-    description:
-      "Apartamento mobiliado e prático para locação no bairro Maurício de Nassau. Excelente localização, próximo a clínicas, farmácias, restaurantes e polo médico. Todas as taxas inclusas no pacote.",
+    description: "Apartamento mobiliado e prático para locação no bairro Maurício de Nassau.",
     videos: [],
-    images: [
-      "/imoveis/apartamentos-para-alugar/apartamento-mobiliado-mauricio-de-nassau/1.jpeg",
-      "/imoveis/apartamentos-para-alugar/apartamento-mobiliado-mauricio-de-nassau/2.jpeg",
-      "/imoveis/apartamentos-para-alugar/apartamento-mobiliado-mauricio-de-nassau/3.jpeg",
-      "/imoveis/apartamentos-para-alugar/apartamento-mobiliado-mauricio-de-nassau/4.jpeg",
-      "/imoveis/apartamentos-para-alugar/apartamento-mobiliado-mauricio-de-nassau/5.jpeg",
-      "/imoveis/apartamentos-para-alugar/apartamento-mobiliado-mauricio-de-nassau/6.jpeg",
-      "/imoveis/apartamentos-para-alugar/apartamento-mobiliado-mauricio-de-nassau/7.jpeg",
-      "/imoveis/apartamentos-para-alugar/apartamento-mobiliado-mauricio-de-nassau/8.jpeg",
-      "/imoveis/apartamentos-para-alugar/apartamento-mobiliado-mauricio-de-nassau/9.jpeg",
-    ],
-    amenities: [
-      "Mobiliado",
-      "Ar-condicionado",
-      "Próximo ao Polo Médico",
-      "Todas as Taxas Inclusas",
-      "1 Vaga de Garagem",
-    ],
+    images: Array.from(
+      { length: 9 },
+      (_, i) =>
+        `/imoveis/apartamentos-para-alugar/apartamento-mobiliado-mauricio-de-nassau/${i + 1}.jpeg`
+    ),
+    amenities: ["Mobiliado", "Ar-condicionado", "Todas as Taxas Inclusas"],
   },
 
   // 4. EDIFÍCIO TEREZA RODRIGUES
@@ -214,7 +121,7 @@ Lazer e comodidades do condomínio:
     id: "ap-edificio-tereza-rodrigues",
     tipo: "apartamento",
     title: "Apartamento no Edifício Tereza Rodrigues",
-    price: "R$ 4.000 / mês (Incluso Condomínio)",
+    price: "R$ 4.000 / mês",
     location: "Boa Viagem, Recife - PE",
     coverImage:
       "/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/1.jpeg",
@@ -222,62 +129,14 @@ Lazer e comodidades do condomínio:
     bathrooms: 3,
     parking: 1,
     area: "64m²",
-    description: `Excelente oportunidade de locação no Edifício Tereza Rodrigues, localizado na Rua Ana Camelo da Silva em Boa Viagem.
-
-Apartamento em andar alto com linda vista panorâmica da cidade, excelente iluminação e ventilação cruzada.
-
-Configuração do imóvel:
-• 2 quartos, sendo 1 suíte confortável com armários embutidos
-• Varanda privativa com tela de proteção
-• Sala ampla para 2 ambientes
-• Cozinha planejada com armários
-• Área de serviço com dependência completa (quarto e banheiro)
-• 1 vaga de garagem coberta`,
+    description: `Excelente oportunidade de locação no Edifício Tereza Rodrigues.`,
     videos: [],
-    images: [
-      "/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/1.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/2.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/3.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/4.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/5.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/6.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/7.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/8.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/9.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/10.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/11.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/12.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/13.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/14.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/15.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/16.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/17.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/18.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/19.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/20.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/21.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/22.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/23.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/24.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/25.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/26.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/27.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/28.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/29.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/30.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/31.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/32.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/33.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/34.jpeg",
-    ],
-    amenities: [
-      "Andar Alto",
-      "Varanda Panorâmica",
-      "1 Suíte",
-      "Dependência Completa de Serviço",
-      "Condomínio Incluso no Pacote",
-      "Portaria 24h",
-    ],
+    images: Array.from(
+      { length: 34 },
+      (_, i) =>
+        `/imoveis/apartamentos-para-alugar/edificio-tereza-rodrigues/${i + 1}.jpeg`
+    ),
+    amenities: ["Andar Alto", "Varanda Panorâmica", "1 Suíte"],
   },
 
   // 5. JARDIM DOS ALECRINS
@@ -285,7 +144,7 @@ Configuração do imóvel:
     id: "ap-edificio-jardim-dos-alecrins",
     tipo: "apartamento",
     title: "Apartamento Mobiliado no Edifício Jardim dos Alecrins",
-    price: "R$ 2.800 / mês (Incluso Taxas)",
+    price: "R$ 2.800 / mês",
     location: "Universitário, Caruaru - PE",
     coverImage:
       "/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/1.jpeg",
@@ -293,51 +152,14 @@ Configuração do imóvel:
     bathrooms: 1,
     parking: 1,
     area: "54m²",
-    description: `Excelente apartamento totalmente mobiliado e nascente no Edifício Jardim dos Alecrins. Localizado no coração do Bairro Universitário, em frente à ASCES.`,
+    description: `Excelente apartamento totalmente mobiliado e nascente no Edifício Jardim dos Alecrins.`,
     videos: [],
-    images: [
-      "/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/1.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/2.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/3.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/4.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/5.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/6.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/7.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/8.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/9.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/10.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/11.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/12.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/13.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/14.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/15.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/16.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/17.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/18.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/19.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/20.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/21.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/22.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/23.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/24.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/25.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/26.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/27.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/28.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/29.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/30.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/31.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/32.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/33.jpeg",
-    ],
-    amenities: [
-      "Totalmente Mobiliado",
-      "Posição Nascente",
-      "Piscina e Lazer",
-      "Em Frente à ASCES",
-      "Taxas Inclusas",
-      "Portaria 24h",
-    ],
+    images: Array.from(
+      { length: 33 },
+      (_, i) =>
+        `/imoveis/apartamentos-para-alugar/edificio-jardim-dos-alecrins/${i + 1}.jpeg`
+    ),
+    amenities: ["Totalmente Mobiliado", "Posição Nascente", "Piscina e Lazer"],
   },
 
   // 6. STUDIO ALTO PADRÃO
@@ -353,49 +175,16 @@ Configuração do imóvel:
     bathrooms: 1,
     parking: 1,
     area: "38m²",
-    description:
-      "Imóvel diferenciado com padrão de acabamento e decoração premium no bairro Maurício de Nassau.",
+    description: "Imóvel diferenciado com padrão de acabamento e decoração premium.",
     videos: [
       "/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/19.mp4",
     ],
-    images: [
-      "/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/1.jpeg",
-      "/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/2.jpeg",
-      "/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/3.jpeg",
-      "/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/4.jpeg",
-      "/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/5.jpeg",
-      "/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/6.jpeg",
-      "/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/7.jpeg",
-      "/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/8.jpeg",
-      "/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/9.jpeg",
-      "/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/10.jpeg",
-      "/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/11.jpeg",
-      "/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/12.jpeg",
-      "/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/13.jpeg",
-      "/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/14.jpeg",
-      "/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/15.jpeg",
-      "/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/16.jpeg",
-      "/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/17.jpeg",
-      "/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/18.jpeg",
-      "/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/20.jpeg",
-      "/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/21.jpeg",
-      "/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/22.jpeg",
-      "/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/23.jpeg",
-      "/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/24.jpeg",
-      "/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/25.jpeg",
-      "/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/26.jpeg",
-      "/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/27.jpeg",
-      "/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/28.jpeg",
-      "/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/29.jpeg",
-    ],
-    amenities: [
-      "Alto Padrão Decorado",
-      "Complexo Comercial Integrado",
-      "Academia Equipada",
-      "Coworking",
-      "Segurança e Portaria 24h",
-      "1 Vaga de Garagem",
-    ],
+    images: Array.from(
+      { length: 29 },
+      (_, i) =>
+        `/imoveis/apartamentos-para-alugar/apartamento-alto-padrao-pronto-morar/${i + 1}.jpeg`
+    ),
+    amenities: ["Alto Padrão Decorado", "Academia Equipada", "Coworking"],
   },
 
   // 7. EDIFÍCIO JOÃO SOARES
@@ -403,7 +192,7 @@ Configuração do imóvel:
     id: "ap-edificio-joao-soares",
     tipo: "apartamento",
     title: "Apartamento de Alto Padrão no Edifício João Soares",
-    price: "R$ 4.200 / mês (Incluso Taxas)",
+    price: "R$ 4.200 / mês",
     location: "Maurício de Nassau, Caruaru - PE",
     coverImage:
       "/imoveis/apartamentos-para-alugar/edificio-joao-soares/1.jpeg",
@@ -411,32 +200,14 @@ Configuração do imóvel:
     bathrooms: 3,
     parking: 2,
     area: "80m²",
-    description:
-      "Apartamento impecável no Edifício João Soares, localizado em uma das áreas mais valorizadas do Bairro Maurício de Nassau.",
+    description: "Apartamento impecável no Edifício João Soares.",
     videos: [],
-    images: [
-      "/imoveis/apartamentos-para-alugar/edificio-joao-soares/1.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-joao-soares/2.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-joao-soares/3.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-joao-soares/4.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-joao-soares/5.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-joao-soares/6.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-joao-soares/7.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-joao-soares/8.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-joao-soares/9.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-joao-soares/10.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-joao-soares/11.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-joao-soares/12.jpeg",
-      "/imoveis/apartamentos-para-alugar/edificio-joao-soares/13.jpeg",
-    ],
-    amenities: [
-      "2 Suítes Privativas",
-      "Móveis Finger de Alto Padrão",
-      "Andar Alto",
-      "2 Vagas de Garagem Cobertas",
-      "Taxas Inclusas no Pacote",
-      "Portaria 24h",
-    ],
+    images: Array.from(
+      { length: 13 },
+      (_, i) =>
+        `/imoveis/apartamentos-para-alugar/edificio-joao-soares/${i + 1}.jpeg`
+    ),
+    amenities: ["2 Suítes Privativas", "Andar Alto", "2 Vagas Cobertas"],
   },
 
   // 8. CAMINHO DAS AROEIRAS
@@ -452,36 +223,22 @@ Configuração do imóvel:
     bathrooms: 1,
     parking: 1,
     area: "52m²",
-    description:
-      "Excelente oportunidade de locação ao lado do Caruaru Shopping.",
+    description: "Excelente oportunidade de locação ao lado do Caruaru Shopping.",
     videos: [],
-    images: [
-      "/imoveis/apartamentos-para-alugar/caminho-das-aroeiras/7.jpeg",
-      "/imoveis/apartamentos-para-alugar/caminho-das-aroeiras/1.jpeg",
-      "/imoveis/apartamentos-para-alugar/caminho-das-aroeiras/2.jpeg",
-      "/imoveis/apartamentos-para-alugar/caminho-das-aroeiras/3.jpeg",
-      "/imoveis/apartamentos-para-alugar/caminho-das-aroeiras/4.jpeg",
-      "/imoveis/apartamentos-para-alugar/caminho-das-aroeiras/5.jpeg",
-      "/imoveis/apartamentos-para-alugar/caminho-das-aroeiras/6.jpeg",
-      "/imoveis/apartamentos-para-alugar/caminho-das-aroeiras/8.jpeg",
-      "/imoveis/apartamentos-para-alugar/caminho-das-aroeiras/9.jpeg",
-      "/imoveis/apartamentos-para-alugar/caminho-das-aroeiras/10.jpeg",
-    ],
-    amenities: [
-      "Ao Lado do Caruaru Shopping",
-      "Piscina Adulto e Infantil",
-      "Salão de Festas",
-      "1 Vaga de Garagem",
-      "Portaria 24h",
-    ],
+    images: Array.from(
+      { length: 10 },
+      (_, i) =>
+        `/imoveis/apartamentos-para-alugar/caminho-das-aroeiras/${i + 1}.jpeg`
+    ),
+    amenities: ["Ao Lado do Caruaru Shopping", "Piscina", "Salão de Festas"],
   },
 
-  // 9. JARDIM DAS ORQUÍDEAS (DISPONÍVEL)
+  // 9. JARDIM DAS ORQUÍDEAS
   {
     id: "ap-jardim-das-orquideas-indianopolis",
     tipo: "apartamento",
     title: "Apartamento no Res. Jardim das Orquídeas",
-    price: "R$ 1.500 / mês (Incluso Condomínio, IPTU e Gás)",
+    price: "R$ 1.500 / mês",
     location: "Indianópolis, Caruaru - PE",
     coverImage:
       "/imoveis/apartamentos-para-alugar/jardim-das-orquideas/1.jpeg",
@@ -489,50 +246,14 @@ Configuração do imóvel:
     bathrooms: 1,
     parking: 1,
     area: "42m²",
-    description: `APARTAMENTO PARA LOCAÇÃO | JARDIM DAS ORQUÍDEAS — CARUARU
-
-Indianópolis | Próximo ao Caruaru Shopping
-
-Se você procura praticidade, conforto e uma localização estratégica em Caruaru, essa pode ser a oportunidade ideal!
-
-Posição Norte - 2º andar
-• Aproximadamente 42 m² de área privativa
-• 02 quartos
-• Sala de estar
-• Cozinha
-• Área de serviço
-• Banheiro social
-• 01 vaga de garagem descoberta
-• Condomínio residencial com estrutura de lazer e segurança
-
-Localização privilegiada, em Indianópolis, com fácil acesso ao Caruaru Shopping e a diversos serviços, comércio e conveniências da região.
-
-ALUGUEL: R$ 1.500,00
-
-E o melhor: já estão inclusos no valor:
-- Condomínio
-- IPTU
-- Gás
-
-Condições para locação:
-1 aluguel + 1 caução
-Obs.: Necessário estar com o nome limpo!
-
-Agende sua visita e venha conhecer!`,
+    description: `APARTAMENTO PARA LOCAÇÃO | JARDIM DAS ORQUÍDEAS — CARUARU`,
     videos: [],
     images: Array.from(
       { length: 13 },
       (_, i) =>
         `/imoveis/apartamentos-para-alugar/jardim-das-orquideas/${i + 1}.jpeg`
     ),
-    amenities: [
-      "Posição Norte",
-      "2º Andar",
-      "Próximo ao Caruaru Shopping",
-      "Condomínio, IPTU e Gás Inclusos",
-      "Estrutura de Lazer e Segurança",
-      "1 Vaga Descoberta",
-    ],
+    amenities: ["Posição Norte", "2º Andar", "Condomínio, IPTU e Gás Inclusos"],
   },
 
   // 10. PUERTO BALATA (INDISPONÍVEL / ALUGADO)
@@ -540,60 +261,22 @@ Agende sua visita e venha conhecer!`,
     id: "ap-puerto-balata-boa-viagem",
     tipo: "apartamento",
     title: "Apartamento no Edifício Puerto Balata (Indisponível)",
-    price: "R$ 10.000 / mês (Incluso água, gás e IPTU)",
-    location: "Avenida Navegantes, Boa Viagem, Recife - PE",
+    price: "R$ 10.000 / mês",
+    location: "Boa Viagem, Recife - PE",
     coverImage: "/imoveis/apartamentos-para-alugar/puerto-balata/1.jpeg",
     bedrooms: 2,
     bathrooms: 2,
     parking: 1,
     area: "72m²",
-    description: `EXCLUSIVIDADE EDIFÍCIO PUERTO BALATA
-
-Avenida Navegantes
-Próximo ao Quiosque 13
-A poucos passos do mar
-
-Apartamento no 2º andar | 100% mobiliado | Vista mar em todos os ambientes
-
-72m² muito bem distribuídos
-02 quartos, sendo 01 suíte
-Varanda integrada
-Sala ampla e moderna
-Projeto de iluminação sofisticado
-TV na sala e nos quartos
-Ar-condicionado na sala e nos 02 quartos
-01 vaga de garagem coberta
-
-Diferencial de conforto:
-Camas baú com colchões King Koil — marca americana reconhecida internacionalmente e presente em hotéis 5 estrelas como Nanai e Summerville
-
-Todos os ambientes com vista para o mar — quartos e sala trazendo sensação única de conforto, sofisticação e bem-estar.
-
-Valor da locação: R$ 10.000,00
-Incluso água e gás e IPTU 
-
-Um apartamento moderno, elegante e pronto para morar no melhor da Avenida Navegantes.
-
-[Imóvel Indisponível / Alugado]`,
+    description: `EXCLUSIVIDADE EDIFÍCIO PUERTO BALATA`,
     videos: [],
-    images: Array.from({ length: 19 }, (_, i) => `/imoveis/apartamentos-para-alugar/puerto-balata/${i + 1}.jpeg`),
-    amenities: [
-      "Indisponível / Alugado",
-      "2 Quartos (1 Suíte)",
-      "100% Mobiliado",
-      "Vista Mar em Todos os Ambientes",
-      "Varanda Integrada",
-      "Ar-condicionado na Sala e Quartos",
-      "Colchões King Koil 5 Estrelas",
-      "Água, Gás e IPTU Inclusos",
-      "1 Vaga Coberta",
-    ],
+    images: Array.from(
+      { length: 19 },
+      (_, i) => `/imoveis/apartamentos-para-alugar/puerto-balata/${i + 1}.jpeg`
+    ),
+    amenities: ["Indisponível / Alugado", "100% Mobiliado", "Vista Mar"],
   },
 ]
-
-// =========================================================================
-// CARD DE IMÓVEL
-// =========================================================================
 
 function PropertyCard({ property }: { property: ImovelAluguel }) {
   const [currentImgIndex, setCurrentImgIndex] = useState(0)
@@ -609,19 +292,13 @@ function PropertyCard({ property }: { property: ImovelAluguel }) {
   const handlePrev = (e: React.MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
-
-    setCurrentImgIndex((prev) =>
-      prev === 0 ? totalImages - 1 : prev - 1
-    )
+    setCurrentImgIndex((prev) => (prev === 0 ? totalImages - 1 : prev - 1))
   }
 
   const handleNext = (e: React.MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
-
-    setCurrentImgIndex((prev) =>
-      prev === totalImages - 1 ? 0 : prev + 1
-    )
+    setCurrentImgIndex((prev) => (prev === totalImages - 1 ? 0 : prev + 1))
   }
 
   const isIndisponivel = property.id === "ap-puerto-balata-boa-viagem"
@@ -647,7 +324,7 @@ function PropertyCard({ property }: { property: ImovelAluguel }) {
 
           {isIndisponivel && (
             <div className="absolute top-3 right-3 bg-red-600 text-white px-3 py-1 text-xs font-bold shadow-sm rounded-full">
-              Alugado / Indisponível
+              Alugado
             </div>
           )}
 
@@ -751,33 +428,37 @@ function PropertyCard({ property }: { property: ImovelAluguel }) {
   )
 }
 
-// =========================================================================
-// PÁGINA PRINCIPAL
-// =========================================================================
-
 function ImoveisParaAlugarContent() {
   const [tipoFiltro, setTipoFiltro] = useState<
     "todos" | "apartamento" | "casa"
   >("todos")
 
+  const [cidadeFiltro, setCidadeFiltro] = useState<string>("todas")
+  const [faixaPrecoFiltro, setFaixaPrecoFiltro] = useState<string>("todas")
+
   const imoveisFiltrados = imoveisAluguel.filter((imovel) => {
-    if (tipoFiltro === "todos") return true
-    return imovel.tipo === tipoFiltro
+    if (tipoFiltro !== "todos" && imovel.tipo !== tipoFiltro) return false
+
+    if (cidadeFiltro !== "todas") {
+      const loc = imovel.location.toLowerCase()
+      if (cidadeFiltro === "caruaru" && !loc.includes("caruaru")) return false
+      if (cidadeFiltro === "recife" && !loc.includes("recife")) return false
+    }
+
+    if (faixaPrecoFiltro !== "todas") {
+      const valor = parsePrecoAluguel(imovel.price)
+      if (valor > 0) {
+        if (faixaPrecoFiltro === "ate_2000" && valor > 2000) return false
+        if (faixaPrecoFiltro === "2000_3500" && (valor < 2000 || valor > 3500)) return false
+        if (faixaPrecoFiltro === "acima_3500" && valor < 3500) return false
+      }
+    }
+
+    return true
   })
-
-  const casasCount = imoveisAluguel.filter(
-    (imovel) => imovel.tipo === "casa"
-  ).length
-
-  const apartamentosCount = imoveisAluguel.filter(
-    (imovel) => imovel.tipo === "apartamento"
-  ).length
 
   return (
     <>
-      {/* ================================================================
-          HERO
-      ================================================================ */}
       <section className="pt-28 pb-10 bg-[#0d3b2e] text-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <Link
@@ -797,15 +478,11 @@ function ImoveisParaAlugarContent() {
           </h1>
 
           <p className="text-white/75 mt-3 max-w-2xl text-sm md:text-base">
-            Casas, apartamentos, flats e studios selecionados para locação
-            residencial em localizações privilegiadas.
+            Casas e apartamentos selecionados para locação nas regiões mais valorizadas.
           </p>
         </div>
       </section>
 
-      {/* ================================================================
-          CARROSSEL — SOMENTE IMÓVEIS PARA ALUGAR
-      ================================================================ */}
       <FeaturedCarousel
         properties={rentalProperties}
         title="Imóveis em Destaque para Alugar"
@@ -813,64 +490,119 @@ function ImoveisParaAlugarContent() {
         type="aluguel"
       />
 
-      {/* ================================================================
-          FILTROS + GRID
-      ================================================================ */}
       <section className="py-12 bg-[#faf7f2]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
-            <div className="flex items-center gap-2 border-l-4 border-[#b85d19] pl-3">
-              <p className="text-sm font-medium text-foreground">
-                Mostrando{" "}
-                <span className="font-bold text-[#0d3b2e]">
-                  {imoveisFiltrados.length}
-                </span>{" "}
-                imóveis
-              </p>
+          
+          {/* BARRA DE FILTROS HIGH-END / ESTILO PORTAL DE LUXO */}
+          <div className="bg-white rounded-2xl p-4 md:p-6 shadow-xl shadow-black/5 border border-border/60 mb-12">
+            <div className="flex items-center justify-between px-2 mb-4">
+              <div className="flex items-center gap-2">
+                <Filter className="h-4 w-4 text-[#b85d19]" />
+                <span className="text-xs font-bold uppercase tracking-widest text-[#0d3b2e]">
+                  Filtrar Catálogo de Locação
+                </span>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <span className="text-xs font-medium text-muted-foreground">
+                  <strong className="text-[#0d3b2e] font-bold">{imoveisFiltrados.length}</strong> {imoveisFiltrados.length === 1 ? "imóvel encontrado" : "imóveis encontrados"}
+                </span>
+
+                {(tipoFiltro !== "todos" || cidadeFiltro !== "todas" || faixaPrecoFiltro !== "todas") && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setTipoFiltro("todos")
+                      setCidadeFiltro("todas")
+                      setFaixaPrecoFiltro("todas")
+                    }}
+                    className="text-xs font-semibold text-[#b85d19] hover:text-[#0d3b2e] transition-colors"
+                  >
+                    Resetar
+                  </button>
+                )}
+              </div>
             </div>
 
-            <div className="inline-flex p-1 bg-white rounded-xl border border-border shadow-sm">
-              <button
-                type="button"
-                onClick={() => setTipoFiltro("todos")}
-                className={`flex items-center gap-2 px-4 py-2 text-xs md:text-sm font-medium rounded-lg transition-all ${
-                  tipoFiltro === "todos"
-                    ? "bg-[#0d3b2e] text-white shadow-sm"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                <LayoutGrid className="h-4 w-4" />
-                Todos ({imoveisAluguel.length})
-              </button>
+            <div className="grid grid-cols-1 md:grid-cols-3 bg-[#faf8f5] rounded-xl border border-border/80 divide-y md:divide-y-0 md:divide-x divide-border/80 overflow-hidden">
+              
+              {/* CAMPO 1: TIPO DE IMÓVEL */}
+              <div className="relative p-3.5 px-4 hover:bg-white transition-colors duration-200 flex items-center gap-3">
+                <div className="p-2.5 rounded-lg bg-[#0d3b2e]/5 text-[#0d3b2e] shrink-0">
+                  <Home className="h-4 w-4" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <label className="block text-[10px] font-bold uppercase tracking-wider text-[#b85d19]">
+                    Tipo de Imóvel
+                  </label>
+                  <div className="relative mt-0.5">
+                    <select
+                      value={tipoFiltro}
+                      onChange={(e) => setTipoFiltro(e.target.value as any)}
+                      className="w-full bg-transparent text-sm font-semibold text-foreground focus:outline-none appearance-none cursor-pointer pr-6 truncate"
+                    >
+                      <option value="todos">Todos os Tipos (Casas e Apts)</option>
+                      <option value="casa">Casas</option>
+                      <option value="apartamento">Apartamentos</option>
+                    </select>
+                    <ChevronDown className="absolute right-0 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+                  </div>
+                </div>
+              </div>
 
-              <button
-                type="button"
-                onClick={() => setTipoFiltro("casa")}
-                className={`flex items-center gap-2 px-4 py-2 text-xs md:text-sm font-medium rounded-lg transition-all ${
-                  tipoFiltro === "casa"
-                    ? "bg-[#0d3b2e] text-white shadow-sm"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                <Home className="h-4 w-4" />
-                Casas ({casasCount})
-              </button>
+              {/* CAMPO 2: CIDADE / REGIÃO */}
+              <div className="relative p-3.5 px-4 hover:bg-white transition-colors duration-200 flex items-center gap-3">
+                <div className="p-2.5 rounded-lg bg-[#0d3b2e]/5 text-[#0d3b2e] shrink-0">
+                  <MapPin className="h-4 w-4" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <label className="block text-[10px] font-bold uppercase tracking-wider text-[#b85d19]">
+                    Localização
+                  </label>
+                  <div className="relative mt-0.5">
+                    <select
+                      value={cidadeFiltro}
+                      onChange={(e) => setCidadeFiltro(e.target.value)}
+                      className="w-full bg-transparent text-sm font-semibold text-foreground focus:outline-none appearance-none cursor-pointer pr-6 truncate"
+                    >
+                      <option value="todas">Todas as Cidades</option>
+                      <option value="caruaru">Caruaru - PE</option>
+                      <option value="recife">Recife - PE</option>
+                    </select>
+                    <ChevronDown className="absolute right-0 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+                  </div>
+                </div>
+              </div>
 
-              <button
-                type="button"
-                onClick={() => setTipoFiltro("apartamento")}
-                className={`flex items-center gap-2 px-4 py-2 text-xs md:text-sm font-medium rounded-lg transition-all ${
-                  tipoFiltro === "apartamento"
-                    ? "bg-[#0d3b2e] text-white shadow-sm"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                <Building className="h-4 w-4" />
-                Apartamentos ({apartamentosCount})
-              </button>
+              {/* CAMPO 3: FAIXA DE PREÇO */}
+              <div className="relative p-3.5 px-4 hover:bg-white transition-colors duration-200 flex items-center gap-3">
+                <div className="p-2.5 rounded-lg bg-[#0d3b2e]/5 text-[#0d3b2e] shrink-0">
+                  <Building className="h-4 w-4" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <label className="block text-[10px] font-bold uppercase tracking-wider text-[#b85d19]">
+                    Valor Mensal
+                  </label>
+                  <div className="relative mt-0.5">
+                    <select
+                      value={faixaPrecoFiltro}
+                      onChange={(e) => setFaixaPrecoFiltro(e.target.value)}
+                      className="w-full bg-transparent text-sm font-semibold text-foreground focus:outline-none appearance-none cursor-pointer pr-6 truncate"
+                    >
+                      <option value="todas">Todas as Faixas de Aluguel</option>
+                      <option value="ate_2000">Até R$ 2.000 / mês</option>
+                      <option value="2000_3500">R$ 2.000 – R$ 3.500 / mês</option>
+                      <option value="acima_3500">Acima de R$ 3.500 / mês</option>
+                    </select>
+                    <ChevronDown className="absolute right-0 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
 
+          {/* GRID DOS IMÓVEIS FILTRADOS (4 COLUNAS) */}
           {imoveisFiltrados.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {imoveisFiltrados.map((property) => (
@@ -879,9 +611,20 @@ function ImoveisParaAlugarContent() {
             </div>
           ) : (
             <div className="text-center py-16 bg-white rounded-2xl border border-border">
-              <p className="text-muted-foreground">
-                Nenhum imóvel encontrado para esta categoria.
+              <p className="text-muted-foreground text-sm">
+                Nenhum imóvel encontrado com os filtros selecionados.
               </p>
+              <button
+                type="button"
+                onClick={() => {
+                  setTipoFiltro("todos")
+                  setCidadeFiltro("todas")
+                  setFaixaPrecoFiltro("todas")
+                }}
+                className="mt-3 text-[#0d3b2e] font-semibold hover:underline text-sm"
+              >
+                Resetar filtros
+              </button>
             </div>
           )}
         </div>
